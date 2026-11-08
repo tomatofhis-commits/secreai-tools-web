@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecreAI & Tools - Designed by amacha & Coded by AI</title>
+  <meta name="description" content="Elgato Stream Deckやショートカットで作業の手を止めずワンボタン画面キャプチャ＆AI質問。人間の記憶のようなChromaDB会話蓄積とローカルLLMトークン節約を備えたSecreAIをはじめとする無料AI実用ツール集。">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="#featured" data-i18n="nav_secreai">SecreAIとは</a>
+        <a href="#prep" data-i18n="nav_prep">事前準備</a>
+        <a href="#guide-basic" data-i18n="nav_basic">基本設定</a>
+        <a href="#api-endpoints" data-i18n="nav_api">API一覧</a>
+        <a href="#guide-advanced" data-i18n="nav_advanced">詳細設定</a>
+        <a href="#tools" data-i18n="nav_tools">他ツール一覧</a>
+        <a href="#contact" data-i18n="nav_contact">お問い合わせ</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="about" class="hero-section">
+    <div class="container hero-content">
+      <div class="hero-badge" data-i18n="hero_badge">Personal Project × Generative AI</div>
+      <h1 class="hero-title" data-i18n="hero_title">
+        作業の手を止めず、ワンボタンでAIを相棒に。
+      </h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
+        日常のPC作業やゲーム、ライブ配信で「AIを便利に使う」ために生まれた実用ツール群です。<br>
+        <strong>設計：あまち</strong> ＆ <strong>コーディング：AI (Gemini)</strong> の共創により、すべてフリーで開発・公開しています。
+      </p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn btn-primary" data-i18n="hero_btn_secreai">SecreAI の機能を見る</a>
+        <a href="#prep" class="btn btn-secondary" data-i18n="hero_btn_guide">導入・使い方ガイド</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Banner Placement Top -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Featured Tool: SecreAI Core Appeal -->
+  <section id="featured" class="section featured-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="featured_badge">Main Project</div>
+        <h2 class="section-title" data-i18n="featured_title">SecreAI - 画面を共有し、記憶を育てるAI秘書・相棒</h2>
+        <p class="section-description" data-i18n="featured_desc">
+          Elgato Stream Deck やショートカットキーからワンボタンで現在の画面をキャプチャ。作業やゲームの手を一切止めずに、Gemini や GPT、ローカルLLMへ即座に質問・対話できるデスクトップAIアシスタントです。
+        </p>
+      </div>
+
+      <!-- 4 Pillars of SecreAI -->
+      <div class="pillars-grid">
+        <div class="pillar-card highlight-pillar">
+          <div class="pillar-num">FEATURE 01</div>
+          <h3 data-i18n="pillar1_title">ワンボタン画面キャプチャ＆質問</h3>
+          <p data-i18n="pillar1_desc">
+            <strong>Elgato Stream Deck</strong>（HTTP API連携）やグローバルホットキー（<code>Ctrl+Alt+S</code>等）を押すだけで、ターゲット画面を瞬時にキャプチャしてAIに提示。スクリーンショットを撮って貼り付ける手間をゼロにし、作業やゲームの没入感を妨げません。
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">FEATURE 02</div>
+          <h3 data-i18n="pillar2_title">人間の記憶のような「多層記憶DB」</h3>
+          <p data-i18n="pillar2_desc">
+            会話を「短期・中期・長期」の3段階で管理し、<strong>ChromaDB（ベクトル検索＋キーワード検索）</strong>に蓄積。話せば話すほどあなたの好みや文脈・遊んでいるゲームの設定を記憶し、Good/Bad評価や自己学習辞書で賢い相棒へと成長します。
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">FEATURE 03</div>
+          <h3 data-i18n="pillar3_title">ローカルLLM活用でトークン大幅節約</h3>
+          <p data-i18n="pillar3_desc">
+            メイン対話は高性能なクラウドAI（Gemini / OpenAI）を使いつつ、<strong>記憶の要約整理・ネット検索結果の統合・事前判定（ゲートキーパーAI）</strong>をローカルLLM（Ollama / LM Studio）に任せることで、APIトークン消費とコストを劇的にカットします。
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">FEATURE 04</div>
+          <h3 data-i18n="pillar4_title">おまけ機能：高速RTトランスレーター</h3>
+          <p data-i18n="pillar4_desc">
+            画面内の英語や外国語テキストをOCR（WinRT / PaddleOCR）でリアルタイムに読み取り、ローカルLLM等で自然言語へ翻訳表示する<strong>RTトランスレーター</strong>を同梱。海外ゲームや英語ドキュメント読解の強力な手助けになります。
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Hub Showcase -->
+      <div class="hub-showcase">
+        <div class="hub-showcase-text">
+          <h3 data-i18n="hub_title">直感的なメインコントローラー（SecreAI Hub）</h3>
+          <p data-i18n="hub_desc">
+            すべての操作は洗練されたダークテーマの専用ハブ画面に集約。テキストチャットはもちろん、マイクを使った<strong>ボイスモード</strong>、画面を見せる<strong>ビジョンモード</strong>、AIの回答に対するフィードバック（Good / Bad / 修正）がワンクリックで行えます。
+          </p>
+          <ul class="hub-points">
+            <li data-i18n="hub_p1"><strong>ターゲットウィンドウ選択：</strong> 特定のゲームや作業アプリだけを指定してキャプチャ</li>
+            <li data-i18n="hub_p2"><strong>今日の前提条件：</strong> 「今日は〇〇のゲームをプレイ中」などその日の文脈をAIに事前共有</li>
+            <li data-i18n="hub_p3"><strong>VOICEVOX 連携：</strong> ずんだもん等の好きなキャラクターボイスでAIの回答をリアルタイム音声読み上げ</li>
+          </ul>
+          <div class="featured-actions">
+            <a href="https://github.com/tomatofhis-commits/SecreAI_project" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="btn_github_secreai">
+              GitHub リポジトリを見る
+            </a>
+            <a href="https://github.com/tomatofhis-commits/SecreAI_project/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="btn_releases">
+              最新リリース（無料ダウンロード）
+            </a>
+          </div>
+        </div>
+        <div class="hub-showcase-img">
+          <img id="img-main-hub" src="image/SecreAIメイン.jpg" alt="SecreAI Hub Main Window" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+          <span class="img-caption" data-i18n="caption_click_enlarge">※クリックで画像を拡大表示できます（言語切替で英語版UI画像に切り替わります）</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preparation / Prerequisites Section -->
+  <section id="prep" class="section prep-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="step-badge prep-badge" data-i18n="prep_badge">PREPARATION : 導入前の事前準備</div>
+        <h2 class="section-title" data-i18n="prep_title">事前に用意するもの（APIキー＆連携ツール）</h2>
+        <p class="section-description" data-i18n="prep_desc">
+          SecreAI を動かすために必須となるクラウドAIのAPIキー取得先と、組み合わせて使うことで機能が大幅に広がる推奨ツール（無料）の公式リンク一覧です。
+        </p>
+      </div>
+
+      <div class="prep-columns">
+        <!-- Required / Main AI API Keys -->
+        <div class="prep-group">
+          <h3 class="prep-group-title" data-i18n="prep_req_group">1. メインAI用 APIキー（いずれか必須）</h3>
+          <p class="prep-group-sub" data-i18n="prep_req_sub">会話や画面認識（ビジョンモード）の頭脳となるAIエンジンです。まずは無料枠のある Gemini API キーの取得が最も手軽でおすすめです。</p>
+          
+          <div class="prep-cards">
+            <div class="prep-card req-card">
+              <div class="prep-card-top">
+                <span class="status-tag tag-required" data-i18n="tag_required">必須 / 推奨</span>
+                <h4>Google Gemini API</h4>
+              </div>
+              <p data-i18n="prep_gemini_desc">
+                SecreAIのメインエンジンです。Googleアカウントがあれば「Google AI Studio」から数クリックでAPIキーを発行できます。
+              </p>
+              <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="prep-link" data-i18n="link_gemini">
+                Google AI Studio でAPIキーを取得する →
+              </a>
+            </div>
+
+            <div class="prep-card">
+              <div class="prep-card-top">
+                <span class="status-tag tag-optional" data-i18n="tag_choice">選択可</span>
+                <h4>OpenAI API (GPT)</h4>
+              </div>
+              <p data-i18n="prep_openai_desc">
+                GPTシリーズ（gpt-5.4-mini等）をメイン対話や記憶整理に使用したい場合に取得してください。
+              </p>
+              <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="prep-link" data-i18n="link_openai">
+                OpenAI Platform でAPIキーを取得する →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional / Recommended Tools -->
+        <div class="prep-group">
+          <h3 class="prep-group-title" data-i18n="prep_opt_group">2. あると便利な連携ツール・追加API（任意・無料）</h3>
+          <p class="prep-group-sub" data-i18n="prep_opt_sub">後から必要に応じて追加できます。音声読み上げやトークン節約、リアルタイム翻訳を使う場合に導入してください。</p>
+
+          <div class="prep-cards">
+            <div class="prep-card">
+              <div class="prep-card-top">
+                <span class="status-tag tag-rec" data-i18n="tag_voice">音声読み上げ</span>
+                <h4>VOICEVOX</h4>
+              </div>
+              <p data-i18n="prep_voicevox_desc">
+                AIの返答を自然な日本語キャラクター音声（ずんだもん等）でリアルタイムに読み上げるための無料テキスト読み上げソフトウェアです。
+              </p>
+              <a href="https://voicevox.hiroshiba.jp/" target="_blank" rel="noopener noreferrer" class="prep-link" data-i18n="link_voicevox">
+                VOICEVOX 公式サイトからダウンロード →
+              </a>
+            </div>
+
+            <div class="prep-card">
+              <div class="prep-card-top">
+                <span class="status-tag tag-rec" data-i18n="tag_local">トークン節約・RT翻訳</span>
+                <h4>Ollama / LM Studio（ローカルLLM）</h4>
+              </div>
+              <p data-i18n="prep_localllm_desc">
+                ご自身のPC（GPU）上でローカルAI（Gemma等）を動かすツールです。記憶DBの要約整理、検索結果の統合、RTトランスレーターをAPI費用ゼロで実行できます。
+              </p>
+              <div class="prep-multi-links">
+                <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="prep-link">Ollama 公式サイト →</a>
+                <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="prep-link">LM Studio 公式サイト →</a>
+              </div>
+            </div>
+
+            <div class="prep-card">
+              <div class="prep-card-top">
+                <span class="status-tag tag-optional" data-i18n="tag_search">高精度Web検索</span>
+                <h4>Tavily API</h4>
+              </div>
+              <p data-i18n="prep_tavily_desc">
+                AIがリアルタイムのネット検索を行うための検索特化APIです（月間1,000回まで無料枠あり）。Google Groundingと併用することで検索精度が向上します。
+              </p>
+              <a href="https://tavily.com/" target="_blank" rel="noopener noreferrer" class="prep-link" data-i18n="link_tavily">
+                Tavily 公式サイトでAPIキーを取得する →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beginner Guide Section (Basic Setup) -->
+  <section id="guide-basic" class="section guide-basic-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="step-badge basic-badge" data-i18n="basic_badge">STEP 1 : まずはここから（初心者・基本設定編）</div>
+        <h2 class="section-title" data-i18n="basic_title">まずは基本設定だけで使ってみよう</h2>
+        <p class="section-description" data-i18n="basic_desc">
+          SecreAIは多機能ですが、最初からすべての設定項目を触る必要はありません。<br>
+          <strong>「3つの基本ステップ」</strong>だけで、すぐにAIアシスタントとの対話を始められます。
+        </p>
+      </div>
+
+      <div class="basic-steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number">STEP 01</div>
+          <h3 data-i18n="b_step1_title">初回ウィザード＆APIキー入力</h3>
+          <p data-i18n="b_step1_desc">
+            初回起動時は「セットアップウィザード」が自動で案内します。設定画面の<strong>「全般設定（General）」</strong>で、普段使いたいAI（Gemini / OpenAI / Local）を選び、事前準備で取得したAPIキーを入力するだけで準備完了です。
+          </p>
+          <div class="step-img-box">
+            <img id="img-basic-general" src="image/setting全般設定.jpg" alt="全般設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-number">STEP 02</div>
+          <h3 data-i18n="b_step2_title">表示デザインと音声（VOICEVOX）の設定</h3>
+          <p data-i18n="b_step2_desc">
+            <strong>「View / Audio」</strong>タブで、字幕オーバーレイの透明度やフォントサイズ、入出力マイク・スピーカーを選択します。VOICEVOXを導入済みの場合はパスを指定すれば、好きな声でAIが応答します。
+          </p>
+          <div class="step-img-box">
+            <img src="image/settingヴュー.jpg" alt="View / Audio設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number">STEP 03</div>
+          <h3 data-i18n="b_step3_title">ワンボタン呼び出し（ホットキー / Stream Deck）</h3>
+          <p data-i18n="b_step3_desc">
+            <strong>「ホットキー」</strong>タブで「ビジョンモード開始（<code>Ctrl+Alt+S</code>等）」や「ボイスモード開始」のキーを設定。Elgato Stream Deck をお使いなら、ボタン1つで画面キャプチャ＋音声質問が発動します。
+          </p>
+          <div class="step-img-box">
+            <img src="image/settingホットキー.jpg" alt="ホットキー設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- External API Endpoints Section (Stream Deck / Macro Integration) -->
+  <section id="api-endpoints" class="section api-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="step-badge api-badge" data-i18n="api_badge">INTEGRATION : 外部連携（Elgato Stream Deck等）</div>
+        <h2 class="section-title" data-i18n="api_title">HTTP API エンドポイント一覧</h2>
+        <p class="section-description" data-i18n="api_desc">
+          SecreAI は起動中にローカルWebサーバー（デフォルト: <code>localhost:5000</code> / <code>localhost:5001</code>）をバックグラウンドでホストしています。<br>
+          Elgato Stream Deck の「Webサイト（バックグラウンドでアクセス）」アクションや外部マクロ、スクリプトから以下のURLへGETリクエストを送信するだけで、<strong>作業中のウィンドウフォーカスを一切奪わずに</strong>ワンタッチ制御が可能です。
+        </p>
+      </div>
+
+      <div class="api-table-wrapper">
+        <table class="api-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_feature">機能 / 動作</th>
+              <th data-i18n="th_endpoint">HTTP エンドポイント URL</th>
+              <th data-i18n="th_method">方式</th>
+              <th data-i18n="th_desc">詳細説明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="api_vision_title">ビジョンモード（画面キャプチャ質問）</strong></td>
+              <td><code>http://localhost:5000/api/vision</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_vision_desc">現在のターゲット画面を瞬時にキャプチャし、AIへの質問受付を開始します。作業の手を止めないワンボタン操作のメイン機能です。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_voice_title">ボイスモード（音声対話）</strong></td>
+              <td><code>http://localhost:5000/api/voice</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_voice_desc">AIがマイクの音声入力待機状態に入り、音声で直接指示や質問が行えます。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_stop_title">おしゃべり即時停止</strong></td>
+              <td><code>http://localhost:5000/api/stop</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_stop_desc">AIの思考処理やVOICEVOXによる音声読み上げを即座に中断します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_good_title">Good評価（ポジティブ学習）</strong></td>
+              <td><code>http://localhost:5000/api/feedback_good</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_good_desc">直前のAIの回答を高く評価し、学習用ログに記録して振る舞いを強化します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_bad_title">Bad評価（ネガティブ学習）</strong></td>
+              <td><code>http://localhost:5000/api/feedback_bad</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_bad_desc">直前の回答に不備や誤りがあったことを指摘し、AIの自己改善を促します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_fix_title">履歴の修正マーク</strong></td>
+              <td><code>http://localhost:5000/api/fix</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_fix_desc">直前の回答に「修正要」フラグを付与し、後からの辞書登録や修正に役立てます。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_clear_title">会話リセット＆記憶同期</strong></td>
+              <td><code>http://localhost:5000/api/clear</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_clear_desc">現在の会話要点を長期記憶データベース（ChromaDB）に保存・同期した上で、直近の会話履歴を初期化します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_settings_title">設定画面の表示</strong></td>
+              <td><code>http://localhost:5000/api/settings</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_settings_desc">SecreAI の詳細設定パネルを最前面に呼び出して表示します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_rtt_toggle_title">RTトランスレーター 切替 (ポート5001)</strong></td>
+              <td><code>http://localhost:5001/api/translate</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_rtt_toggle_desc">画面翻訳（RTトランスレーター）の実行と停止をワンボタンでトグル切り替えします。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_rtt_start_title">RTT 翻訳開始 (ポート5000)</strong></td>
+              <td><code>http://localhost:5000/api/rtt_start</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_rtt_start_desc">リアルタイム画面翻訳（OCRスキャン・翻訳ループ）を開始します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_rtt_stop_title">RTT 翻訳停止 (ポート5000)</strong></td>
+              <td><code>http://localhost:5000/api/rtt_stop</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_rtt_stop_desc">リアルタイム画面翻訳を安全に停止します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_rtt_retrans_title">RTT 翻訳リセット＆再スキャン</strong></td>
+              <td><code>http://localhost:5000/api/rtt_retrans</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_rtt_retrans_desc">画面上の翻訳オーバーレイ表示を一度消去し、最新画面の強制再スキャンを実行します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_rtt_status_title">RTT 稼働ステータス確認</strong></td>
+              <td><code>http://localhost:5000/api/rtt_status</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_rtt_status_desc">RTトランスレータープロセスの稼働状態（実行中／停止中）をJSON形式で返答します。</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="api_ecomode_title">RTT エコモード切替</strong></td>
+              <td><code>http://localhost:5000/api/ecomode</code></td>
+              <td><span class="method-tag">GET</span></td>
+              <td data-i18n="api_ecomode_desc">静止画面でのOCR頻度を抑える省電力・低負荷モードをON/OFFします。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Guide Section (Power User Customization) -->
+  <section id="guide-advanced" class="section guide-advanced-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="step-badge advanced-badge" data-i18n="adv_badge">STEP 2 : もっと詳しく使いこなすには？（応用・詳細設定編）</div>
+        <h2 class="section-title" data-i18n="adv_title">目的に合わせて解放する5つの詳細設定ガイド</h2>
+        <p class="section-description" data-i18n="adv_desc">
+          基本操作に慣れてきたら、「もっと記憶を賢くしたい」「API料金を節約したい」「ゲームの専門用語を覚えさせたい」など、やりたいことに合わせて各設定タブを活用してください。
+        </p>
+      </div>
+
+      <!-- Interactive Tabs for Advanced Settings -->
+      <div class="adv-tabs-container">
+        <div class="adv-tabs-nav" role="tablist">
+          <button class="adv-tab-btn active" data-target="tab-db" data-i18n="tab_btn_db">記憶データベース</button>
+          <button class="adv-tab-btn" data-target="tab-search" data-i18n="tab_btn_search">Web検索＆トークン節約</button>
+          <button class="adv-tab-btn" data-target="tab-dict" data-i18n="tab_btn_dict">辞書・知識の学習</button>
+          <button class="adv-tab-btn" data-target="tab-rtt" data-i18n="tab_btn_rtt">RTトランスレーター</button>
+          <button class="adv-tab-btn" data-target="tab-ext" data-i18n="tab_btn_ext">外部連携・拡張機能</button>
+        </div>
+
+        <div class="adv-tabs-content">
+          <!-- Tab 1: Database -->
+          <div id="tab-db" class="adv-tab-pane active">
+            <div class="adv-pane-grid">
+              <div class="adv-pane-info">
+                <span class="adv-usecase-tag" data-i18n="db_tag">目的：過去の会話を整理したい・要約コストを無料にしたい</span>
+                <h3 data-i18n="db_title">「データベース（ChromaDB）」タブ</h3>
+                <p data-i18n="db_desc">
+                  SecreAIの最大の特徴である「長期記憶（ChromaDB）」を管理する設定です。会話の要点をバックグラウンドで自動抽出し、数千件以上の記憶から関連するエピソードを瞬時に思い出します。
+                </p>
+                <ul class="adv-feature-points">
+                  <li data-i18n="db_p1"><strong>記憶整理用AIモデルの分離：</strong> 記憶の要約・タグ付け処理にローカルLLM（<code>gemma-4-12b</code>等）を指定すれば、<strong>クラウドAPIのトークンを一切消費せずに</strong>高度な記憶整理が可能です。</li>
+                  <li data-i18n="db_p2"><strong>会話意図による動的要約：</strong> 「これまでの話をまとめて」といった指示に合わせて、過去の記憶を時系列で動的抽出します。</li>
+                  <li data-i18n="db_p3"><strong>記憶の一覧・管理ビューア：</strong> 保存された記憶の検索、不要な記憶の削除、タグの一括修復がGUIから簡単に行えます。</li>
+                </ul>
+              </div>
+              <div class="adv-pane-img">
+                <img src="image/settingデータベース.jpg" alt="データベース設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Search -->
+          <div id="tab-search" class="adv-tab-pane">
+            <div class="adv-pane-grid">
+              <div class="adv-pane-info">
+                <span class="adv-usecase-tag" data-i18n="search_tag">目的：最新情報をAIに調べさせたい・検索要約のトークンを節約したい</span>
+                <h3 data-i18n="search_title">「Search（Web検索設定）」タブ</h3>
+                <p data-i18n="search_desc">
+                  最新のニュースやゲームの攻略情報など、AI単体では知らない情報をリアルタイムにWeb検索（Google Grounding / Tavily API）して回答に組み込む設定です。
+                </p>
+                <ul class="adv-feature-points">
+                  <li data-i18n="search_p1"><strong>ハイブリッド統合要約：</strong> Google検索とTavily検索の結果を<strong>ローカルOllamaモデルで統合要約</strong>してからメインAIに渡すことで、長大なWebページによるトークン消費を劇的に抑えます。</li>
+                  <li data-i18n="search_p2"><strong>月間プロンプト・回数の可視化：</strong> Google Grounding（月5,000回まで無料枠）やTavily（月1,000回まで無料枠）の今月の利用回数をひと目で確認でき、使いすぎを防げます。</li>
+                </ul>
+              </div>
+              <div class="adv-pane-img">
+                <img src="image/setting検索.jpg" alt="Search設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Dictionary -->
+          <div id="tab-dict" class="adv-tab-pane">
+            <div class="adv-pane-grid">
+              <div class="adv-pane-info">
+                <span class="adv-usecase-tag" data-i18n="dict_tag">目的：ゲームの固有名詞や専門用語の音声認識ミスをなくしたい</span>
+                <h3 data-i18n="dict_title">「辞書 / 知識（Dictionary / Knowledge）」タブ</h3>
+                <p data-i18n="dict_desc">
+                  マイク音声認識（STT）の誤変換を補正し、カードゲーム（MTG等）や専門分野の用語解説をAIの知識として自動補完する機能です。
+                </p>
+                <ul class="adv-feature-points">
+                  <li data-i18n="dict_p1"><strong>JSON辞書の個別ON/OFF：</strong> <code>dictionary/</code> フォルダ内の専門辞書（MTG全カード辞書など）とユーザー学習辞書（<code>USER_LEARNED.json</code>）をチェックボックスで即座に切り替え可能。</li>
+                  <li data-i18n="dict_p2"><strong>登録用語の詳細補完：</strong> 会話の中に登録用語が登場した際、オラクルテキストや地名解説などをログとAIコンテキストに自動補完します。</li>
+                  <li data-i18n="dict_p3"><strong>専用エディタ内蔵：</strong> 「学習辞書を添削・整理」ボタンから、AIが自動学習した単語の確認・編集がいつでも行えます。</li>
+                </ul>
+              </div>
+              <div class="adv-pane-img">
+                <img src="image/setting辞書.jpg" alt="辞書・知識設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: RT Translator -->
+          <div id="tab-rtt" class="adv-tab-pane">
+            <div class="adv-pane-grid">
+              <div class="adv-pane-info">
+                <span class="adv-usecase-tag" data-i18n="rtt_tag">目的：海外ゲームや英語アプリの画面をリアルタイム翻訳したい</span>
+                <h3 data-i18n="rtt_title">「RTトランスレーター」タブ</h3>
+                <p data-i18n="rtt_desc">
+                  おまけ機能でありながら単体ソフト級の性能を持つリアルタイム画面OCR＆翻訳機能の詳細設定です。PCスペックやゲーム負荷に合わせて細かくチューニングできます。
+                </p>
+                <ul class="adv-feature-points">
+                  <li data-i18n="rtt_p1"><strong>ローカルLLM翻訳エンジン：</strong> ローカルモデルを指定することで、文字数制限やAPI課金を気にせず何時間でも連続翻訳が可能。</li>
+                  <li data-i18n="rtt_p2"><strong>マルチGPU・リソース制限：</strong> 使用するGPUの指定、VRAMリミット（MB）、CPU使用率制限（25%〜100%）を設定でき、重い3Dゲーム中でもフレームレートを落としません。</li>
+                  <li data-i18n="rtt_p3"><strong>ワンショット＆エコモード：</strong> 画面変化時のみ反応する感度調整や、1回だけスキャンするワンショット翻訳モードに対応。</li>
+                </ul>
+              </div>
+              <div class="adv-pane-img">
+                <img src="image/settingRTトランスレート.jpg" alt="RTトランスレーター設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Extensions -->
+          <div id="tab-ext" class="adv-tab-pane">
+            <div class="adv-pane-grid">
+              <div class="adv-pane-info">
+                <span class="adv-usecase-tag" data-i18n="ext_tag">目的：配信字幕ツールと連携したい・ローカルモデルを更新したい</span>
+                <h3 data-i18n="ext_title">「拡張機能（Extensions）」タブ</h3>
+                <p data-i18n="ext_desc">
+                  外部ソフトウェアとのWebSocket連携や、ローカルLLM（Ollama / LM Studio）のモデルリスト同期を行う拡張設定です。
+                </p>
+                <ul class="adv-feature-points">
+                  <li data-i18n="ext_p1"><strong>ローカルLLMモデルリストのワンクリック取得：</strong> LM StudioやOllamaに新しいモデルを追加した際、ボタン1つでSecreAI内の全プルダウンメニューに最新モデル一覧を反映します。</li>
+                  <li data-i18n="ext_p2"><strong>ローカルAI字幕システム連携（WebSocket）：</strong> <code>ws://localhost:8765</code> を通じて外部の字幕表示システム（SubtitLocar等）へリアルタイムにテキストを送信でき、配信画面の構築がさらに捗ります。</li>
+                </ul>
+              </div>
+              <div class="adv-pane-img">
+                <img src="image/setting拡張.jpg" alt="拡張機能設定画面" class="screenshot-img" onclick="openImageModal(this.src, this.alt)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Tools Section -->
+  <section id="tools" class="section tools-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="tools_title">その他の公開ツール・プロジェクト一覧</h2>
+        <p class="section-description" data-i18n="tools_desc">
+          SecreAI と連携して使える字幕ツールや、ローカルLLMを活用したニュースリーダー、Chrome拡張機能などもすべて無料で公開しています。
+        </p>
+      </div>
+
+      <div class="tools-grid">
+        <!-- SubtitLocar -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <img src="image/subtitlocar.png" alt="SubtitLocar Icon" class="tool-icon">
+            <div>
+              <div class="tool-type-badge">Desktop App</div>
+              <h3 class="tool-name">SubtitLocar</h3>
+            </div>
+          </div>
+          <p class="tool-desc" data-i18n="tool_subtitlocar_desc">
+            ローカルLLMを活用したリアルタイム字幕・音声テキスト変換ツール。SecreAIの拡張機能（WebSocket）とも連携可能で、配信や動画視聴のアクセシビリティを劇的に向上させます。
+          </p>
+          <div class="tool-tags">
+            <span>Local LLM</span>
+            <span>Subtitles</span>
+            <span>Python</span>
+          </div>
+          <div class="tool-footer">
+            <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="tool-link">
+              GitHub →
+            </a>
+          </div>
+        </div>
+
+        <!-- MyNewsReader -->
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <img src="image/MyNewsReader.png" alt="MyNewsReader Icon" class="tool-icon">
+            <div>
+              <div class="tool-type-badge">Desktop App</div>
+              <h3 class="tool-name">MyNewsReader</h3>
+            </div>
+          </div>
+          <p class="tool-desc" data-i18n="tool_mynewsreader_desc">
+            ローカルLLM（Ollama / LM Studio等）と連携するWindows向け自作RSSニュースリーダー。膨大なニュースフィードをAIが自動要約し、毎日の情報収集を効率化します。
+          </p>
+          <div class="tool-tags">
+            <span>RSS Reader</span>
+            <span>AI Summarizer</span>
+            <span>Windows</span>
+          </div>
+          <div class="tool-footer">
+            <a href="https://github.com/tomatofhis-commits/MyNewsReader" target="_blank" rel="noopener noreferrer" class="tool-link">
+              GitHub →
+            </a>
+          </div>
+        </div>
+
+        <!-- YouTube Multi Auto Playlist (Chrome Extension 1) -->
+        <div class="tool-card chrome-card">
+          <div class="tool-card-header">
+            <div class="extension-icon-badge">YT</div>
+            <div>
+              <div class="tool-type-badge chrome-badge">Chrome Extension</div>
+              <h3 class="tool-name">YouTube Multi Auto Playlist</h3>
+            </div>
+          </div>
+          <p class="tool-desc" data-i18n="chrome_yt_desc">
+            YouTubeのプレイリスト管理や自動再生・トラッキングを快適化するGoogle Chrome向け拡張機能。日々の動画視聴やライブ配信巡回をよりスマートにします。
+          </p>
+          <div class="tool-tags">
+            <span>YouTube</span>
+            <span>Playlist</span>
+            <span>Chrome Web Store</span>
+          </div>
+          <div class="tool-footer">
+            <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="tool-link" data-i18n="link_webstore">
+              Chrome ウェブストアで見る →
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Screen Viewer (Chrome Extension 2) -->
+        <div class="tool-card chrome-card">
+          <div class="tool-card-header">
+            <div class="extension-icon-badge">4V</div>
+            <div>
+              <div class="tool-type-badge chrome-badge">Chrome Extension</div>
+              <h3 class="tool-name">4 Screen Viewer</h3>
+            </div>
+          </div>
+          <p class="tool-desc" data-i18n="chrome_4v_desc">
+            1つのブラウザタブ内で最大4つの動画（YouTube、ニコニコ動画、Vimeo等）を同時に並べて視聴できる4画面同時ビューア拡張機能。複数視点の配信追跡に最適です。
+          </p>
+          <div class="tool-tags">
+            <span>Multi-View</span>
+            <span>Video Streaming</span>
+            <span>Chrome Web Store</span>
+          </div>
+          <div class="tool-footer">
+            <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="tool-link" data-i18n="link_webstore">
+              Chrome ウェブストアで見る →
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Banner Placement Bottom -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567891"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-container">
+      <h2 class="section-title" data-i18n="contact_title">お問い合わせ・フィードバック</h2>
+      <p class="section-description" data-i18n="contact_desc">
+        バグ報告、機能の要望、感想などは GitHub Issues またはリポジトリまでお気軽にお寄せください。
+      </p>
+      <div class="contact-links">
+        <a href="https://github.com/tomatofhis-commits" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          GitHub Profile (@tomatofhis-commits)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer (AdSense Compliance: Privacy Policy & Disclaimer) -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub" data-i18n="footer_credits">Designed by amacha / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="open-privacy" data-i18n="footer_privacy">プライバシーポリシー</a>
+        <a href="#" id="open-terms" data-i18n="footer_terms">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amacha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Enlarging Screenshots -->
+  <div id="image-modal" class="modal image-lightbox">
+    <span class="modal-close lightbox-close" id="image-modal-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
