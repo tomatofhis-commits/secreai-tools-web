@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubtitLocar - ローカルLLMリアルタイム字幕＆音声認識ツール | SecreAI & Tools</title>
+  <meta name="description" content="OllamaやLM StudioなどのローカルLLMを活用した完全無料のリアルタイム字幕ツール。API従量課金なしで制限なく使え、マイク入力による配信字幕や、システム音声を取り込んであなたの言語に非対応のゲーム・映画の字幕化、OBS連携、SecreAI連動が可能です。">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページへ戻る</a>
+        <a href="#features">主な特徴</a>
+        <a href="#obs-guide">OBS設定ガイド</a>
+        <a href="#spec-guide">推奨スペック</a>
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">公開ツール一覧</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">SubtitLocar</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567897"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/subtitlocar.png" alt="SubtitLocar Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-subtitlocar">Local AI Desktop Application</span>
+        <span class="tool-type-badge chrome-badge">無料・オープンソース (Free)</span>
+      </div>
+      <h1 class="product-title">SubtitLocar</h1>
+      <p class="product-subtitle">
+        ローカルLLM（Ollama / LM Studio）と高速音声認識エンジンを融合した<strong>完全無料・無制限のリアルタイム字幕ツール</strong>。<br>
+        クラウドAPI従量課金なしで制限なく使え、マイク入力・システム音声・OBS配信・SecreAI連動まで幅広く対応します。
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="btn-store-purple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHubで見る・ダウンロード
+        </a>
+        <a href="#features" class="btn-secondary-link">
+          特徴とOBS設定を見る
+        </a>
+      </div>
+
+      <!-- Screenshot Showcase Gallery -->
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="image/SubtitLocar1.jpg" 
+               alt="SubtitLocar 操作画面1（字幕表示・ステータス管理）" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">リアルタイム字幕表示画面</h4>
+          <p class="gallery-card-desc">音声認識結果とLLM補正テキストをラグなく明瞭に表示。</p>
+        </div>
+        <div class="gallery-card">
+          <img src="image/SubtitLocar2.jpg" 
+               alt="SubtitLocar 設定画面2（音声認識・ローカルLLM設定）" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">LLM・音声入力設定</h4>
+          <p class="gallery-card-desc">Ollama / LM Studioの接続やデバイス選択を直感的にカスタマイズ。</p>
+        </div>
+        <div class="gallery-card">
+          <img src="image/SubtitLocar3.jpg" 
+               alt="SubtitLocar 表示画面3（オーバーレイ・配信向けカスタマイズ）" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">オーバーレイ＆配信レイアウト</h4>
+          <p class="gallery-card-desc">ゲーム画面や配信キャンバスに重ねても邪魔にならない柔軟なスタイル設定。</p>
+        </div>
+      </div>
+      <p class="showcase-caption">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="11" y1="8" x2="11" y2="14"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        各画像をクリックすると拡大表示できます
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">SubtitLocarの主要機能</h2>
+        <p class="section-description">
+          クラウド型ツールの制限やコストを排除し、完全ローカルで安全・無制限に使える実践的な機能を網羅しています。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">コストは電気代のみ・無制限利用</h3>
+          <p class="feature-desc">
+            クラウド音声認識や商用LLMのAPIキーは不要。PCのローカル環境（Ollama / LM Studio）で完結して推論を行うため、従量課金や利用枠、毎月の請求を気にせず何時間でも無制限に字幕を稼働できます。
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">最前面オーバーレイ表示対応</h3>
+          <p class="feature-desc">
+            自分のディスプレイの最前面に透過字幕をフロート表示可能。フルスクリーンやボーダーレスでプレイ中のゲーム、映画視聴、作業画面の視界を遮ることなく、手軽に字幕内容をリアルタイム確認できます。
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">マイク入力・システム音声入力の両対応</h3>
+          <p class="feature-desc">
+            マイクを指定すれば自身のトークをリアルタイム字幕化して配信へ。また、特定の出力デバイス（システム音声）を指定すれば、<strong>あなたの言語に非対応の海外映画やゲーム、海外配信</strong>もリアルタイム字幕付きで快適に楽しめます。
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple" style="background-color: #f3e8ff; color: #7c3aed;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">SecreAI読み上げとのシームレス連動</h3>
+          <p class="feature-desc">
+            本サイトの主力プロダクト「SecreAI」の読み上げ音声や拡張機能（WebSocket）ともスムーズに連動。AIの応答内容を視覚的な字幕として同期表示したり、テキストログを並行して管理できます。
+          </p>
+        </div>
+      </div>
+
+      <!-- OBS Guide Section -->
+      <div id="obs-guide" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">OBS Studio 配信設定ガイド</h2>
+        <p class="section-description">
+          OBS StudioにSubtitLocarの字幕を取り込み、配信画面へ透過オーバーレイとして美しく重ねる詳しい手順です。
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">SubtitLocarの字幕画面を起動</h4>
+          <p class="step-text">
+            SubtitLocarを起動し、音声入力（マイクまたはシステム音声）とローカルLLM（Ollama/LM Studio）の接続を有効化します。字幕表示ウィンドウが画面上に表示されている状態にします。
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">OBSに「ウィンドウキャプチャ」を追加</h4>
+          <p class="step-text">
+            OBSの「ソース」ドックにある「+」をクリックし、<strong>「ウィンドウキャプチャ」</strong>を選択。ウィンドウ一覧から「[SubtitLocar]」を選択し、キャプチャ方法を「Windows 10 (1903以降)」に設定します。
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">カラーキーで背景を透過</h4>
+          <p class="step-text">
+            追加したソースを右クリックし<strong>「フィルタ」</strong>を選択。「エフェクトフィルタ」の「+」から「カラーキー」を追加し、キーの色タイプを背景色（グリーンやブラック）に合わせて選択。類似度を微調整して背景を綺麗に透過させます。
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">配置・サイズを調整して配信開始</h4>
+          <p class="step-text">
+            配信プレビュー上で字幕枠の位置（画面下部やワイプ横など）へドラッグし、Altキーを押しながら枠をドラッグして余白をトリミング。ゲーム画面の上にクリアな字幕が重なれば準備完了です。
+          </p>
+        </div>
+      </div>
+
+      <!-- Recommended Specs & Model Selection Section -->
+      <div id="spec-guide" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">PCスペック別おすすめ推奨設定ガイド</h2>
+        <p class="section-description">
+          OBSでゲーム配信をしながら同一PCでリアルタイム字幕を快適に動かすための、STT（音声認識）およびローカルLLMモデルの選定指標です（2026年11月現在）。
+        </p>
+      </div>
+
+      <div class="spec-cards-container">
+        <!-- Tier 1: Entry -->
+        <div class="spec-tier-card">
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">エントリー構成</h3>
+            <p class="spec-tier-target">GPU VRAM 4GB〜6GB / GTX 1660, RTX 3050, 4050 等</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 STT (音声認識)</div>
+              <div class="spec-item-val">Whisper base 〜 small (faster-whisper)</div>
+              <p class="spec-item-desc">推論遅延を最小限に抑え、リソース消費を極限まで低減。</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 LLM モデル</div>
+              <div class="spec-item-val">1.5B 〜 3B クラス (Q4_K_M 量子化)</div>
+              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 1.5B / 3B、Gemma 2 2B</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBSゲーム配信時の目安:</strong><br>
+              インディーゲームや2Dアクション、ブラウザゲームなどの軽量タイトル向け。3Dゲーム配信時はVRAM枯渇を防ぐため、LLMを一部CPUオフロードするか1.5Bモデルを選択することで安定動作します。
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: Middle (Featured) -->
+        <div class="spec-tier-card featured-tier">
+          <span class="spec-tier-badge">おすすめ黄金バランス</span>
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">ミドルレンジ構成</h3>
+            <p class="spec-tier-target">GPU VRAM 8GB〜12GB / RTX 3060, 4060, 4060 Ti 等</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 STT (音声認識)</div>
+              <div class="spec-item-val">Whisper small 〜 medium</div>
+              <p class="spec-item-desc">高い認識精度と高速レスポンスをバランスよく両立。</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 LLM モデル</div>
+              <div class="spec-item-val">7B 〜 9B クラス (Q4_K_M 量子化)</div>
+              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 7B、Gemma 2 9B、Llama 3.1 8B</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBSゲーム配信時の目安:</strong><br>
+              Apex、VALORANT、原神などの主要3Dゲームを中〜高画質でプレイしながら配信する標準構成。ゲームにVRAM 6〜8GB、字幕ツール側に約3〜4GBを割り当て、フレームドロップなく極めて快適に同時稼働できます。
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 3: High-End -->
+        <div class="spec-tier-card">
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">ハイエンド構成</h3>
+            <p class="spec-tier-target">GPU VRAM 16GB以上 / RTX 4070 Ti S, 4080, 4090, マルチGPU 等</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 STT (音声認識)</div>
+              <div class="spec-item-val">Whisper medium 〜 large-v3</div>
+              <p class="spec-item-desc">早口や専門用語、雑音下でもトップクラスの文字起こし精度。</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">推奨 LLM モデル</div>
+              <div class="spec-item-val">9B 〜 14B クラス (Q4_K_M 〜 Q6_K 量子化)</div>
+              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 14B、Gemma 4 12B、Command R 等</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBSゲーム配信時の目安:</strong><br>
+              最新AAA級グラフィックゲームを最高画質で配信しながらでも余裕のスペック。SecreAIのChromaDB/ベクトル検索と同時並行でフル稼働させてもラグが一切なく、完璧な字幕翻訳体験が得られます。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>今すぐ無料で利用開始</h3>
+        <p>GitHubからリポジトリをクローンまたは最新リリースをダウンロードして、自分専用のローカル字幕環境を構築しましょう。</p>
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="btn-store-purple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHubでリポジトリを見る
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567898"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="#" id="open-privacy">プライバシーポリシー</a>
+        <a href="#" id="open-terms">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -445,6 +445,12 @@ function updateLanguage(lang) {
     link4vDetail.href = lang === 'ja' ? '4-screen-viewer.html' : '4-screen-viewer-en.html';
   }
 
+  // SubtitLocar 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
+  const linkSubtitlocarDetail = document.getElementById('link-subtitlocar-detail');
+  if (linkSubtitlocarDetail) {
+    linkSubtitlocarDetail.href = lang === 'ja' ? 'subtitlocar.html' : 'subtitlocar-en.html';
+  }
+
   // ボタンの表示テキストをトグル
   const langText = document.getElementById('current-lang-text');
   if (langText) {
@@ -468,6 +474,12 @@ if (langBtn) {
       return;
     } else if (pathname.includes('4-screen-viewer.html')) {
       window.location.href = '4-screen-viewer-en.html';
+      return;
+    } else if (pathname.includes('subtitlocar-en.html')) {
+      window.location.href = 'subtitlocar.html';
+      return;
+    } else if (pathname.includes('subtitlocar.html')) {
+      window.location.href = 'subtitlocar-en.html';
       return;
     }
     const nextLang = currentLang === 'ja' ? 'en' : 'ja';

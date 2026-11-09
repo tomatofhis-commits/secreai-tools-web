@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubtitLocar - Local LLM Real-Time Subtitles & Speech Recognition | SecreAI & Tools</title>
+  <meta name="description" content="Completely free, unlimited real-time subtitle tool powered by Local LLMs (Ollama / LM Studio) and fast speech recognition. No cloud API pay-per-token costs. Supports microphone streaming subtitles, system audio capture for games/movies unsupported in your language, OBS Studio integration, and SecreAI synchronization.">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">Back to Home</a>
+        <a href="#features">Features</a>
+        <a href="#obs-guide">OBS Guide</a>
+        <a href="#spec-guide">Recommended Specs</a>
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">日本語</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">SubtitLocar</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567897"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/subtitlocar.png" alt="SubtitLocar Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-subtitlocar">Local AI Desktop Application</span>
+        <span class="tool-type-badge chrome-badge">Free & Open Source</span>
+      </div>
+      <h1 class="product-title">SubtitLocar</h1>
+      <p class="product-subtitle">
+        A <strong>100% free, unlimited real-time subtitle tool</strong> combining local LLMs (Ollama / LM Studio) with ultra-fast speech-to-text engines.<br>
+        Zero cloud API token fees, unlimited continuous operation, flexible overlays, OBS live streaming integration, and SecreAI voice synchronization.
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="btn-store-purple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          View & Download on GitHub
+        </a>
+        <a href="#features" class="btn-secondary-link">
+          Explore Features & OBS Guide
+        </a>
+      </div>
+
+      <!-- Screenshot Showcase Gallery -->
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="image/SubtitLocar1.jpg" 
+               alt="SubtitLocar Interface 1 (Subtitle display & active status)" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">Real-Time Subtitle View</h4>
+          <p class="gallery-card-desc">Shows transcribed text and LLM-refined subtitles clearly without latency.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="image/SubtitLocar2.jpg" 
+               alt="SubtitLocar Settings 2 (Speech recognition & Local LLM setup)" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">LLM & Audio Input Settings</h4>
+          <p class="gallery-card-desc">Easily configure Ollama / LM Studio connections and audio capture devices.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="image/SubtitLocar3.jpg" 
+               alt="SubtitLocar Overlay 3 (Streaming & overlay layout customization)" 
+               onclick="openImageModal(this.src, this.alt)">
+          <h4 class="gallery-card-title">Overlay & Streaming Layout</h4>
+          <p class="gallery-card-desc">Flexible styling that overlays cleanly without obscuring your game or stream canvas.</p>
+        </div>
+      </div>
+      <p class="showcase-caption">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="11" y1="8" x2="11" y2="14"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        Click any image to enlarge
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Key Features & Strengths</h2>
+        <p class="section-description">
+          Engineered to eliminate monthly API expenses and usage quotas, giving you private, unlimited subtitle generation.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Cost is Purely Electricity - Unlimited Use</h3>
+          <p class="feature-desc">
+            No cloud STT or commercial LLM API keys required. Everything runs locally on your PC (via Ollama or LM Studio), eliminating per-minute billing and usage limits so you can run it for hours on end without worries.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Always-on-Top Floating Overlay</h3>
+          <p class="feature-desc">
+            Display transparent floating subtitles on top of any game, movie, or application. Keep full visibility of your game or desktop workspace while easily monitoring spoken dialogue in real time.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Microphone & System Audio Support</h3>
+          <p class="feature-desc">
+            Select your microphone to transcribe your live stream commentary. Or specify a system audio output device to enjoy <strong>foreign movies, international livestreams, and games unsupported in your native language</strong> with live generated subtitles.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple" style="background-color: #f3e8ff; color: #7c3aed;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Seamless SecreAI Voice Synchronization</h3>
+          <p class="feature-desc">
+            Connects effortlessly with SecreAI's text-to-speech feedback via WebSockets. Synchronize AI assistant answers directly into your subtitle feed while logging real-time transcripts.
+          </p>
+        </div>
+      </div>
+
+      <!-- OBS Guide Section -->
+      <div id="obs-guide" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">OBS Studio Live Streaming Setup Guide</h2>
+        <p class="section-description">
+          Step-by-step instructions to integrate SubtitLocar subtitles as a crisp, transparent overlay onto your OBS Studio stream canvas.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">Launch SubtitLocar</h4>
+          <p class="step-text">
+            Start SubtitLocar, enable your audio capture (microphone or system audio), and connect your local LLM (Ollama or LM Studio). Keep the subtitle display window visible on your screen.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">Add Window Capture in OBS</h4>
+          <p class="step-text">
+            In OBS Studio's "Sources" dock, click the "+" button and select <strong>"Window Capture"</strong>. Select "[SubtitLocar]" from the Window list and set Capture Method to "Windows 10 (1903 and up)".
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">Apply Color Key Transparency</h4>
+          <p class="step-text">
+            Right-click the added source and select <strong>"Filters"</strong>. Under Effect Filters, click "+" to add a "Color Key". Choose the matching background color (e.g., green or black) and adjust Similarity to make the background completely transparent.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">Position & Start Streaming</h4>
+          <p class="step-text">
+            Position the subtitle box on your OBS preview canvas (e.g., along the bottom or near your webcam). Hold the Alt key while dragging handles to crop any unnecessary borders. You are ready to stream!
+          </p>
+        </div>
+      </div>
+
+      <!-- Recommended Specs & Model Selection Section -->
+      <div id="spec-guide" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">Recommended PC Specs & Model Selection Guide</h2>
+        <p class="section-description">
+          Practical guidelines for selecting STT (speech-to-text) and local LLM models when streaming games via OBS on the same PC (as of November 2026).
+        </p>
+      </div>
+
+      <div class="spec-cards-container">
+        <!-- Tier 1: Entry -->
+        <div class="spec-tier-card">
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">Entry Setup</h3>
+            <p class="spec-tier-target">GPU VRAM 4GB - 6GB / GTX 1660, RTX 3050, 4050, etc.</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
+              <div class="spec-item-val">Whisper base - small (faster-whisper)</div>
+              <p class="spec-item-desc">Minimizes inference latency with the lowest possible resource consumption.</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended LLM Model</div>
+              <div class="spec-item-val">1.5B - 3B Class (Q4_K_M Quantized)</div>
+              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 1.5B / 3B, Gemma 2 2B</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBS Gaming Guideline:</strong><br>
+              Suited for lightweight indie titles, 2D platformers, and browser games. When streaming heavier 3D games, offload LLM layers to CPU or stick to a 1.5B model to prevent GPU VRAM exhaustion.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: Middle (Featured) -->
+        <div class="spec-tier-card featured-tier">
+          <span class="spec-tier-badge">Sweet Spot Recommendation</span>
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">Mid-Range Setup</h3>
+            <p class="spec-tier-target">GPU VRAM 8GB - 12GB / RTX 3060, 4060, 4060 Ti, etc.</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
+              <div class="spec-item-val">Whisper small - medium</div>
+              <p class="spec-item-desc">Strikes the optimal balance between high transcription accuracy and quick response.</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended LLM Model</div>
+              <div class="spec-item-val">7B - 9B Class (Q4_K_M Quantized)</div>
+              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 7B, Gemma 2 9B, Llama 3.1 8B</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBS Gaming Guideline:</strong><br>
+              The standard configuration for streaming popular 3D titles (Apex, VALORANT, Genshin, etc.) on medium-to-high settings. Allocate 6-8GB VRAM to the game and 3-4GB to STT/LLM for smooth, zero-framedrop streaming.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 3: High-End -->
+        <div class="spec-tier-card">
+          <div class="spec-tier-header">
+            <h3 class="spec-tier-name">High-End Setup</h3>
+            <p class="spec-tier-target">GPU VRAM 16GB+ / RTX 4070 Ti S, 4080, 4090, Dual-GPU, etc.</p>
+          </div>
+          <div class="spec-tier-content">
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
+              <div class="spec-item-val">Whisper medium - large-v3</div>
+              <p class="spec-item-desc">Industry-leading transcription accuracy, even with fast speech, jargon, and background noise.</p>
+            </div>
+            <div class="spec-item">
+              <div class="spec-item-label">Recommended LLM Model</div>
+              <div class="spec-item-val">9B - 14B Class (Q4_K_M - Q6_K Quantized)</div>
+              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 14B, Gemma 4 12B, Command R</p>
+            </div>
+            <div class="spec-game-note">
+              <strong>OBS Gaming Guideline:</strong><br>
+              Ample headroom for streaming cutting-edge AAA titles at ultra settings. Capable of running SubtitLocar and SecreAI ChromaDB vector searches simultaneously without any latency.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>Start Using SubtitLocar for Free Today</h3>
+        <p>Clone the repository from GitHub or grab the latest release build to set up your private, offline subtitle environment.</p>
+        <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="btn-store-purple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          View Repository on GitHub
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567898"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#" id="open-privacy">Privacy Policy</a>
+        <a href="#" id="open-terms">Terms & Disclaimer</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
