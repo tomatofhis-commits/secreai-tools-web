@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SubtitLocar - ローカルLLMリアルタイム字幕＆音声認識ツール | SecreAI & Tools</title>
-  <meta name="description" content="OllamaやLM StudioなどのローカルLLMを活用した完全無料のリアルタイム字幕ツール。API従量課金なしで制限なく使え、マイク入力による配信字幕や、システム音声を取り込んであなたの言語に非対応のゲーム・映画の字幕化、OBS連携、SecreAI連動が可能です。">
+  <title>SubtitLocar - Faster-Whisper & ローカルLLMリアルタイム字幕・翻訳システム | SecreAI & Tools</title>
+  <meta name="description" content="Faster-WhisperとローカルLLM（Ollama）を組み合わせた完全無料のリアルタイム字幕翻訳ツール。クラウドAPI従量課金なしで制限なく使え、OBSブラウザソースでのタイプライター字幕、マイク入力、システム音声による母国語非対応ゲーム・映画の字幕化、クリックスルー透過オーバーレイ、SecreAI連動が可能です。">
   <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +25,9 @@
       <nav class="nav-menu">
         <a href="index.html">トップページへ戻る</a>
         <a href="#features">主な特徴</a>
-        <a href="#obs-guide">OBS設定ガイド</a>
-        <a href="#spec-guide">推奨スペック</a>
+        <a href="#obs-guide">OBS設定方法</a>
+        <a href="#overlay-guide">オーバーレイ機能</a>
+        <a href="#spec-guide">推奨モデル・スペック</a>
         <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 700;">GitHub</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -60,7 +61,7 @@
            data-ad-client="ca-pub-7695104877965082"
            data-ad-slot="1234567897"
            data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+           data-full-width-TranslateGemma="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </div>
@@ -73,13 +74,13 @@
       </div>
 
       <div class="product-badge-group">
-        <span class="badge-subtitlocar">Local AI Desktop Application</span>
+        <span class="badge-subtitlocar">Local AI Subtitle System</span>
         <span class="tool-type-badge chrome-badge">無料・オープンソース (Free)</span>
       </div>
       <h1 class="product-title">SubtitLocar</h1>
       <p class="product-subtitle">
-        ローカルLLM（Ollama / LM Studio）と高速音声認識エンジンを融合した<strong>完全無料・無制限のリアルタイム字幕ツール</strong>。<br>
-        クラウドAPI従量課金なしで制限なく使え、マイク入力・システム音声・OBS配信・SecreAI連動まで幅広く対応します。
+        <strong>Faster-Whisper</strong> による高速文字起こしと <strong>ローカルLLM（Ollama）</strong> による翻訳を融合したリアルタイム字幕システム。<br>
+        クラウドAPI従量課金ゼロ・完全無制限。OBSブラウザソースでのタイプライター字幕や、ゲーム画面へのクリックスルー透過オーバーレイに対応しています。
       </p>
 
       <div class="product-actions">
@@ -89,8 +90,8 @@
           </svg>
           GitHubで見る・ダウンロード
         </a>
-        <a href="#features" class="btn-secondary-link">
-          特徴とOBS設定を見る
+        <a href="#obs-guide" class="btn-secondary-link">
+          OBS設定方法を見る
         </a>
       </div>
 
@@ -101,21 +102,21 @@
                alt="SubtitLocar 操作画面1（字幕表示・ステータス管理）" 
                onclick="openImageModal(this.src, this.alt)">
           <h4 class="gallery-card-title">リアルタイム字幕表示画面</h4>
-          <p class="gallery-card-desc">音声認識結果とLLM補正テキストをラグなく明瞭に表示。</p>
+          <p class="gallery-card-desc">Faster-Whisperの文字起こしとOllamaの翻訳結果をリアルタイム表示。</p>
         </div>
         <div class="gallery-card">
           <img src="image/SubtitLocar2.jpg" 
                alt="SubtitLocar 設定画面2（音声認識・ローカルLLM設定）" 
                onclick="openImageModal(this.src, this.alt)">
-          <h4 class="gallery-card-title">LLM・音声入力設定</h4>
-          <p class="gallery-card-desc">Ollama / LM Studioの接続やデバイス選択を直感的にカスタマイズ。</p>
+          <h4 class="gallery-card-title">LLM・音声デバイス設定</h4>
+          <p class="gallery-card-desc">マイク／ループバック（システム音声）の選択やWhisperモデル・LLMをカスタマイズ。</p>
         </div>
         <div class="gallery-card">
           <img src="image/SubtitLocar3.jpg" 
                alt="SubtitLocar 表示画面3（オーバーレイ・配信向けカスタマイズ）" 
                onclick="openImageModal(this.src, this.alt)">
-          <h4 class="gallery-card-title">オーバーレイ＆配信レイアウト</h4>
-          <p class="gallery-card-desc">ゲーム画面や配信キャンバスに重ねても邪魔にならない柔軟なスタイル設定。</p>
+          <h4 class="gallery-card-title">オーバーレイ＆スタイル設定</h4>
+          <p class="gallery-card-desc">クリックスルー透過、背景透明度、枠幅、フォントサイズなどを動的調整可能。</p>
         </div>
       </div>
       <p class="showcase-caption">
@@ -151,7 +152,7 @@
           </div>
           <h3 class="feature-heading">コストは電気代のみ・無制限利用</h3>
           <p class="feature-desc">
-            クラウド音声認識や商用LLMのAPIキーは不要。PCのローカル環境（Ollama / LM Studio）で完結して推論を行うため、従量課金や利用枠、毎月の請求を気にせず何時間でも無制限に字幕を稼働できます。
+            クラウド音声認識や商用LLMのAPIキーは不要。PCのローカル環境（Ollama + Faster-Whisper）で完結して推論を行うため、従量課金や利用枠、毎月の請求を気にせず何時間でも無制限に字幕を稼働できます。
           </p>
         </div>
 
@@ -164,9 +165,9 @@
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
           </div>
-          <h3 class="feature-heading">最前面オーバーレイ表示対応</h3>
+          <h3 class="feature-heading">クリックスルー対応オーバーレイ</h3>
           <p class="feature-desc">
-            自分のディスプレイの最前面に透過字幕をフロート表示可能。フルスクリーンやボーダーレスでプレイ中のゲーム、映画視聴、作業画面の視界を遮ることなく、手軽に字幕内容をリアルタイム確認できます。
+            ゲーム画面や動画プレイヤーの上に直接翻訳字幕をオーバーレイ表示。誤クリックを防ぐクリックスルー（マウスクリック透過）機能を標準搭載し、ドラッグでの位置調整や背景透過度の動的変更に対応しています。
           </p>
         </div>
 
@@ -182,7 +183,7 @@
           </div>
           <h3 class="feature-heading">マイク入力・システム音声入力の両対応</h3>
           <p class="feature-desc">
-            マイクを指定すれば自身のトークをリアルタイム字幕化して配信へ。また、特定の出力デバイス（システム音声）を指定すれば、<strong>あなたの言語に非対応の海外映画やゲーム、海外配信</strong>もリアルタイム字幕付きで快適に楽しめます。
+            マイクを指定すれば自身のトークをリアルタイム字幕化して配信へ。また、特定の出力デバイス（ループバック）を指定すれば、<strong>あなたの言語に非対応の海外映画や洋ゲー、海外配信</strong>もリアルタイム字幕付きで快適に楽しめます。
           </p>
         </div>
 
@@ -195,55 +196,110 @@
           </div>
           <h3 class="feature-heading">SecreAI読み上げとのシームレス連動</h3>
           <p class="feature-desc">
-            本サイトの主力プロダクト「SecreAI」の読み上げ音声や拡張機能（WebSocket）ともスムーズに連動。AIの応答内容を視覚的な字幕として同期表示したり、テキストログを並行して管理できます。
+            本サイトの主力プロダクト「SecreAI」の読み上げ音声や拡張機能（WebSocket）ともスムーズに連動。AIアシスタントの応答内容を視覚的な字幕として同期表示したり、テキストログを並行して管理できます。
           </p>
         </div>
       </div>
 
-      <!-- OBS Guide Section -->
+      <!-- OBS Guide Section (GitHub README 公式設定) -->
       <div id="obs-guide" class="section-header" style="margin-top: 70px;">
-        <h2 class="section-title">OBS Studio 配信設定ガイド</h2>
+        <h2 class="section-title">OBS Studio ブラウザソース設定方法</h2>
         <p class="section-description">
-          OBS StudioにSubtitLocarの字幕を取り込み、配信画面へ透過オーバーレイとして美しく重ねる詳しい手順です。
+          公式GitHubの「5. OBSのブラウザソース設定」に基づいた正確な導入手順です。ブラウザソースとして読み込むことで、タイプライターエフェクト付きのクリアな字幕が配信画面へ滑らかに表示されます。
+        </p>
+      </div>
+
+      <div class="notice-card" style="margin-bottom: 36px; border-color: #c4b5fd;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-bottom-color: #ddd6fe;">
+          <span class="notice-badge" style="background-color: #7c3aed;">公式設定手順</span>
+          <h3 class="notice-title" style="color: #5b21b6;">OBS Studio ブラウザソース設定テーブル</h3>
+        </div>
+        <div class="notice-body">
+          <ol style="margin-left: 20px; line-height: 1.8; margin-bottom: 16px;">
+            <li><strong>OBS Studio</strong> を起動します。</li>
+            <li>「ソース」パネルで <strong>「+」 ＞ 「ブラウザ」</strong> を追加します。</li>
+            <li>プロパティウィンドウで以下のように設定します：</li>
+          </ol>
+
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.94rem;">
+            <thead>
+              <tr style="background-color: var(--bg-body); border-bottom: 2px solid var(--border); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--text-main);">設定項目</th>
+                <th style="padding: 10px 14px; color: var(--text-main);">設定値</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">ローカルファイル</td>
+                <td style="padding: 10px 14px; color: #059669; font-weight: 700;">[チェックを入れる]</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">ファイルパス</td>
+                <td style="padding: 10px 14px; font-family: monospace; background-color: var(--bg-body);">&lt;SubtitLocarのディレクトリ&gt;\frontend\subtitle.html</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">幅 (Width)</td>
+                <td style="padding: 10px 14px; font-weight: 700;">1920</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">高さ (Height)</td>
+                <td style="padding: 10px 14px; font-weight: 700;">1080</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">カスタムCSS</td>
+                <td style="padding: 10px 14px; color: var(--text-muted);">(空欄)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600;">OBSが非表示の時にソースをシャットダウン</td>
+                <td style="padding: 10px 14px; color: #059669; font-weight: 700;">[チェックを入れる]</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+            4. <strong>「OK」</strong> を押して保存します。<br>
+            ※SubtitLocar起動後、内蔵WebSocketサーバー（ポート8765）を介してリアルタイムに文字が送信され、自動的にタイプライターアニメーション付きで配信プレビューに描画されます。
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop Overlay Guide Section -->
+      <div id="overlay-guide" class="section-header" style="margin-top: 60px;">
+        <h2 class="section-title">デスクトップ字幕オーバーレイの使い方</h2>
+        <p class="section-description">
+          OBSなどの配信ソフトを使わずに、ゲームや動画プレイヤーの上に直接字幕をフロート表示させる機能です。
         </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
-          <span class="step-num">STEP 1</span>
-          <h4 class="step-title">SubtitLocarの字幕画面を起動</h4>
+          <span class="step-num">機能 1</span>
+          <h4 class="step-title">クリックスルー透過</h4>
           <p class="step-text">
-            SubtitLocarを起動し、音声入力（マイクまたはシステム音声）とローカルLLM（Ollama/LM Studio）の接続を有効化します。字幕表示ウィンドウが画面上に表示されている状態にします。
+            「ゲーム画面上に翻訳字幕をオーバーレイ表示」にチェックを入れると最前面に表示されます。ゲーム中の誤クリックを防ぐため、標準でマウスクリックを透過します。
           </p>
         </div>
         <div class="step-card">
-          <span class="step-num">STEP 2</span>
-          <h4 class="step-title">OBSに「ウィンドウキャプチャ」を追加</h4>
+          <span class="step-num">機能 2</span>
+          <h4 class="step-title">ドラッグで位置調整</h4>
           <p class="step-text">
-            OBSの「ソース」ドックにある「+」をクリックし、<strong>「ウィンドウキャプチャ」</strong>を選択。ウィンドウ一覧から「[SubtitLocar]」を選択し、キャプチャ方法を「Windows 10 (1903以降)」に設定します。
+            「字幕の位置を調整する (ドラッグ移動許可)」にチェックを入れると一時的に枠をドラッグ移動できます。移動後は自動保存され、チェックを外すと再びクリックスルーに戻ります。
           </p>
         </div>
         <div class="step-card">
-          <span class="step-num">STEP 3</span>
-          <h4 class="step-title">カラーキーで背景を透過</h4>
+          <span class="step-num">機能 3</span>
+          <h4 class="step-title">スタイル・透明度の動的変更</h4>
           <p class="step-text">
-            追加したソースを右クリックし<strong>「フィルタ」</strong>を選択。「エフェクトフィルタ」の「+」から「カラーキー」を追加し、キーの色タイプを背景色（グリーンやブラック）に合わせて選択。類似度を微調整して背景を綺麗に透過させます。
-          </p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">STEP 4</span>
-          <h4 class="step-title">配置・サイズを調整して配信開始</h4>
-          <p class="step-text">
-            配信プレビュー上で字幕枠の位置（画面下部やワイプ横など）へドラッグし、Altキーを押しながら枠をドラッグして余白をトリミング。ゲーム画面の上にクリアな字幕が重なれば準備完了です。
+            背景スタイル（文字のみ／半透明背景）、枠幅（小35% / 中50% / 大70%：文字サイズ自動連動）、透明度（0% / 30% / 60%）をラジオボタンから瞬時に切り替え可能です。
           </p>
         </div>
       </div>
 
-      <!-- Recommended Specs & Model Selection Section -->
+      <!-- Recommended Specs & Model Selection Section (ゲーム配信向け・2026年11月現在) -->
       <div id="spec-guide" class="section-header" style="margin-top: 70px;">
-        <h2 class="section-title">PCスペック別おすすめ推奨設定ガイド</h2>
+        <h2 class="section-title">PCスペック別おすすめ推奨モデルガイド</h2>
         <p class="section-description">
-          OBSでゲーム配信をしながら同一PCでリアルタイム字幕を快適に動かすための、STT（音声認識）およびローカルLLMモデルの選定指標です（2026年11月現在）。
+          OBSでゲーム配信をしながら同一PCでリアルタイム字幕を快適に動かすには、<strong>GPU VRAMとコンテキスト負荷を抑えた「軽めのLLMモデル」の選定</strong>が極めて重要です（2026年11月現在）。
         </p>
       </div>
 
@@ -256,18 +312,18 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (音声認識)</div>
-              <div class="spec-item-val">Whisper base 〜 small (faster-whisper)</div>
-              <p class="spec-item-desc">推論遅延を最小限に抑え、リソース消費を極限まで低減。</p>
+              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">base 〜 small (float16 / int8)</div>
+              <p class="spec-item-desc">VRAM消費を1GB未満に抑え、音声入力からの推論遅延を最小化。</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">推奨 LLM モデル</div>
-              <div class="spec-item-val">1.5B 〜 3B クラス (Q4_K_M 量子化)</div>
-              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 1.5B / 3B、Gemma 2 2B</p>
+              <div class="spec-item-label">推奨 LLM モデル (超軽量級)</div>
+              <div class="spec-item-val">1.5B 〜 2B クラス (Q4_K_M)</div>
+              <p class="spec-item-desc"><strong>推奨モデル例:</strong> Qwen 3.5 2B、Gemma 4 2B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBSゲーム配信時の目安:</strong><br>
-              インディーゲームや2Dアクション、ブラウザゲームなどの軽量タイトル向け。3Dゲーム配信時はVRAM枯渇を防ぐため、LLMを一部CPUオフロードするか1.5Bモデルを選択することで安定動作します。
+              <strong>ゲーム配信とコンテキストの目安:</strong><br>
+              インディーゲームや2Dアクション、ブラウザゲーム向け。コンテキストサイズ（会話履歴）を絞り、1.5B〜2Bの超軽量モデルを使うことで、ゲーム用VRAMを圧迫せず即座に字幕を出力できます。
             </div>
           </div>
         </div>
@@ -281,18 +337,18 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (音声認識)</div>
-              <div class="spec-item-val">Whisper small 〜 medium</div>
-              <p class="spec-item-desc">高い認識精度と高速レスポンスをバランスよく両立。</p>
+              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">small 〜 medium (float16)</div>
+              <p class="spec-item-desc">早口や専門用語の誤認識を抑えつつ、高いリアルタイム性を確保。</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">推奨 LLM モデル</div>
-              <div class="spec-item-val">7B 〜 9B クラス (Q4_K_M 量子化)</div>
-              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 7B、Gemma 2 9B、Llama 3.1 8B</p>
+              <div class="spec-item-label">推奨 LLM モデル (軽快翻訳特化)</div>
+              <div class="spec-item-val">2B 〜 4B クラス (Q4_K_M)</div>
+              <p class="spec-item-desc"><strong>推奨モデル例:</strong> TranslateGemma、Qwen 3.5 4B、Gemma 4 4B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBSゲーム配信時の目安:</strong><br>
-              Apex、VALORANT、原神などの主要3Dゲームを中〜高画質でプレイしながら配信する標準構成。ゲームにVRAM 6〜8GB、字幕ツール側に約3〜4GBを割り当て、フレームドロップなく極めて快適に同時稼働できます。
+              <strong>ゲーム配信とコンテキストの目安:</strong><br>
+              Apex、VALORANT、原神などの主要3Dゲームを配信する際の<strong>最も実用的なベストバランス</strong>。ゲーム側でVRAM 6〜8GBを使用するため、字幕用LLMは重い7B〜14Bではなく<strong>2B〜4B（TranslateGemmaやQwen 3.5 4B等）</strong>を選ぶことで、コンテキスト展開時もVRAMに余裕を残し、ゲームのFPS低下や字幕の詰まりを完全に防止できます。
             </div>
           </div>
         </div>
@@ -305,18 +361,18 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (音声認識)</div>
-              <div class="spec-item-val">Whisper medium 〜 large-v3</div>
-              <p class="spec-item-desc">早口や専門用語、雑音下でもトップクラスの文字起こし精度。</p>
+              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">medium 〜 large-v3</div>
+              <p class="spec-item-desc">長文や複数人の発話、激しいゲーム効果音の中でも極めて正確に認識。</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">推奨 LLM モデル</div>
-              <div class="spec-item-val">9B 〜 14B クラス (Q4_K_M 〜 Q6_K 量子化)</div>
-              <p class="spec-item-desc"><strong>モデル例:</strong> Qwen 2.5 14B、Gemma 4 12B、Command R 等</p>
+              <div class="spec-item-label">推奨 LLM モデル (高精度・大コンテキスト)</div>
+              <div class="spec-item-val">4B 〜 7B / 12B クラス (Q4_K_M 〜 Q6_K)</div>
+              <p class="spec-item-desc"><strong>推奨モデル例:</strong> TranslateGemma、Gemma 4 12B、Qwen 3.5 7B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBSゲーム配信時の目安:</strong><br>
-              最新AAA級グラフィックゲームを最高画質で配信しながらでも余裕のスペック。SecreAIのChromaDB/ベクトル検索と同時並行でフル稼働させてもラグが一切なく、完璧な字幕翻訳体験が得られます。
+              <strong>ゲーム配信とコンテキストの目安:</strong><br>
+              最新のAAA級重厚グラフィックゲームを最高設定でOBS配信しながらでも余裕。より長いコンテキスト（前後の文脈）を保持した自然な翻訳が可能で、SecreAIのChromaDB並行稼働でもびくともしません。
             </div>
           </div>
         </div>
@@ -325,7 +381,7 @@
       <!-- Bottom CTA Banner -->
       <div class="product-bottom-cta">
         <h3>今すぐ無料で利用開始</h3>
-        <p>GitHubからリポジトリをクローンまたは最新リリースをダウンロードして、自分専用のローカル字幕環境を構築しましょう。</p>
+        <p>GitHubからリポジトリをクローンまたはダウンロードして、完全ローカルの快適な字幕環境を構築しましょう。</p>
         <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" class="btn-store-purple">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>

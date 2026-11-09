@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SubtitLocar - Local LLM Real-Time Subtitles & Speech Recognition | SecreAI & Tools</title>
-  <meta name="description" content="Completely free, unlimited real-time subtitle tool powered by Local LLMs (Ollama / LM Studio) and fast speech recognition. No cloud API pay-per-token costs. Supports microphone streaming subtitles, system audio capture for games/movies unsupported in your language, OBS Studio integration, and SecreAI synchronization.">
+  <title>SubtitLocar - Faster-Whisper & Local LLM Real-Time Subtitle Translation System | SecreAI & Tools</title>
+  <meta name="description" content="100% free, unlimited real-time subtitle translation tool powered by Faster-Whisper and Local LLMs (Ollama). No cloud API token costs. Supports OBS Studio browser source with typewriter animations, click-through desktop overlay, system audio capture for games/movies unsupported in your language, and SecreAI synchronization.">
   <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,8 @@
         <a href="index.html">Back to Home</a>
         <a href="#features">Features</a>
         <a href="#obs-guide">OBS Guide</a>
-        <a href="#spec-guide">Recommended Specs</a>
+        <a href="#overlay-guide">Overlay Guide</a>
+        <a href="#spec-guide">Recommended Models</a>
         <a href="https://github.com/tomatofhis-commits/SubtitLocar" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 700;">GitHub</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -73,13 +74,13 @@
       </div>
 
       <div class="product-badge-group">
-        <span class="badge-subtitlocar">Local AI Desktop Application</span>
+        <span class="badge-subtitlocar">Local AI Subtitle System</span>
         <span class="tool-type-badge chrome-badge">Free & Open Source</span>
       </div>
       <h1 class="product-title">SubtitLocar</h1>
       <p class="product-subtitle">
-        A <strong>100% free, unlimited real-time subtitle tool</strong> combining local LLMs (Ollama / LM Studio) with ultra-fast speech-to-text engines.<br>
-        Zero cloud API token fees, unlimited continuous operation, flexible overlays, OBS live streaming integration, and SecreAI voice synchronization.
+        A <strong>100% free, unlimited real-time subtitle translation system</strong> combining <strong>Faster-Whisper</strong> transcription with <strong>Local LLMs (Ollama)</strong>.<br>
+        Zero cloud API token fees, unlimited continuous operation, native OBS Studio browser source with typewriter animations, click-through desktop overlay, and SecreAI synchronization.
       </p>
 
       <div class="product-actions">
@@ -89,8 +90,8 @@
           </svg>
           View & Download on GitHub
         </a>
-        <a href="#features" class="btn-secondary-link">
-          Explore Features & OBS Guide
+        <a href="#obs-guide" class="btn-secondary-link">
+          Explore OBS Setup
         </a>
       </div>
 
@@ -101,21 +102,21 @@
                alt="SubtitLocar Interface 1 (Subtitle display & active status)" 
                onclick="openImageModal(this.src, this.alt)">
           <h4 class="gallery-card-title">Real-Time Subtitle View</h4>
-          <p class="gallery-card-desc">Shows transcribed text and LLM-refined subtitles clearly without latency.</p>
+          <p class="gallery-card-desc">Shows Faster-Whisper transcription and Ollama translation in real time.</p>
         </div>
         <div class="gallery-card">
           <img src="image/SubtitLocar2.jpg" 
                alt="SubtitLocar Settings 2 (Speech recognition & Local LLM setup)" 
                onclick="openImageModal(this.src, this.alt)">
           <h4 class="gallery-card-title">LLM & Audio Input Settings</h4>
-          <p class="gallery-card-desc">Easily configure Ollama / LM Studio connections and audio capture devices.</p>
+          <p class="gallery-card-desc">Configure mic/loopback audio capture devices, Whisper model sizes, and Ollama models.</p>
         </div>
         <div class="gallery-card">
           <img src="image/SubtitLocar3.jpg" 
                alt="SubtitLocar Overlay 3 (Streaming & overlay layout customization)" 
                onclick="openImageModal(this.src, this.alt)">
-          <h4 class="gallery-card-title">Overlay & Streaming Layout</h4>
-          <p class="gallery-card-desc">Flexible styling that overlays cleanly without obscuring your game or stream canvas.</p>
+          <h4 class="gallery-card-title">Overlay & Style Settings</h4>
+          <p class="gallery-card-desc">Adjust click-through transparency, background opacity, frame width, and font sizes dynamically.</p>
         </div>
       </div>
       <p class="showcase-caption">
@@ -151,7 +152,7 @@
           </div>
           <h3 class="feature-heading">Cost is Purely Electricity - Unlimited Use</h3>
           <p class="feature-desc">
-            No cloud STT or commercial LLM API keys required. Everything runs locally on your PC (via Ollama or LM Studio), eliminating per-minute billing and usage limits so you can run it for hours on end without worries.
+            No cloud STT or commercial LLM API keys required. Everything runs locally on your PC (via Faster-Whisper and Ollama), eliminating per-minute billing and token limits so you can run it for hours on end without worries.
           </p>
         </div>
 
@@ -164,9 +165,9 @@
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
           </div>
-          <h3 class="feature-heading">Always-on-Top Floating Overlay</h3>
+          <h3 class="feature-heading">Click-Through Floating Overlay</h3>
           <p class="feature-desc">
-            Display transparent floating subtitles on top of any game, movie, or application. Keep full visibility of your game or desktop workspace while easily monitoring spoken dialogue in real time.
+            Display transparent floating subtitles directly over games or media players. Features native click-through mouse transparency to prevent misclicks during gameplay, with draggable position adjustments and customizable styling.
           </p>
         </div>
 
@@ -182,7 +183,7 @@
           </div>
           <h3 class="feature-heading">Microphone & System Audio Support</h3>
           <p class="feature-desc">
-            Select your microphone to transcribe your live stream commentary. Or specify a system audio output device to enjoy <strong>foreign movies, international livestreams, and games unsupported in your native language</strong> with live generated subtitles.
+            Select your microphone to transcribe your live stream commentary. Or specify a system audio loopback device to enjoy <strong>foreign movies, international streams, and games unsupported in your native language</strong> with live generated subtitles.
           </p>
         </div>
 
@@ -200,50 +201,105 @@
         </div>
       </div>
 
-      <!-- OBS Guide Section -->
+      <!-- OBS Guide Section (Official GitHub README Spec) -->
       <div id="obs-guide" class="section-header" style="margin-top: 70px;">
-        <h2 class="section-title">OBS Studio Live Streaming Setup Guide</h2>
+        <h2 class="section-title">OBS Studio Browser Source Setup Guide</h2>
         <p class="section-description">
-          Step-by-step instructions to integrate SubtitLocar subtitles as a crisp, transparent overlay onto your OBS Studio stream canvas.
+          Exact configuration instructions directly from the official GitHub README ("5. OBS Browser Source Setup"). Loading subtitles as a browser source renders clean, hardware-accelerated text with typewriter animations.
+        </p>
+      </div>
+
+      <div class="notice-card" style="margin-bottom: 36px; border-color: #c4b5fd;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-bottom-color: #ddd6fe;">
+          <span class="notice-badge" style="background-color: #7c3aed;">Official Setup</span>
+          <h3 class="notice-title" style="color: #5b21b6;">OBS Studio Browser Source Configuration Table</h3>
+        </div>
+        <div class="notice-body">
+          <ol style="margin-left: 20px; line-height: 1.8; margin-bottom: 16px;">
+            <li>Launch <strong>OBS Studio</strong>.</li>
+            <li>In the Sources panel, click <strong>"+" &gt; "Browser"</strong> to add a new browser source.</li>
+            <li>Configure the properties window exactly as follows:</li>
+          </ol>
+
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.94rem;">
+            <thead>
+              <tr style="background-color: var(--bg-body); border-bottom: 2px solid var(--border); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--text-main);">Setting Item</th>
+                <th style="padding: 10px 14px; color: var(--text-main);">Config Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">Local file</td>
+                <td style="padding: 10px 14px; color: #059669; font-weight: 700;">[Check / Enable]</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">File path</td>
+                <td style="padding: 10px 14px; font-family: monospace; background-color: var(--bg-body);">&lt;SubtitLocar Directory&gt;\frontend\subtitle.html</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">Width</td>
+                <td style="padding: 10px 14px; font-weight: 700;">1920</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">Height</td>
+                <td style="padding: 10px 14px; font-weight: 700;">1080</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 14px; font-weight: 600;">Custom CSS</td>
+                <td style="padding: 10px 14px; color: var(--text-muted);">(Leave Blank)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600;">Shutdown source when not visible</td>
+                <td style="padding: 10px 14px; color: #059669; font-weight: 700;">[Check / Enable]</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+            4. Click <strong>"OK"</strong> to save.<br>
+            Once SubtitLocar is running, subtitles are pushed via its local WebSocket server (port 8765) and rendered automatically onto your stream canvas with smooth typewriter animations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop Overlay Guide Section -->
+      <div id="overlay-guide" class="section-header" style="margin-top: 60px;">
+        <h2 class="section-title">Desktop Subtitle Overlay Guide</h2>
+        <p class="section-description">
+          Floating subtitle feature for games and movies without needing broadcasting software.
         </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
-          <span class="step-num">STEP 1</span>
-          <h4 class="step-title">Launch SubtitLocar</h4>
+          <span class="step-num">Feature 1</span>
+          <h4 class="step-title">Click-Through Transparency</h4>
           <p class="step-text">
-            Start SubtitLocar, enable your audio capture (microphone or system audio), and connect your local LLM (Ollama or LM Studio). Keep the subtitle display window visible on your screen.
+            Check "Overlay translated subtitles on game screen" to float subtitles on top. Mouse clicks pass directly through to your game window, completely preventing accidental input.
           </p>
         </div>
         <div class="step-card">
-          <span class="step-num">STEP 2</span>
-          <h4 class="step-title">Add Window Capture in OBS</h4>
+          <span class="step-num">Feature 2</span>
+          <h4 class="step-title">Draggable Position Adjustment</h4>
           <p class="step-text">
-            In OBS Studio's "Sources" dock, click the "+" button and select <strong>"Window Capture"</strong>. Select "[SubtitLocar]" from the Window list and set Capture Method to "Windows 10 (1903 and up)".
+            Check "Adjust subtitle position (allow drag)" to temporarily unlock and reposition the frame anywhere. Position coordinates auto-save to settings.json, returning to click-through mode when unchecked.
           </p>
         </div>
         <div class="step-card">
-          <span class="step-num">STEP 3</span>
-          <h4 class="step-title">Apply Color Key Transparency</h4>
+          <span class="step-num">Feature 3</span>
+          <h4 class="step-title">Dynamic Styles & Opacity</h4>
           <p class="step-text">
-            Right-click the added source and select <strong>"Filters"</strong>. Under Effect Filters, click "+" to add a "Color Key". Choose the matching background color (e.g., green or black) and adjust Similarity to make the background completely transparent.
-          </p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">STEP 4</span>
-          <h4 class="step-title">Position & Start Streaming</h4>
-          <p class="step-text">
-            Position the subtitle box on your OBS preview canvas (e.g., along the bottom or near your webcam). Hold the Alt key while dragging handles to crop any unnecessary borders. You are ready to stream!
+            Instantly toggle between text-only or semi-transparent backgrounds, adjust frame width (Small 35% / Medium 50% / Large 70% with automatic font scaling), and set opacity (0%, 30%, 60%).
           </p>
         </div>
       </div>
 
-      <!-- Recommended Specs & Model Selection Section -->
+      <!-- Recommended Specs & Model Selection Section (Gaming Stream Optimized - Nov 2026) -->
       <div id="spec-guide" class="section-header" style="margin-top: 70px;">
-        <h2 class="section-title">Recommended PC Specs & Model Selection Guide</h2>
+        <h2 class="section-title">Recommended Hardware Specs & Lightweight Model Guide</h2>
         <p class="section-description">
-          Practical guidelines for selecting STT (speech-to-text) and local LLM models when streaming games via OBS on the same PC (as of November 2026).
+          When streaming games with OBS on the same PC, <strong>choosing a lightweight LLM model with low VRAM footprint and compact context overhead</strong> is essential for zero lag (November 2026).
         </p>
       </div>
 
@@ -256,18 +312,18 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
-              <div class="spec-item-val">Whisper base - small (faster-whisper)</div>
-              <p class="spec-item-desc">Minimizes inference latency with the lowest possible resource consumption.</p>
+              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
+              <div class="spec-item-val">base - small (float16 / int8)</div>
+              <p class="spec-item-desc">Keeps VRAM usage well under 1GB while minimizing speech recognition latency.</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">Recommended LLM Model</div>
-              <div class="spec-item-val">1.5B - 3B Class (Q4_K_M Quantized)</div>
-              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 1.5B / 3B, Gemma 2 2B</p>
+              <div class="spec-item-label">Recommended LLM (Ultra-Lightweight)</div>
+              <div class="spec-item-val">1.5B - 2B Class (Q4_K_M)</div>
+              <p class="spec-item-desc"><strong>Model Examples:</strong> Qwen 3.5 2B, Gemma 4 2B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBS Gaming Guideline:</strong><br>
-              Suited for lightweight indie titles, 2D platformers, and browser games. When streaming heavier 3D games, offload LLM layers to CPU or stick to a 1.5B model to prevent GPU VRAM exhaustion.
+              <strong>Game Streaming & Context Overhead:</strong><br>
+              Best for lightweight indie games and 2D titles. Keeping context window small with an ultra-lightweight 1.5B-2B model delivers instant subtitles without eating into critical GPU memory.
             </div>
           </div>
         </div>
@@ -281,18 +337,18 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
-              <div class="spec-item-val">Whisper small - medium</div>
-              <p class="spec-item-desc">Strikes the optimal balance between high transcription accuracy and quick response.</p>
+              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
+              <div class="spec-item-val">small - medium (float16)</div>
+              <p class="spec-item-desc">High transcription precision with low speech recognition lag.</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">Recommended LLM Model</div>
-              <div class="spec-item-val">7B - 9B Class (Q4_K_M Quantized)</div>
-              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 7B, Gemma 2 9B, Llama 3.1 8B</p>
+              <div class="spec-item-label">Recommended LLM (Fast Translation Focus)</div>
+              <div class="spec-item-val">2B - 4B Class (Q4_K_M)</div>
+              <p class="spec-item-desc"><strong>Model Examples:</strong> TranslateGemma, Qwen 3.5 4B, Gemma 4 4B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBS Gaming Guideline:</strong><br>
-              The standard configuration for streaming popular 3D titles (Apex, VALORANT, Genshin, etc.) on medium-to-high settings. Allocate 6-8GB VRAM to the game and 3-4GB to STT/LLM for smooth, zero-framedrop streaming.
+              <strong>Game Streaming & Context Overhead:</strong><br>
+              The <strong>ideal sweet spot</strong> for streaming popular 3D titles (Apex, VALORANT, Genshin, etc.). Games demand 6-8GB VRAM; pairing them with specialized translation models like <strong>TranslateGemma or Qwen 3.5 4B</strong> uses only 2-3GB VRAM, preventing FPS drops and context queue bottlenecks entirely.
             </div>
           </div>
         </div>
@@ -301,22 +357,22 @@
         <div class="spec-tier-card">
           <div class="spec-tier-header">
             <h3 class="spec-tier-name">High-End Setup</h3>
-            <p class="spec-tier-target">GPU VRAM 16GB+ / RTX 4070 Ti S, 4080, 4090, Dual-GPU, etc.</p>
+            <p class="spec-tier-target">GPU VRAM 16GB+ / RTX 4070 Ti S, 4080, 4090, Multi-GPU, etc.</p>
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Speech-to-Text)</div>
-              <div class="spec-item-val">Whisper medium - large-v3</div>
-              <p class="spec-item-desc">Industry-leading transcription accuracy, even with fast speech, jargon, and background noise.</p>
+              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
+              <div class="spec-item-val">medium - large-v3</div>
+              <p class="spec-item-desc">Exceptional accuracy across noisy audio, crosstalk, and rapid speech.</p>
             </div>
             <div class="spec-item">
-              <div class="spec-item-label">Recommended LLM Model</div>
-              <div class="spec-item-val">9B - 14B Class (Q4_K_M - Q6_K Quantized)</div>
-              <p class="spec-item-desc"><strong>Examples:</strong> Qwen 2.5 14B, Gemma 4 12B, Command R</p>
+              <div class="spec-item-label">Recommended LLM (High Precision & Long Context)</div>
+              <div class="spec-item-val">4B - 7B / 12B Class (Q4_K_M - Q6_K)</div>
+              <p class="spec-item-desc"><strong>Model Examples:</strong> TranslateGemma, Gemma 4 12B, Qwen 3.5 7B</p>
             </div>
             <div class="spec-game-note">
-              <strong>OBS Gaming Guideline:</strong><br>
-              Ample headroom for streaming cutting-edge AAA titles at ultra settings. Capable of running SubtitLocar and SecreAI ChromaDB vector searches simultaneously without any latency.
+              <strong>Game Streaming & Context Overhead:</strong><br>
+              Runs demanding AAA games at ultra settings while streaming with zero strain. Handles wider context windows for natural nuance, even with simultaneous SecreAI ChromaDB vector queries running.
             </div>
           </div>
         </div>
