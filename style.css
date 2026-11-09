@@ -1716,3 +1716,33 @@ code {
   color: #0f172a;
 }
 
+/* Language Chips for SubtitLocar */
+.lang-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.lang-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.lang-chip-code {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #7c3aed;
+  background-color: #f3e8ff;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
