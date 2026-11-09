@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 Screen Viewer - Simultaneous 4-Video Streaming in 2x2 Grid | SecreAI & Tools</title>
+  <meta name="description" content="Stream up to 4 videos (YouTube, Nico Nico, Vimeo, Dailymotion, etc.) simultaneously in a neat 2x2 grid inside a single browser tab. Official introduction to the 4 Screen Viewer Chrome extension.">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">Back to Home</a>
+        <a href="#features">Features</a>
+        <a href="#usage">How to Use</a>
+        <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color: #2563eb; font-weight: 700;">Chrome Store</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">日本語</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">4 Screen Viewer</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567895"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/4ScreenViewericon.png" alt="4 Screen Viewer Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-4v-blue">Google Chrome Extension</span>
+        <span class="tool-type-badge chrome-badge">Free</span>
+      </div>
+      <h1 class="product-title">4 Screen Viewer</h1>
+      <p class="product-subtitle">
+        Stream <strong>up to 4 videos simultaneously in a neat 2x2 grid</strong> within a single browser tab.<br>
+        Watch multiple YouTube, Nico Nico, Vimeo, and Dailymotion streams side-by-side with automatic URL conversion.
+      </p>
+
+      <div class="product-actions">
+        <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="btn-store-blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Add to Chrome (Free)
+        </a>
+        <a href="#features" class="btn-secondary-link">
+          Explore Features
+        </a>
+      </div>
+
+      <!-- Screenshot Showcase Frame -->
+      <div class="product-showcase-frame">
+        <img src="image/4ScreenViewer.png" 
+             alt="4 Screen Viewer Screenshot (2x2 Quad-screen simultaneous video playback)" 
+             class="product-showcase-img"
+             onclick="openImageModal(this.src, this.alt)">
+        <p class="showcase-caption">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          Click image to enlarge
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Key Features & Benefits</h2>
+        <p class="section-description">
+          Consolidate multiple video streams into one organized tab for efficient multitasking.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Simultaneous 4-Screen 2x2 Grid</h3>
+          <p class="feature-desc">
+            Evenly splits a single browser tab into a clean 2x2 quad-screen layout. Keeps your desktop clutter-free without juggling between multiple open browser windows or tabs.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Multi-Platform Compatibility</h3>
+          <p class="feature-desc">
+            Supports major video streaming sites including YouTube, Nico Nico Douga, Vimeo, and Dailymotion. Stream from different platforms simultaneously within the exact same view.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Paste URL & Auto-Conversion</h3>
+          <p class="feature-desc">
+            Simply paste standard video share URLs into any input field. The extension automatically transforms them into optimal embed formats without requiring complex settings or code.
+          </p>
+        </div>
+      </div>
+
+      <!-- Simple Steps / Usage Guide -->
+      <div id="usage" class="section-header" style="margin-top: 60px;">
+        <h2 class="section-title">Quick 3-Step Setup Guide</h2>
+        <p class="section-description">Ready to watch in seconds with zero complicated configuration.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">Install Extension</h4>
+          <p class="step-text">Add 4 Screen Viewer to Google Chrome with one click directly from the Chrome Web Store.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">Paste Video URLs</h4>
+          <p class="step-text">Paste YouTube, Nico Nico, or other video URLs into the input slots of your choice.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">Enjoy 4-Screen Playback</h4>
+          <p class="step-text">URLs convert automatically, letting you monitor and enjoy all 4 streams in a balanced 2x2 grid.</p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>Start Watching Smarter Today</h3>
+        <p>Monitor multiple live streams, e-sports perspectives, and tutorials side-by-side with ease.</p>
+        <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="btn-store-blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Add to Chrome (Free)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567896"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#" id="open-privacy">Privacy Policy</a>
+        <a href="#" id="open-terms">Terms & Disclaimer</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

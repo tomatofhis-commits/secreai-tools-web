@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Multi Auto Playlist - サイドウィンドウ1〜4画面再生＆自動プレイリスト作成 | SecreAI & Tools</title>
+  <meta name="description" content="ブラウザのサイドウィンドウで1〜4個のYouTube動画を同時ストリーミング！登録チャンネル等から再生リストを自動生成し、順番に自動再生できる便利なGoogle Chrome拡張機能「YouTube Multi Auto Playlist」の公式紹介ページです。">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページへ戻る</a>
+        <a href="#features">主な特徴</a>
+        <a href="#usage">使い方</a>
+        <a href="#notes">注意事項</a>
+        <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" style="color: #dc2626; font-weight: 700;">Chrome ストア</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">公開ツール一覧</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">YouTube Multi Auto Playlist</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567893"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/YouTubeMultiAutoPlaylisticon.png" alt="YouTube Multi Auto Playlist Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-yt-red">Google Chrome 拡張機能</span>
+        <span class="tool-type-badge chrome-badge">無料公開中 (Free)</span>
+      </div>
+      <h1 class="product-title">YouTube Multi Auto Playlist</h1>
+      <p class="product-subtitle">
+        ブラウザのサイドウィンドウで<strong>1〜4個の動画を同時にストリーミング再生</strong>。<br>
+        登録チャンネルなどのページから再生リストをワンタッチ生成し、順番に自動再生できる快適視聴ツールです。
+      </p>
+
+      <div class="product-actions">
+        <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="btn-store-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Chrome ウェブストアに追加する (無料)
+        </a>
+        <a href="#features" class="btn-secondary-link">
+          機能・使い方を見る
+        </a>
+      </div>
+
+      <!-- Screenshot Showcase Frame -->
+      <div class="product-showcase-frame">
+        <img src="image/YouTubeMultiAutoPlaylist.jpg" 
+             alt="YouTube Multi Auto Playlist 実際の操作画面（サイドウィンドウでの複数画面表示とリスト管理）" 
+             class="product-showcase-img"
+             onclick="openImageModal(this.src, this.alt)">
+        <p class="showcase-caption">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          画像をクリックすると拡大表示できます
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">主な機能とメリット</h2>
+        <p class="section-description">
+          YouTubeでの動画巡回や生配信のチェック、作業用BGMの流し見を格段に快適にする機能を凝縮しています。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">サイドウィンドウで1〜4動画を同時再生</h3>
+          <p class="feature-desc">
+            ブラウザのサイドウィンドウ（サブ枠）を活用し、1枠から最大4枠までお好みの分割レイアウトで動画を同時に流すことができます。複数視点の生配信やゲーム実況、ニュースと解説動画などを同時にチェックしたい時に高い利便性を発揮します。
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">登録チャンネル等から再生リストを自動生成</h3>
+          <p class="feature-desc">
+            YouTubeの「登録チャンネル」一覧や各動画ページから、見たい動画の再生リストを手間なく自動生成。毎回動画リンクを1つずつ探して登録する面倒な操作から解放され、最新動画を素早く整理できます。
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="17 1 21 5 17 9"></polyline>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+              <polyline points="7 23 3 19 7 15"></polyline>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">リストを順番にシームレス自動再生</h3>
+          <p class="feature-desc">
+            「自動再生」スイッチをONにしておけば、作成された再生リストの動画を上から順番に次々と自動再生します。作業中のBGM動画や、まとめて視聴したい連続動画を途切れることなくスムーズに楽しめます。
+          </p>
+        </div>
+      </div>
+
+      <!-- Recommended Usage & Caution Notice Section -->
+      <div id="notes" class="notice-section">
+        <div class="notice-card">
+          <div class="notice-header">
+            <span class="notice-badge">重要</span>
+            <h3 class="notice-title">ご利用にあたっての推奨事項とお知らせ</h3>
+          </div>
+          <div class="notice-body">
+            <!-- Item 1: Auto-play recommendation -->
+            <div class="notice-item">
+              <div class="notice-item-icon" style="color: #2563eb;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </div>
+              <div class="notice-item-content">
+                <h4>自動再生機能は「1画面」での再生をお勧めします</h4>
+                <p>
+                  確実かつ安定した動画の連続遷移・プレイリストの進行を維持するため、<strong>自動再生をONにしてご利用の際は「1画面」での再生を推奨</strong>いたします。
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 2: Stopping frames during multi-screen -->
+            <div class="notice-item">
+              <div class="notice-item-icon" style="color: #d97706;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <div class="notice-item-content">
+                <h4>多画面再生中の他枠の停止操作について</h4>
+                <p>
+                  複数画面（2〜4画面）で同時に再生している最中に、他の再生枠を停止（枠自体のクローズや停止操作）すると、全体の再生管理に悪影響を与える可能性がありますのでご注意ください。
+                </p>
+                <div class="notice-subnote">
+                  [補足] 動画プレイヤー自体の「一時停止（Pause）」操作であれば不具合が起こることはありませんので、安心してお使いいただけます。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simple Steps / Usage Guide -->
+      <div id="usage" class="section-header" style="margin-top: 60px;">
+        <h2 class="section-title">使い方ガイド（3ステップ）</h2>
+        <p class="section-description">インストールから視聴開始まで、面倒な初期設定なしですぐにお使いいただけます。</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">拡張機能をインストール</h4>
+          <p class="step-text">Chrome ウェブストアからワンクリックでブラウザに追加します（Google Chrome対応）。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">YouTubeでリストを生成</h4>
+          <p class="step-text">YouTubeの登録チャンネルページ等を開き、サイドウィンドウからプレイリストを作成します。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">画面数・自動再生を選んで視聴</h4>
+          <p class="step-text">1〜4画面の同時再生や、1画面での快適な自動連続再生をお好みに合わせて開始できます。</p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>今すぐ無料で利用開始</h3>
+        <p>日々の動画視聴やライブ配信の同時チェックをもっと自由に、もっと快適に。</p>
+        <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="btn-store-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Chrome ウェブストアで追加する (無料)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567894"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="#" id="open-privacy">プライバシーポリシー</a>
+        <a href="#" id="open-terms">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

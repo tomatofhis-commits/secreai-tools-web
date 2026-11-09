@@ -170,11 +170,13 @@ const translations = {
     chrome_yt_desc: "YouTubeのプレイリスト管理や自動再生・トラッキングを快適化するGoogle Chrome向け拡張機能。日々の動画視聴やライブ配信巡回をよりスマートにします。",
     chrome_4v_desc: "1つのブラウザタブ内で最大4つの動画（YouTube、ニコニコ動画、Vimeo等）を同時に並べて視聴できる4画面同時ビューア拡張機能。複数視点の配信追跡に最適です。",
     link_webstore: "Chrome ウェブストアで見る →",
+    tool_detail_btn: "紹介ページを見る →",
+    link_webstore_short: "Chrome ウェブストア",
 
     // Contact & Footer
     contact_title: "お問い合わせ・フィードバック",
     contact_desc: "バグ報告、機能の要望、感想などは GitHub Issues またはリポジトリまでお気軽にお寄せください。",
-    footer_credits: "Designed by amacha / Coded by AI (Gemini)",
+    footer_credits: "Designed by amachi / Coded by AI (Gemini)",
     footer_privacy: "プライバシーポリシー",
     footer_terms: "免責事項"
   },
@@ -192,7 +194,7 @@ const translations = {
     // Hero
     hero_badge: "Personal Project × Generative AI",
     hero_title: "Your One-Button AI Companion Without Stopping Your Workflow.",
-    hero_subtitle: "A suite of practical utilities created to make AI effortlessly useful in daily PC work, gaming, and live streaming.<br>Co-created by <strong>Architect: amacha</strong> & <strong>Coding: AI (Gemini)</strong>, all free and open-source.",
+    hero_subtitle: "A suite of practical utilities created to make AI effortlessly useful in daily PC work, gaming, and live streaming.<br>Co-created by <strong>Architect: amachi</strong> & <strong>Coding: AI (Gemini)</strong>, all free and open-source.",
     hero_btn_secreai: "Discover SecreAI",
     hero_btn_guide: "Setup & User Guide",
 
@@ -349,11 +351,13 @@ const translations = {
     chrome_yt_desc: "Google Chrome extension for automated YouTube playlist management and background tracking, streamlining video and livestream watching.",
     chrome_4v_desc: "Multi-screen viewer extension for watching up to four video streams (YouTube, NicoNico, Vimeo, etc.) simultaneously in a single browser tab.",
     link_webstore: "View on Chrome Web Store →",
+    tool_detail_btn: "View Details →",
+    link_webstore_short: "Chrome Web Store",
 
     // Contact & Footer
     contact_title: "Contact & Feedback",
     contact_desc: "For bug reports, feature requests, or feedback, please reach out via GitHub Issues or repositories.",
-    footer_credits: "Designed by amacha / Coded by AI (Gemini)",
+    footer_credits: "Designed by amachi / Coded by AI (Gemini)",
     footer_privacy: "Privacy Policy",
     footer_terms: "Disclaimer"
   }
@@ -429,6 +433,18 @@ function updateLanguage(lang) {
     generalImg.src = lang === 'ja' ? 'image/setting全般設定.jpg' : 'image/settingGeneal.jpg';
   }
 
+  // YouTube Multi Auto Playlist 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
+  const linkYtDetail = document.getElementById('link-yt-detail');
+  if (linkYtDetail) {
+    linkYtDetail.href = lang === 'ja' ? 'youtube-multi-auto-playlist.html' : 'youtube-multi-auto-playlist-en.html';
+  }
+
+  // 4 Screen Viewer 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
+  const link4vDetail = document.getElementById('link-4v-detail');
+  if (link4vDetail) {
+    link4vDetail.href = lang === 'ja' ? '4-screen-viewer.html' : '4-screen-viewer-en.html';
+  }
+
   // ボタンの表示テキストをトグル
   const langText = document.getElementById('current-lang-text');
   if (langText) {
@@ -437,10 +453,27 @@ function updateLanguage(lang) {
 }
 
 // 言語切り替えボタン
-document.getElementById('lang-btn').addEventListener('click', () => {
-  const nextLang = currentLang === 'ja' ? 'en' : 'ja';
-  updateLanguage(nextLang);
-});
+const langBtn = document.getElementById('lang-btn');
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    const pathname = window.location.pathname;
+    if (pathname.includes('youtube-multi-auto-playlist-en.html')) {
+      window.location.href = 'youtube-multi-auto-playlist.html';
+      return;
+    } else if (pathname.includes('youtube-multi-auto-playlist.html')) {
+      window.location.href = 'youtube-multi-auto-playlist-en.html';
+      return;
+    } else if (pathname.includes('4-screen-viewer-en.html')) {
+      window.location.href = '4-screen-viewer.html';
+      return;
+    } else if (pathname.includes('4-screen-viewer.html')) {
+      window.location.href = '4-screen-viewer-en.html';
+      return;
+    }
+    const nextLang = currentLang === 'ja' ? 'en' : 'ja';
+    updateLanguage(nextLang);
+  });
+}
 
 // 詳細設定タブの切り替え機能
 document.querySelectorAll('.adv-tab-btn').forEach(btn => {
@@ -469,15 +502,20 @@ const lightboxCaption = document.getElementById('lightbox-caption');
 const imageModalClose = document.getElementById('image-modal-close');
 
 function openImageModal(src, alt) {
+  if (!imageModal || !lightboxImg) return;
   lightboxImg.src = src;
   lightboxImg.alt = alt || '';
-  lightboxCaption.textContent = alt || '';
+  if (lightboxCaption) {
+    lightboxCaption.textContent = alt || '';
+  }
   imageModal.style.display = 'block';
 }
 
-imageModalClose.addEventListener('click', () => {
-  imageModal.style.display = 'none';
-});
+if (imageModalClose) {
+  imageModalClose.addEventListener('click', () => {
+    if (imageModal) imageModal.style.display = 'none';
+  });
+}
 
 // プライバシーポリシー / 免責事項モーダル管理
 const modal = document.getElementById('modal');
@@ -485,31 +523,40 @@ const modalBody = document.getElementById('modal-body');
 const modalClose = document.getElementById('modal-close');
 
 function openModal(title, content) {
+  if (!modal || !modalBody) return;
   modalBody.innerHTML = `<h2>${title}</h2>${content}`;
   modal.style.display = 'block';
 }
 
-document.getElementById('open-privacy').addEventListener('click', (e) => {
-  e.preventDefault();
-  const text = modalTexts[currentLang];
-  openModal(text.privacy_title, text.privacy_body);
-});
+const openPrivacy = document.getElementById('open-privacy');
+if (openPrivacy) {
+  openPrivacy.addEventListener('click', (e) => {
+    e.preventDefault();
+    const text = modalTexts[currentLang];
+    openModal(text.privacy_title, text.privacy_body);
+  });
+}
 
-document.getElementById('open-terms').addEventListener('click', (e) => {
-  e.preventDefault();
-  const text = modalTexts[currentLang];
-  openModal(text.terms_title, text.terms_body);
-});
+const openTerms = document.getElementById('open-terms');
+if (openTerms) {
+  openTerms.addEventListener('click', (e) => {
+    e.preventDefault();
+    const text = modalTexts[currentLang];
+    openModal(text.terms_title, text.terms_body);
+  });
+}
 
-modalClose.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
+if (modalClose) {
+  modalClose.addEventListener('click', () => {
+    if (modal) modal.style.display = 'none';
+  });
+}
 
 window.addEventListener('click', (e) => {
-  if (e.target === modal) {
+  if (modal && e.target === modal) {
     modal.style.display = 'none';
   }
-  if (e.target === imageModal) {
+  if (imageModal && e.target === imageModal) {
     imageModal.style.display = 'none';
   }
 });
