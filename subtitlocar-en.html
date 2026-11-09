@@ -79,7 +79,7 @@
       </div>
       <h1 class="product-title">SubtitLocar</h1>
       <p class="product-subtitle">
-        A <strong>100% free, unlimited real-time subtitle translation system</strong> combining <strong>Faster-Whisper</strong> transcription with <strong>Local LLMs (Ollama)</strong>.<br>
+        A <strong>100% free, unlimited real-time subtitle translation system</strong> combining <strong>Faster-Whisper (small / large-v3-turbo / large-v3)</strong> with <strong>Local LLMs (Ollama)</strong>.<br>
         Zero cloud API token fees, unlimited continuous operation, native OBS Studio browser source with typewriter animations, click-through desktop overlay, and SecreAI synchronization.
       </p>
 
@@ -312,9 +312,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
-              <div class="spec-item-val">base - small (float16 / int8)</div>
-              <p class="spec-item-desc">Keeps VRAM usage well under 1GB while minimizing speech recognition latency.</p>
+              <div class="spec-item-label">Supported STT (Faster-Whisper)</div>
+              <div class="spec-item-val">small</div>
+              <p class="spec-item-desc">Lowest VRAM footprint, minimizing speech recognition latency with zero overhead.</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">Recommended LLM (Ultra-Lightweight)</div>
@@ -323,7 +323,7 @@
             </div>
             <div class="spec-game-note">
               <strong>Game Streaming & Context Overhead:</strong><br>
-              Best for lightweight indie games and 2D titles. Keeping context window small with an ultra-lightweight 1.5B-2B model delivers instant subtitles without eating into critical GPU memory.
+              Best for lightweight indie games and 2D titles. Selecting the "small" STT model with an ultra-lightweight 1.5B-2B LLM delivers instant subtitles without eating into critical GPU memory.
             </div>
           </div>
         </div>
@@ -337,9 +337,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
-              <div class="spec-item-val">small - medium (float16)</div>
-              <p class="spec-item-desc">High transcription precision with low speech recognition lag.</p>
+              <div class="spec-item-label">Supported STT (Faster-Whisper)</div>
+              <div class="spec-item-val">large-v3-turbo (or small)</div>
+              <p class="spec-item-desc">High transcription precision with accelerated inference speed. The golden choice for game streamers.</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">Recommended LLM (Fast Translation Focus)</div>
@@ -348,7 +348,7 @@
             </div>
             <div class="spec-game-note">
               <strong>Game Streaming & Context Overhead:</strong><br>
-              The <strong>ideal sweet spot</strong> for streaming popular 3D titles (Apex, VALORANT, Genshin, etc.). Games demand 6-8GB VRAM; pairing them with specialized translation models like <strong>TranslateGemma or Qwen 3.5 4B</strong> uses only 2-3GB VRAM, preventing FPS drops and context queue bottlenecks entirely.
+              The <strong>ideal sweet spot</strong> for streaming popular 3D titles (Apex, VALORANT, Genshin, etc.). Pairing the fast "large-v3-turbo" with specialized lightweight translation models like <strong>TranslateGemma or Qwen 3.5 4B</strong> reserves 6-8GB VRAM for games, preventing FPS drops and context queue bottlenecks entirely.
             </div>
           </div>
         </div>
@@ -361,9 +361,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">Recommended STT (Faster-Whisper)</div>
-              <div class="spec-item-val">medium - large-v3</div>
-              <p class="spec-item-desc">Exceptional accuracy across noisy audio, crosstalk, and rapid speech.</p>
+              <div class="spec-item-label">Supported STT (Faster-Whisper)</div>
+              <div class="spec-item-val">large-v3-turbo / large-v3</div>
+              <p class="spec-item-desc">Top-tier speech transcription accuracy across noisy environments, loud game sound effects, and fast speech.</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">Recommended LLM (High Precision & Long Context)</div>

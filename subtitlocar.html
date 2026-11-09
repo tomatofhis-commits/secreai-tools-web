@@ -79,7 +79,7 @@
       </div>
       <h1 class="product-title">SubtitLocar</h1>
       <p class="product-subtitle">
-        <strong>Faster-Whisper</strong> による高速文字起こしと <strong>ローカルLLM（Ollama）</strong> による翻訳を融合したリアルタイム字幕システム。<br>
+        <strong>Faster-Whisper（small / large-v3-turbo / large-v3）</strong> による高速文字起こしと <strong>ローカルLLM（Ollama）</strong> による翻訳を融合したリアルタイム字幕システム。<br>
         クラウドAPI従量課金ゼロ・完全無制限。OBSブラウザソースでのタイプライター字幕や、ゲーム画面へのクリックスルー透過オーバーレイに対応しています。
       </p>
 
@@ -312,9 +312,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
-              <div class="spec-item-val">base 〜 small (float16 / int8)</div>
-              <p class="spec-item-desc">VRAM消費を1GB未満に抑え、音声入力からの推論遅延を最小化。</p>
+              <div class="spec-item-label">実装 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">small</div>
+              <p class="spec-item-desc">VRAM消費を最小限に抑え、音声入力からの推論遅延を極小化。</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">推奨 LLM モデル (超軽量級)</div>
@@ -323,7 +323,7 @@
             </div>
             <div class="spec-game-note">
               <strong>ゲーム配信とコンテキストの目安:</strong><br>
-              インディーゲームや2Dアクション、ブラウザゲーム向け。コンテキストサイズ（会話履歴）を絞り、1.5B〜2Bの超軽量モデルを使うことで、ゲーム用VRAMを圧迫せず即座に字幕を出力できます。
+              インディーゲームや2Dアクション、ブラウザゲーム向け。STTに軽量な「small」を選び、LLMも1.5B〜2Bに絞ることで、ゲーム用VRAMを圧迫せず即座に字幕を出力できます。
             </div>
           </div>
         </div>
@@ -337,9 +337,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
-              <div class="spec-item-val">small 〜 medium (float16)</div>
-              <p class="spec-item-desc">早口や専門用語の誤認識を抑えつつ、高いリアルタイム性を確保。</p>
+              <div class="spec-item-label">実装 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">large-v3-turbo (または small)</div>
+              <p class="spec-item-desc">large-v3級の高い認識精度を保ちながら推論が高速化されたターボ版。ゲーム配信に最適な黄金チョイス。</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">推奨 LLM モデル (軽快翻訳特化)</div>
@@ -348,7 +348,7 @@
             </div>
             <div class="spec-game-note">
               <strong>ゲーム配信とコンテキストの目安:</strong><br>
-              Apex、VALORANT、原神などの主要3Dゲームを配信する際の<strong>最も実用的なベストバランス</strong>。ゲーム側でVRAM 6〜8GBを使用するため、字幕用LLMは重い7B〜14Bではなく<strong>2B〜4B（TranslateGemmaやQwen 3.5 4B等）</strong>を選ぶことで、コンテキスト展開時もVRAMに余裕を残し、ゲームのFPS低下や字幕の詰まりを完全に防止できます。
+              Apex、VALORANT、原神などの主要3Dゲームを配信する際の<strong>最も実用的なベストバランス</strong>。STTに高速高精度な「large-v3-turbo」、LLMに「TranslateGemma」や「Qwen 3.5 4B」を選ぶことで、ゲーム用VRAMを6〜8GBしっかり確保し、フレーム落ちや字幕詰まりのない快適な配信が可能です。
             </div>
           </div>
         </div>
@@ -361,9 +361,9 @@
           </div>
           <div class="spec-tier-content">
             <div class="spec-item">
-              <div class="spec-item-label">推奨 STT (Faster-Whisper)</div>
-              <div class="spec-item-val">medium 〜 large-v3</div>
-              <p class="spec-item-desc">長文や複数人の発話、激しいゲーム効果音の中でも極めて正確に認識。</p>
+              <div class="spec-item-label">実装 STT (Faster-Whisper)</div>
+              <div class="spec-item-val">large-v3-turbo / large-v3</div>
+              <p class="spec-item-desc">最高峰の文字起こし性能。雑音や激しいゲーム効果音の中でも極めて正確に認識。</p>
             </div>
             <div class="spec-item">
               <div class="spec-item-label">推奨 LLM モデル (高精度・大コンテキスト)</div>
