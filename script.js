@@ -414,6 +414,9 @@ let currentLang = 'ja';
 function updateLanguage(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
+  try {
+    localStorage.setItem('site_lang', lang);
+  } catch (e) {}
   
   // 各要素のテキストを更新
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -458,30 +461,77 @@ function updateLanguage(lang) {
   }
 }
 
+// ページ初期化時の言語判定とlocalStorage同期
+(function initLanguageSettings() {
+  const pathname = window.location.pathname.toLowerCase();
+  
+  // 個別ツールの英語ページの場合
+  if (pathname.includes('youtube-multi-auto-playlist-en') || 
+      pathname.includes('4-screen-viewer-en') || 
+      pathname.includes('subtitlocar-en')) {
+    currentLang = 'en';
+    try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
+    return;
+  }
+  
+  // 個別ツールの日本語ページの場合
+  if (pathname.includes('youtube-multi-auto-playlist') || 
+      pathname.includes('4-screen-viewer') || 
+      pathname.includes('subtitlocar')) {
+    currentLang = 'ja';
+    try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
+    return;
+  }
+  
+  // メインページ（index.html等）の場合、保存された言語設定があれば反映
+  try {
+    const savedLang = localStorage.getItem('site_lang');
+    if (savedLang === 'en' || savedLang === 'ja') {
+      updateLanguage(savedLang);
+    }
+  } catch (e) {}
+})();
+
 // 言語切り替えボタン
 const langBtn = document.getElementById('lang-btn');
 if (langBtn) {
   langBtn.addEventListener('click', () => {
-    const pathname = window.location.pathname;
-    if (pathname.includes('youtube-multi-auto-playlist-en.html')) {
+    const pathname = window.location.pathname.toLowerCase();
+    
+    // YouTube Multi Auto Playlist
+    if (pathname.includes('youtube-multi-auto-playlist-en')) {
+      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
       window.location.href = 'youtube-multi-auto-playlist.html';
       return;
-    } else if (pathname.includes('youtube-multi-auto-playlist.html')) {
+    } else if (pathname.includes('youtube-multi-auto-playlist')) {
+      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
       window.location.href = 'youtube-multi-auto-playlist-en.html';
       return;
-    } else if (pathname.includes('4-screen-viewer-en.html')) {
+    }
+    
+    // 4 Screen Viewer
+    if (pathname.includes('4-screen-viewer-en')) {
+      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
       window.location.href = '4-screen-viewer.html';
       return;
-    } else if (pathname.includes('4-screen-viewer.html')) {
+    } else if (pathname.includes('4-screen-viewer')) {
+      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
       window.location.href = '4-screen-viewer-en.html';
       return;
-    } else if (pathname.includes('subtitlocar-en.html')) {
+    }
+    
+    // SubtitLocar
+    if (pathname.includes('subtitlocar-en')) {
+      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
       window.location.href = 'subtitlocar.html';
       return;
-    } else if (pathname.includes('subtitlocar.html')) {
+    } else if (pathname.includes('subtitlocar')) {
+      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
       window.location.href = 'subtitlocar-en.html';
       return;
     }
+    
+    // メインページ
     const nextLang = currentLang === 'ja' ? 'en' : 'ja';
     updateLanguage(nextLang);
   });
