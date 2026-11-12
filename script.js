@@ -165,6 +165,7 @@ const translations = {
     // Tools
     tools_title: "その他の公開ツール・プロジェクト一覧",
     tools_desc: "SecreAI と連携して使える字幕ツールや、ローカルLLMを活用したニュースリーダー、Chrome拡張機能などもすべて無料で公開しています。",
+    tool_twa_desc: "ETS2 / ATS 向けの物理歩行追加プラグイン。専用ランチャーを起動するだけで自動セットアップが完了し、トラックから降りて緻密に作り込まれた街並みを自分の足で散策できます。ランチャー終了時にプラグインを自動消去する安全設計。",
     tool_subtitlocar_desc: "ローカルLLMを活用したリアルタイム字幕・音声テキスト変換ツール。SecreAIの拡張機能（WebSocket）とも連携可能で、配信や動画視聴のアクセシビリティを劇的に向上させます。",
     tool_mynewsreader_desc: "ローカルLLM（Ollama / LM Studio等）と連携するWindows向け自作RSSニュースリーダー。膨大なニュースフィードをAIが自動要約し、毎日の情報収集を効率化します。",
     chrome_yt_desc: "YouTubeのプレイリスト管理や自動再生・トラッキングを快適化するGoogle Chrome向け拡張機能。日々の動画視聴やライブ配信巡回をよりスマートにします。",
@@ -346,6 +347,7 @@ const translations = {
     // Tools
     tools_title: "Other Open Source Tools & Projects",
     tools_desc: "Explore companion subtitle tools, local LLM news readers, and Chrome extensions—all released for free.",
+    tool_twa_desc: "Physics-based free walk plugin for ETS2 & ATS. Just start the companion launcher for automatic setup, step out of your cab to explore finely detailed towns on foot, and close the launcher to auto-remove the plugin cleanly.",
     tool_subtitlocar_desc: "Real-time subtitle & speech-to-text tool powered by Local LLMs. Integrates seamlessly with SecreAI via WebSockets for live streaming.",
     tool_mynewsreader_desc: "Self-hosted Windows RSS news reader powered by Local LLMs (Ollama / LM Studio) that automatically summarizes daily news feeds.",
     chrome_yt_desc: "Google Chrome extension for automated YouTube playlist management and background tracking, streamlining video and livestream watching.",
@@ -454,6 +456,12 @@ function updateLanguage(lang) {
     linkSubtitlocarDetail.href = lang === 'ja' ? 'subtitlocar.html' : 'subtitlocar-en.html';
   }
 
+  // TruckerWalkAround 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
+  const linkTwaDetail = document.getElementById('link-twa-detail');
+  if (linkTwaDetail) {
+    linkTwaDetail.href = lang === 'ja' ? 'trucker-walk-around.html' : 'trucker-walk-around-en.html';
+  }
+
   // ボタンの表示テキストをトグル
   const langText = document.getElementById('current-lang-text');
   if (langText) {
@@ -468,7 +476,8 @@ function updateLanguage(lang) {
   // 個別ツールの英語ページの場合
   if (pathname.includes('youtube-multi-auto-playlist-en') || 
       pathname.includes('4-screen-viewer-en') || 
-      pathname.includes('subtitlocar-en')) {
+      pathname.includes('subtitlocar-en') || 
+      pathname.includes('trucker-walk-around-en')) {
     currentLang = 'en';
     try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
     return;
@@ -477,7 +486,8 @@ function updateLanguage(lang) {
   // 個別ツールの日本語ページの場合
   if (pathname.includes('youtube-multi-auto-playlist') || 
       pathname.includes('4-screen-viewer') || 
-      pathname.includes('subtitlocar')) {
+      pathname.includes('subtitlocar') || 
+      pathname.includes('trucker-walk-around')) {
     currentLang = 'ja';
     try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
     return;
@@ -528,6 +538,17 @@ if (langBtn) {
     } else if (pathname.includes('subtitlocar')) {
       try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
       window.location.href = 'subtitlocar-en.html';
+      return;
+    }
+
+    // TruckerWalkAround
+    if (pathname.includes('trucker-walk-around-en')) {
+      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
+      window.location.href = 'trucker-walk-around.html';
+      return;
+    } else if (pathname.includes('trucker-walk-around')) {
+      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
+      window.location.href = 'trucker-walk-around-en.html';
       return;
     }
     

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruckerWalkAround - Free Walk &amp; Physics Roam Plugin for ETS2 / ATS | SecreAI &amp; Tools</title>
+  <meta name="description" content="Official overview of TruckerWalkAround, a physics-based free walk plugin for Euro Truck Simulator 2 (ETS2) and American Truck Simulator (ATS). Step out of your truck and explore the detailed world on foot with automatic setup and clean auto-removal.">
+  <link rel="icon" href="image/TWAico.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">Back to Home</a>
+        <a href="#story">Why We Made This</a>
+        <a href="#features">Features</a>
+        <a href="#controls">Controls</a>
+        <a href="#notes">Notes</a>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">日本語</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">Tools &amp; Projects</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">TruckerWalkAround</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567895"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/TWAico.ico" alt="TruckerWalkAround Icon" style="width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-4v-blue" style="background: linear-gradient(135deg, #059669, #10b981); color: #fff;">For ETS2 &amp; ATS</span>
+        <span class="tool-type-badge">Windows Desktop Launcher &amp; DLL</span>
+        <span class="tool-type-badge chrome-badge">Free &amp; Open Source</span>
+      </div>
+      <h1 class="product-title">TruckerWalkAround</h1>
+      <p class="product-subtitle">
+        <strong>Step out of your cab and explore the finely crafted towns on foot!</strong><br>
+        A physics-based walking plugin for Euro Truck Simulator 2 (ETS2) &amp; American Truck Simulator (ATS) featuring gravity, step-climbing, and real-time collision.<br>
+        Just launch the companion app to auto-configure everything—and close it to automatically clean up all plugin files.
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          Download from GitHub Releases (Free)
+        </a>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround" target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
+          View Source &amp; README
+        </a>
+      </div>
+
+      <!-- YouTube Demo Video & Launcher Screenshot Showcase -->
+      <div style="max-width: 960px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; align-items: center;">
+        <!-- YouTube Video -->
+        <div style="background: #0f172a; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.18); border: 1px solid var(--border);">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+            <iframe src="https://www.youtube.com/embed/HNBvZkkrkh0" 
+                    title="TruckerWalkAround Demo Video" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+          </div>
+          <div style="padding: 12px 16px; background: var(--bg-card); text-align: center; font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">
+            ▶ YouTube Demo: Stepping out of the truck and walking around
+          </div>
+        </div>
+
+        <!-- Launcher Screenshot -->
+        <div style="text-align: center;">
+          <div class="product-showcase-frame" style="margin-top: 0;">
+            <img src="image/TWAss.png" 
+                 alt="TruckerWalkAround Launcher UI" 
+                 class="product-showcase-img"
+                 style="max-height: 360px; width: auto; margin: 0 auto;"
+                 onclick="openImageModal(this.src, this.alt)">
+            <p class="showcase-caption">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              Companion Launcher UI (Click to enlarge)
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Development Story Section -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #a7f3d0; background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%); max-width: 900px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-bottom-color: #a7f3d0;">
+          <span class="notice-badge" style="background-color: #059669;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #065f46; font-size: 1.25rem; margin: 0;">Why We Created TruckerWalkAround — Experiencing the World Up Close</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.02rem; line-height: 1.85; color: var(--text-main);">
+          <p style="margin-bottom: 16px;">
+            Even in the smallest towns that you normally just drive right past, the development team at <strong>SCS Software</strong> has poured incredible attention to detail into placing landmarks and faithfully recreating local architecture.
+          </p>
+          <p style="margin-bottom: 16px;">
+            <strong>"I want to experience these towns up close on foot, not just through the truck's windshield."</strong> Driven by that wish, we built a walking system that bridges the game's built-in free camera mode with its internal physics engine (PhysX), allowing you to feel slopes, curbs, and gravity as you walk around.
+          </p>
+          <p style="margin-bottom: 0;">
+            We designed this tool so that anyone can enjoy this experience for free and with zero hassle—<strong>just open the launcher and start your game</strong>.<br>
+            Please enjoy the breathtaking streets and landscapes crafted with passion by the developers at SCS Software!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Key Features</h2>
+        <p class="section-description">
+          All file deployment and configuration adjustments are automated, keeping your game installation clean and crash-free.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Zero-Hassle Automatic Setup</h3>
+          <p class="feature-desc">
+            Simply start <code>TruckerWalkAround.exe</code>. The launcher automatically locates your ETS2 / ATS installation and <code>config.cfg</code>, enables the required developer camera settings, and deploys the optimized plugin DLL. Then just start the game!
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Auto-Cleanup When Closed</h3>
+          <p class="feature-desc">
+            When you close the launcher, the plugin DLL files are <strong>automatically removed</strong> from your game folders. Whenever you want to play vanilla without the plugin, you never have to manually delete or move files yourself.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Update-Safe Fail-Safe Design</h3>
+          <p class="feature-desc">
+            If ETS2 or ATS receives a game update that breaks binary compatibility, the launcher detects the version mismatch and <strong>prevents the plugin from being copied</strong>, protecting your game from startup crashes.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple" style="background-color: #f3e8ff; color: #7c3aed;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="3"></circle>
+              <line x1="12" y1="22" x2="12" y2="8"></line>
+              <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">PhysX Collision &amp; Safety Locks</h3>
+          <p class="feature-desc">
+            Directly queries the in-game PhysX scene for ground slopes, steps up to 0.45m, and obstacles. Walk mode only activates during active driving with the <strong>parking brake engaged</strong>, automatically locking truck controls and hiding the HUD for full immersion.
+          </p>
+        </div>
+      </div>
+
+      <!-- Simple Steps / Usage Guide -->
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <h2 class="section-title">How to Use (3 Simple Steps)</h2>
+        <p class="section-description">No manual config file editing or file management required.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">Start the Launcher</h4>
+          <p class="step-text">Run <code>TruckerWalkAround.exe</code>. It automatically detects your game folders and deploys the plugin.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">Launch Game &amp; Press F9</h4>
+          <p class="step-text">Start ETS2 or ATS from Steam. Park your truck, <strong>engage the parking brake, and press <code>[F9]</code></strong> to step out and walk.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">Close Launcher When Done</h4>
+          <p class="step-text">After exiting the game, simply close the launcher window. All plugin files are automatically removed.</p>
+        </div>
+      </div>
+
+      <!-- Controls Section -->
+      <div id="controls" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">Controls Guide</h2>
+        <p class="section-description">
+          Explore your surroundings with standard PC WASD movement and mouse look controls.
+        </p>
+      </div>
+
+      <div class="notice-card" style="margin-bottom: 36px; border-color: #cbd5e1;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Controls</span>
+          <h3 class="notice-title" style="color: #0f172a;">Keyboard &amp; Mouse Controls</h3>
+        </div>
+        <div class="notice-body">
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="background-color: var(--bg-body); border-bottom: 2px solid var(--border); text-align: left;">
+                  <th style="padding: 12px 16px; color: var(--text-main); width: 22%;">Key / Input</th>
+                  <th style="padding: 12px 16px; color: var(--text-main); width: 25%;">Action</th>
+                  <th style="padding: 12px 16px; color: var(--text-main);">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #059669; font-size: 1rem;">[F9]</td>
+                  <td style="padding: 12px 16px; font-weight: 700;">Toggle Walk Mode</td>
+                  <td style="padding: 12px 16px;">Switches between the cabin view and physical walk mode (requires active driving screen &amp; <strong>Parking Brake ON</strong>).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #dc2626; font-size: 1rem;">[BackSpace]</td>
+                  <td style="padding: 12px 16px; font-weight: 700;">Emergency Return</td>
+                  <td style="padding: 12px 16px;">Immediately exits walk mode from anywhere and returns you safely to the driver's seat.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[W] [A] [S] [D]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Move</td>
+                  <td style="padding: 12px 16px;">Walk forward, backward, left, and right (truck throttle and steering are locked while walking).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[Shift] (Hold)</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Sprint</td>
+                  <td style="padding: 12px 16px;">Increases walking speed while held down.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">Mouse Move</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Free Look</td>
+                  <td style="padding: 12px 16px;">Look around freely in 360 degrees.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #2563eb;">[Alt]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Toggle Noclip</td>
+                  <td style="padding: 12px 16px;">Toggles flying/ghost mode while walking to escape if you get stuck in geometry. Press <code>[Alt]</code> again to resume physical walking.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[Space] / [Ctrl]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Ascend / Descend</td>
+                  <td style="padding: 12px 16px;">Fly up with <code>[Space]</code> or down with <code>[Ctrl]</code> while in Noclip mode.</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[F10]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Debug Monitor</td>
+                  <td style="padding: 12px 16px;">Toggles the real-time physics collider and coordinate monitor overlay.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Notes & Tips Section -->
+      <div id="notes" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">Important Notes &amp; Tips</h2>
+        <p class="section-description">
+          Please keep the following behaviors in mind for a smooth experience.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🚦 Safety Guard (Parking Brake Required)</h3>
+          <p class="feature-desc">
+            To prevent accidental activation in menus or while driving on highways, pressing <code>[F9]</code> only activates walk mode when you are in the <strong>active driving view AND your parking brake is engaged</strong>.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🚗 Static Scenery &amp; Parked Cars Collision</h3>
+          <p class="feature-desc">
+            Some background props, decorative buildings, and static parked vehicles placed in rest areas do not have physics colliders in the game engine. Passing through them is normal engine behavior and not a bug.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🆘 Getting Unstuck</h3>
+          <p class="feature-desc">
+            If you get stuck behind a guardrail or in a narrow gap, press <strong><code>[Alt]</code> to switch to Noclip mode</strong> and fly out, then press <code>[Alt]</code> again to return to normal walking. You can also press <strong><code>[BackSpace]</code></strong> at any time to teleport right back to the driver's seat.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🛡️ Antivirus False Positives</h3>
+          <p class="feature-desc">
+            Because this tool interacts with game process memory and deploys <code>.dll</code> files automatically, heuristic antivirus scanners may flag it as an unknown app. It contains no malicious code and is verified clean on <a href="https://www.virustotal.com/gui/file/9053e54dba6868b5638388e58e0c6b8974dda52b26e924f77f25e7a9a2402576" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 600; text-decoration: underline;">VirusTotal across 70+ security vendors</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta" style="margin-top: 60px;">
+        <h3>Explore the World Crafted by SCS Software on Foot</h3>
+        <p>Take a break at the next rest stop or scenic viewpoint and step out of your cab.</p>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          Download Free on GitHub
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567896"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#" id="open-privacy">Privacy Policy</a>
+        <a href="#" id="open-terms">Disclaimer</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

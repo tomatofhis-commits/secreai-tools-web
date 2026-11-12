@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruckerWalkAround - ETS2 / ATS 向け物理歩行プラグイン | SecreAI & Tools</title>
+  <meta name="description" content="Euro Truck Simulator 2 (ETS2) および American Truck Simulator (ATS) でトラックから降りて街並みを自由に歩ける物理歩行プラグイン「TruckerWalkAround」の公式紹介ページです。ランチャー起動だけで自動導入・終了時自動削除の安全設計。">
+  <link rel="icon" href="image/TWAico.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページへ戻る</a>
+        <a href="#story">制作の経緯</a>
+        <a href="#features">主な特徴</a>
+        <a href="#controls">操作方法</a>
+        <a href="#notes">注意点</a>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">公開ツール一覧</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">TruckerWalkAround</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AdSense Banner (Top) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567895"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/TWAico.ico" alt="TruckerWalkAround Icon" style="width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-4v-blue" style="background: linear-gradient(135deg, #059669, #10b981); color: #fff;">ETS2 / ATS 専用プラグイン</span>
+        <span class="tool-type-badge">Windows Desktop Launcher &amp; DLL</span>
+        <span class="tool-type-badge chrome-badge">無料公開中 (Free)</span>
+      </div>
+      <h1 class="product-title">TruckerWalkAround</h1>
+      <p class="product-subtitle">
+        <strong>トラックの運転席から降りて、作り込まれた街並みを自分の足で歩こう！</strong><br>
+        Euro Truck Simulator 2 (ETS2) &amp; American Truck Simulator (ATS) 向けに開発された、重力・段差昇降・衝突判定つきの外部連携型ウォーキングプラグインです。<br>
+        専用ランチャーを起動するだけで自動セットアップが完了し、ランチャーを閉じればプラグインも自動でクリーン削除される安全設計を採用しています。
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub Releases からダウンロード (無料)
+        </a>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround" target="_blank" rel="noopener noreferrer" class="btn-secondary-link">
+          ソースコード・READMEを見る
+        </a>
+      </div>
+
+      <!-- YouTube Demo Video & Launcher Screenshot Showcase -->
+      <div style="max-width: 960px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; align-items: center;">
+        <!-- YouTube Video -->
+        <div style="background: #0f172a; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.18); border: 1px solid var(--border);">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+            <iframe src="https://www.youtube.com/embed/HNBvZkkrkh0" 
+                    title="TruckerWalkAround 紹介動画" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+          </div>
+          <div style="padding: 12px 16px; background: var(--bg-card); text-align: center; font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">
+            ▶ YouTube 紹介動画：実際にトラックから降りて歩く様子
+          </div>
+        </div>
+
+        <!-- Launcher Screenshot -->
+        <div style="text-align: center;">
+          <div class="product-showcase-frame" style="margin-top: 0;">
+            <img src="image/TWAss.png" 
+                 alt="TruckerWalkAround ランチャー画面（自動検出・ステータス管理）" 
+                 class="product-showcase-img"
+                 style="max-height: 360px; width: auto; margin: 0 auto;"
+                 onclick="openImageModal(this.src, this.alt)">
+            <p class="showcase-caption">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              専用ランチャー画面（クリックで拡大表示）
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Development Story Section -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #a7f3d0; background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%); max-width: 900px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-bottom-color: #a7f3d0;">
+          <span class="notice-badge" style="background-color: #059669;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #065f46; font-size: 1.25rem; margin: 0;">制作の経緯 ― 作り込まれた街並みを、もっと間近で体感するために</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.02rem; line-height: 1.9; color: var(--text-main);">
+          <p style="margin-bottom: 16px;">
+            普段はトラックでただ通り過ぎるだけの小さな町であっても、<strong>SCS Software</strong> の開発スタッフは象徴的なランドマークを配置したり、現地の建物を細部まで再現したりと、信じられないほど緻密に世界を作り込んでいます。
+          </p>
+          <p style="margin-bottom: 16px;">
+            <strong>「その美しい街並みを、運転席の窓越しだけでなく、もっと間近で歩いて体感したい」</strong>――そんな思いから、ゲームに元々備わっているフリーカメラモードと物理エンジン（PhysX）を連携させ、地面の段差や重力を感じながら自分の足で歩けるウォーキング機能を制作しました。
+          </p>
+          <p style="margin-bottom: 0;">
+            専門的な知識がなくても、誰でも簡単に・無料でこの体験ができるよう、<strong>「ランチャーを起動するだけで完結するシンプルな設計」</strong>を目指しています。<br>
+            SCS Software の開発スタッフが情熱を込めて再現した素晴らしい街並みを、ぜひ地上からの視点でお楽しみください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">TruckerWalkAround の主な特徴</h2>
+        <p class="section-description">
+          煩雑なファイル操作や設定書き換えをすべて自動化し、ゲームの安全性を最優先に考えた設計です。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">ランチャー起動だけで自動セットアップ</h3>
+          <p class="feature-desc">
+            専用ランチャー（<code>TruckerWalkAround.exe</code>）を起動すると、インストール済みの ETS2 / ATS フォルダと <code>config.cfg</code> を自動検出し、歩行に必要な設定（<code>g_developer 1</code> 等）とプラグイン配置を全自動で行います。あとはそのままゲームを起動するだけです。
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">閉じれば自動消去！手動削除の手間なし</h3>
+          <p class="feature-desc">
+            ランチャーを閉じると、ゲームフォルダに配置されたプラグインファイル（DLL）は<strong>自動的に完全削除</strong>されます。ウォーキング機能を使いたくない日も、自分でフォルダを開いてファイルを削除したり移動したりする必要は一切ありません。
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">アップデート時も安心のフェイルセーフ設計</h3>
+          <p class="feature-desc">
+            ゲーム本体のアップデートによりプラグインとの互換性がなくなった場合、ランチャーがバージョン不整合を検知し、<strong>プラグインファイルがコピーされない安全設計</strong>になっています。古いDLLが残ってゲームが起動時にクラッシュする事故を未然に防ぎます。
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple" style="background-color: #f3e8ff; color: #7c3aed;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="3"></circle>
+              <line x1="12" y1="22" x2="12" y2="8"></line>
+              <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">PhysX物理エンジン直結＆安全ガード機能</h3>
+          <p class="feature-desc">
+            ゲーム内の物理コライダーとリアルタイムに当たり判定を行い、坂道や最大0.45mの段差・縁石の昇降、重力落下を再現。さらに<strong>パーキングブレーキを引いている実車走行画面でのみ降車可能</strong>とし、歩行中は車両操作の自動ロックとHUD非表示で高い没入感を提供します。
+          </p>
+        </div>
+      </div>
+
+      <!-- Simple Steps / Usage Guide -->
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <h2 class="section-title">導入・使い方の流れ（3ステップ）</h2>
+        <p class="section-description">複雑なMODマネージャーやコンフィグファイルの手動編集は必要ありません。</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 1</span>
+          <h4 class="step-title">ランチャーを起動</h4>
+          <p class="step-text">インストーラーから導入後、<code>TruckerWalkAround.exe</code> を起動します。自動でゲーム環境が検出・準備されます。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 2</span>
+          <h4 class="step-title">そのままゲームを起動＆F9で降車</h4>
+          <p class="step-text">ランチャーを開いたまま Steam 等から ETS2 / ATS を起動。トラックを停めて<strong>パーキングブレーキを引き、<code>[F9]</code> キー</strong>で外へ降りられます。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 3</span>
+          <h4 class="step-title">終了時はランチャーを閉じるだけ</h4>
+          <p class="step-text">ゲームを終えたらランチャーを閉じます。プラグインは自動的に削除され、ゲームフォルダは常にクリーンな状態に戻ります。</p>
+        </div>
+      </div>
+
+      <!-- Controls Section -->
+      <div id="controls" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">操作方法一覧</h2>
+        <p class="section-description">
+          直感的な PC ゲーム標準の WASD キーとマウス操作で、トラックの周囲や街中を自由に散策できます。
+        </p>
+      </div>
+
+      <div class="notice-card" style="margin-bottom: 36px; border-color: #cbd5e1;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Controls</span>
+          <h3 class="notice-title" style="color: #0f172a;">キーボード＆マウス操作ガイド</h3>
+        </div>
+        <div class="notice-body">
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="background-color: var(--bg-body); border-bottom: 2px solid var(--border); text-align: left;">
+                  <th style="padding: 12px 16px; color: var(--text-main); width: 22%;">キー / 入力</th>
+                  <th style="padding: 12px 16px; color: var(--text-main); width: 25%;">機能</th>
+                  <th style="padding: 12px 16px; color: var(--text-main);">説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #059669; font-size: 1rem;">[F9]</td>
+                  <td style="padding: 12px 16px; font-weight: 700;">歩行モード切替</td>
+                  <td style="padding: 12px 16px;">運転席視点と物理歩行モードを切り替えます（※走行画面かつ<strong>パーキングブレーキON時</strong>のみ有効）。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #dc2626; font-size: 1rem;">[BackSpace]</td>
+                  <td style="padding: 12px 16px; font-weight: 700;">緊急脱出（運転席復帰）</td>
+                  <td style="padding: 12px 16px;">どこにいても歩行モードを即座に終了し、安全にトラックの運転席へ戻ります。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[W] [A] [S] [D]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">移動</td>
+                  <td style="padding: 12px 16px;">前後左右へ歩いて移動します（歩行中はトラックのアクセルやハンドル操作は自動ロックされます）。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[Shift] (長押し)</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">ダッシュ</td>
+                  <td style="padding: 12px 16px;">押している間、移動速度をアップして走ります。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">マウス移動</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">視点回転</td>
+                  <td style="padding: 12px 16px;">周囲360度や見上げ・見下ろしなど自由に視点を動かして街並みを観察できます。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace; color: #2563eb;">[Alt]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">Noclipモード切替</td>
+                  <td style="padding: 12px 16px;">歩行中に壁抜け・空中浮遊モード（スタック脱出用）を切り替えます。再度 <code>[Alt]</code> で通常歩行に戻ります。</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[Space] / [Ctrl]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">上昇 / 下降</td>
+                  <td style="padding: 12px 16px;">Noclipモード中に <code>[Space]</code> で上昇、<code>[Ctrl]</code> で下降します。</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 16px; font-weight: 700; font-family: monospace;">[F10]</td>
+                  <td style="padding: 12px 16px; font-weight: 600;">モニター表示切替</td>
+                  <td style="padding: 12px 16px;">物理コライダーや現在の座標情報を確認できるデバッグモニター表示をON/OFFします。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Notes & Tips Section -->
+      <div id="notes" class="section-header" style="margin-top: 70px;">
+        <h2 class="section-title">使用上の注意点・Tips</h2>
+        <p class="section-description">
+          快適かつ安全にお楽しみいただくために、あらかじめ以下の仕様をご確認ください。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🚦 歩行モードへの移行条件（安全ガード）</h3>
+          <p class="feature-desc">
+            誤作動を防ぐため、メインメニューやマップ・ガレージ管理画面などのUI表示中は <code>[F9]</code> を押しても歩行モードに入りません。<strong>「トラックの実車運転画面」かつ「パーキングブレーキ（サイドブレーキ）がON」</strong>の状態でのみ歩行モードへ移行できます。
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🚗 背景オブジェクト・駐車車両の当たり判定</h3>
+          <p class="feature-desc">
+            街中やパーキングエリア等に最初から背景（プロップ）として配置されている一部の建物・柵・静的駐車車両には、ゲームエンジンの仕様上コライダー（物理判定）が存在しない場合があります。これらをすり抜けたり上に乗れなかったりすることがありますが、不具合ではなくゲーム側の仕様です。
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🆘 隙間やガードレールに挟まった時は</h3>
+          <p class="feature-desc">
+            ガードレールの向こう側や狭い隙間、地形の溝などにはまって動けなくなった（スタックした）場合は、慌てず <strong><code>[Alt]</code> キーを押して「Noclipモード」</strong>に切り替えて空中を移動して脱出してください。また、<strong><code>[BackSpace]</code> キー</strong>を押せばいつでも即座にトラックの運転席へ復帰できます。
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3 class="feature-heading" style="color: #0f172a;">🛡️ セキュリティソフトの警告について</h3>
+          <p class="feature-desc">
+            本ツールはゲームプロセスの物理・カメラメモリと連携し、ゲームフォルダへ <code>.dll</code> を自動配置する仕組み上、Windows Defender 等のヒューリスティック検知で警告が表示される場合があります。悪意のあるコードは一切含まれておらず、<a href="https://www.virustotal.com/gui/file/9053e54dba6868b5638388e58e0c6b8974dda52b26e924f77f25e7a9a2402576" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 600; text-decoration: underline;">VirusTotal（世界70社以上のセキュリティエンジン）</a>にて安全性が確認されています。
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta" style="margin-top: 60px;">
+        <h3>SCS Software が創り上げた世界を、あなたの足で歩こう</h3>
+        <p>ETS2 / ATS のドライブの合間に、パーキングエリアや街角でトラックを降りて散策してみませんか？</p>
+        <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub から無料でダウンロードする
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AdSense Banner (Bottom) -->
+  <div class="container ad-wrapper">
+    <div class="ad-label">SPONSORED</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7695104877965082"
+           data-ad-slot="1234567896"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-modal-close" id="image-modal-close">&times;</span>
+      <img id="lightbox-img" src="" alt="Enlarged view">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Privacy Policy / Disclaimer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI & Tools</p>
+        <p class="footer-sub">Designed by amachi / Coded by AI (Gemini)</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="#" id="open-privacy">プライバシーポリシー</a>
+        <a href="#" id="open-terms">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
