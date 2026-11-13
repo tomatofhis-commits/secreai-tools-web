@@ -1746,3 +1746,28 @@ code {
   border-radius: 4px;
 }
 
+
+/* Changelog Scroll Box */
+.changelog-scroll-box {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.changelog-scroll-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.changelog-scroll-box::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 3px;
+}
+
+.changelog-scroll-box::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 3px;
+}
+
+.changelog-scroll-box::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
