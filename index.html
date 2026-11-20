@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SecreAI & Tools - Designed by amachi & Coded by AI</title>
+  <title>SecreAI &amp; Tools | 無料ローカルAI・配信支援・便利ツール公式サイト</title>
   <meta name="description" content="Elgato Stream Deckやショートカットで作業の手を止めずワンボタン画面キャプチャ＆AI質問。人間の記憶のようなChromaDB会話蓄積とローカルLLMトークン節約を備えたSecreAIをはじめとする無料AI実用ツール集。">
   <link rel="canonical" href="https://amachi-tools.win/">
   <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
@@ -30,7 +30,8 @@
         <a href="#api-endpoints" data-i18n="nav_api">API一覧</a>
         <a href="#guide-advanced" data-i18n="nav_advanced">詳細設定</a>
         <a href="#tools" data-i18n="nav_tools">他ツール一覧</a>
-        <a href="#contact" data-i18n="nav_contact">お問い合わせ</a>
+        <a href="about.html" id="nav-about" data-i18n="nav_about">運営者情報</a>
+        <a href="contact.html" id="nav-contact" data-i18n="nav_contact">お問い合わせ</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
             <span class="lang-code">EN / JA</span>
@@ -49,8 +50,8 @@
         作業の手を止めず、ワンボタンでAIを相棒に。
       </h1>
       <p class="hero-subtitle" data-i18n="hero_subtitle">
-        日常のPC作業やゲーム、ライブ配信で「AIを便利に使う」ために生まれた実用ツール群です。<br>
-        <strong>設計：あまち</strong> ＆ <strong>コーディング：AI (Gemini)</strong> の共創により、すべてフリーで開発・公開しています。
+        日常のPC作業やゲーム、ライブ配信を快適にするために生まれた無料実用ツール群です。<br>
+        開発者自身の環境での実機検証をもとに、ローカルAI・配信支援・ブラウザ拡張機能をすべて無料で公開しています。
       </p>
       <div class="hero-actions">
         <a href="#featured" class="btn btn-primary" data-i18n="hero_btn_secreai">SecreAI の機能を見る</a>
@@ -58,20 +59,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Ad Banner Placement Top -->
-  <div class="container ad-wrapper">
-    <div class="ad-label">SPONSORED</div>
-    <div class="ad-box">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7695104877965082"
-           data-ad-slot="1234567890"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
 
   <!-- Featured Tool: SecreAI Core Appeal -->
   <section id="featured" class="section featured-section">
@@ -705,28 +692,16 @@
     </div>
   </section>
 
-  <!-- Ad Banner Placement Bottom -->
-  <div class="container ad-wrapper">
-    <div class="ad-label">SPONSORED</div>
-    <div class="ad-box">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7695104877965082"
-           data-ad-slot="1234567891"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-
   <!-- Contact Section -->
   <section id="contact" class="section contact-section">
     <div class="container contact-container">
       <h2 class="section-title" data-i18n="contact_title">お問い合わせ・フィードバック</h2>
       <p class="section-description" data-i18n="contact_desc">
-        バグ報告、機能の要望、感想などは GitHub Issues またはリポジトリまでお気軽にお寄せください。
+        ツールの使い方のご質問、不具合報告、機能のご要望などは専用のお問い合わせフォームまたは GitHub Issues よりお気軽にお寄せください。
       </p>
       <div class="contact-links">
+        <a href="contact.html" id="contact-page-btn" class="btn btn-primary" data-i18n="contact_page_btn">お問い合わせフォームへ</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyMyviH5niJqbuaBqWb6hEgOcrEVoExoCRWNTUcn6goxWpDg/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="contact_gform_btn">Googleフォームを直接開く</a>
         <a href="https://github.com/tomatofhis-commits" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
           GitHub Profile (@tomatofhis-commits)
         </a>
@@ -734,30 +709,24 @@
     </div>
   </section>
 
-  <!-- Site Footer (AdSense Compliance: Privacy Policy & Disclaimer) -->
+  <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-info">
-        <p class="footer-title">SecreAI & Tools</p>
-        <p class="footer-sub" data-i18n="footer_credits">Designed by amachi / Coded by AI (Gemini)</p>
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub" data-i18n="footer_credits">開発・運営：amachi</p>
       </div>
       <div class="footer-links">
-        <a href="#" id="open-privacy" data-i18n="footer_privacy">プライバシーポリシー</a>
-        <a href="#" id="open-terms" data-i18n="footer_terms">免責事項</a>
+        <a href="about.html" id="footer-about" data-i18n="footer_about">運営者情報</a>
+        <a href="contact.html" id="footer-contact" data-i18n="footer_contact">お問い合わせ</a>
+        <a href="privacy.html" id="footer-privacy" data-i18n="footer_privacy">プライバシーポリシー</a>
+        <a href="disclaimer.html" id="footer-disclaimer" data-i18n="footer_terms">免責事項</a>
       </div>
       <div class="footer-copy">
         <p>&copy; 2026 amachi. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
-  <!-- Modal for Privacy Policy / Disclaimer -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" id="modal-close">&times;</span>
-      <div id="modal-body"></div>
-    </div>
-  </div>
 
   <!-- Lightbox Modal for Enlarging Screenshots -->
   <div id="image-modal" class="modal image-lightbox">

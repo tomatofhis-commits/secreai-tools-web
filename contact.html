@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | SecreAI &amp; Tools</title>
+  <meta name="description" content="SecreAI &amp; Tools（amachi-tools.win）へのお問い合わせページ。ツールの使い方に関するご質問、不具合報告、機能リクエストをGoogleフォームまたは各プロジェクトのGitHub Issuesから受け付けています。">
+  <link rel="canonical" href="https://amachi-tools.win/contact.html">
+  <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/contact.html">
+  <link rel="alternate" hreflang="en" href="https://amachi-tools.win/contact-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/contact.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページ</a>
+        <a href="index.html#tools">公開ツール一覧</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html" class="nav-active">お問い合わせ</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">お問い合わせ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero-compact">
+    <div class="container">
+      <div class="section-badge">Contact &amp; Support</div>
+      <h1 class="page-hero-title">お問い合わせ・フィードバック</h1>
+      <p class="page-hero-subtitle">ツールの使い方に関するご質問、不具合のご報告、機能追加のご要望、当サイト掲載内容やプライバシーに関するお問い合わせを受け付けています。</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section legal-section">
+    <div class="container">
+      <div class="legal-card">
+        <div class="legal-content">
+
+          <h2>1. お問い合わせフォーム（Googleフォーム）</h2>
+          <p>GitHub アカウントをお持ちでない方や、サイト全般・プライバシーに関するご連絡は、下記のフォームよりお気軽にお送りください。</p>
+
+          <div class="contact-fallback">
+            <p>埋め込みフォームがうまく表示されない場合やスマートフォンで入力しづらい場合は、下のボタンからフォームページを直接開いてご送信ください。</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyMyviH5niJqbuaBqWb6hEgOcrEVoExoCRWNTUcn6goxWpDg/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              Googleフォームを新しいタブで開く →
+            </a>
+          </div>
+
+          <div class="contact-form-embed">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfyMyviH5niJqbuaBqWb6hEgOcrEVoExoCRWNTUcn6goxWpDg/viewform?embedded=true"
+              title="SecreAI &amp; Tools お問い合わせフォーム"
+              loading="lazy"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0">読み込んでいます…</iframe>
+          </div>
+
+          <h2>2. GitHub Issues でのバグ報告・開発フィードバック</h2>
+          <p>各ツールの技術的な不具合報告、ログを伴う質問、新機能のご提案などは、該当リポジトリの GitHub Issues からも直接お寄せいただけます。他のユーザーと解決策を共有しやすいメリットがあります。</p>
+
+          <div class="github-issues-grid">
+            <a href="https://github.com/tomatofhis-commits/SecreAI_project/issues" target="_blank" rel="noopener noreferrer" class="github-issue-card">
+              <span class="issue-cat">Desktop AI Assistant</span>
+              <strong>SecreAI Issues</strong>
+              <span>画面キャプチャ・ChromaDB・Stream Deck連携など</span>
+            </a>
+            <a href="https://github.com/tomatofhis-commits/SubtitLocar/issues" target="_blank" rel="noopener noreferrer" class="github-issue-card">
+              <span class="issue-cat">Subtitle &amp; Translation</span>
+              <strong>SubtitLocar Issues</strong>
+              <span>Faster-Whisper・Ollama翻訳・OBS字幕設定など</span>
+            </a>
+            <a href="https://github.com/tomatofhis-commits/ETS2-ATS-TruckerWalkAround/issues" target="_blank" rel="noopener noreferrer" class="github-issue-card">
+              <span class="issue-cat">ETS2 / ATS Plugin</span>
+              <strong>TruckerWalkAround Issues</strong>
+              <span>ゲームバージョン互換・歩行物理・ランチャー関連</span>
+            </a>
+            <a href="https://github.com/tomatofhis-commits/MyNewsReader/issues" target="_blank" rel="noopener noreferrer" class="github-issue-card">
+              <span class="issue-cat">Windows RSS Reader</span>
+              <strong>MyNewsReader Issues</strong>
+              <span>RSS取得・ローカルLLM要約関連</span>
+            </a>
+            <a href="https://github.com/tomatofhis-commits" target="_blank" rel="noopener noreferrer" class="github-issue-card">
+              <span class="issue-cat">Developer Profile</span>
+              <strong>GitHub (@tomatofhis-commits)</strong>
+              <span>すべての公開リポジトリ一覧を見る</span>
+            </a>
+          </div>
+
+          <h2>3. ご利用上の注意</h2>
+          <ul>
+            <li><strong>返信について</strong>：個人で運営・開発を行っているため、いただいた内容への確認・ご返信までに数日〜1週間ほどお時間をいただく場合があります。</li>
+            <li><strong>ご回答できない内容</strong>：個別のPC環境全般に関するサポート、当サイトと無関係な営業・勧誘メール、誹謗中傷や不適切な内容を含むお問い合わせにはご返信いたしかねる場合があります。</li>
+            <li><strong>個人情報の取り扱い</strong>：お問い合わせ時にご入力いただいたお名前やメールアドレス等の情報は、回答およびご連絡の目的にのみ使用いたします。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">開発・運営：amachi | 無料AI・配信支援・便利ツール公式サイト</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

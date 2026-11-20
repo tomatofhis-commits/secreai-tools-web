@@ -8,12 +8,13 @@ const translations = {
     nav_api: "API一覧",
     nav_advanced: "詳細設定",
     nav_tools: "他ツール一覧",
+    nav_about: "運営者情報",
     nav_contact: "お問い合わせ",
     
     // Hero
     hero_badge: "個人開発 × 生成AI 実用ツール集",
     hero_title: "作業の手を止めず、ワンボタンでAIを相棒に。",
-    hero_subtitle: "日常のPC作業やゲーム、ライブ配信で「AIを便利に使う」ために生まれた実用ツール群です。<br><strong>設計：あまち</strong> ＆ <strong>コーディング：AI (Gemini)</strong> の共創により、すべてフリーで開発・公開しています。",
+    hero_subtitle: "日常のPC作業やゲーム、ライブ配信を快適にするために生まれた無料実用ツール群です。<br>開発者自身の環境での実機検証をもとに、ローカルAI・配信支援・ブラウザ拡張機能をすべて無料で公開しています。",
     hero_btn_secreai: "SecreAI の機能を見る",
     hero_btn_guide: "導入・使い方ガイド",
 
@@ -176,8 +177,12 @@ const translations = {
 
     // Contact & Footer
     contact_title: "お問い合わせ・フィードバック",
-    contact_desc: "バグ報告、機能の要望、感想などは GitHub Issues またはリポジトリまでお気軽にお寄せください。",
-    footer_credits: "Designed by amachi / Coded by AI (Gemini)",
+    contact_desc: "ツールの使い方のご質問、不具合報告、機能のご要望などは専用のお問い合わせフォームまたは GitHub Issues よりお気軽にお寄せください。",
+    contact_page_btn: "お問い合わせページ・フォームへ",
+    contact_gform_btn: "Googleフォームを直接開く",
+    footer_credits: "開発・運営：amachi",
+    footer_about: "運営者情報",
+    footer_contact: "お問い合わせ",
     footer_privacy: "プライバシーポリシー",
     footer_terms: "免責事項"
   },
@@ -190,12 +195,13 @@ const translations = {
     nav_api: "API List",
     nav_advanced: "Advanced Guide",
     nav_tools: "Other Tools",
+    nav_about: "About",
     nav_contact: "Contact",
     
     // Hero
     hero_badge: "Personal Project × Generative AI",
     hero_title: "Your One-Button AI Companion Without Stopping Your Workflow.",
-    hero_subtitle: "A suite of practical utilities created to make AI effortlessly useful in daily PC work, gaming, and live streaming.<br>Co-created by <strong>Architect: amachi</strong> & <strong>Coding: AI (Gemini)</strong>, all free and open-source.",
+    hero_subtitle: "A suite of free practical utilities created to enhance everyday PC workflows, gaming, and live streaming.<br>Verified on real hardware—offering local AI assistants, streaming utilities, and browser extensions completely free of charge.",
     hero_btn_secreai: "Discover SecreAI",
     hero_btn_guide: "Setup & User Guide",
 
@@ -358,60 +364,47 @@ const translations = {
 
     // Contact & Footer
     contact_title: "Contact & Feedback",
-    contact_desc: "For bug reports, feature requests, or feedback, please reach out via GitHub Issues or repositories.",
-    footer_credits: "Designed by amachi / Coded by AI (Gemini)",
+    contact_desc: "For usage questions, bug reports, or feature requests, feel free to reach out via our dedicated contact form or GitHub Issues.",
+    contact_page_btn: "Open Contact Page & Form",
+    contact_gform_btn: "Open Google Form Directly",
+    footer_credits: "Developed & Maintained by amachi",
+    footer_about: "About",
+    footer_contact: "Contact",
     footer_privacy: "Privacy Policy",
     footer_terms: "Disclaimer"
   }
 };
 
-// プライバシーポリシー＆免責事項コンテンツ
-const modalTexts = {
-  ja: {
-    privacy_title: "プライバシーポリシー",
-    privacy_body: `
-      <h3>1. 個人情報の収集・利用について</h3>
-      <p>当サイトでは、利用者の個人情報を不正に収集・保持することはありません。お問い合わせ等でいただいた情報は、回答およびご連絡の目的にのみ使用します。</p>
-      
-      <h3>2. 広告配信（Google AdSense）について</h3>
-      <p>当サイトでは、第三者配信の広告サービス「Google AdSense」を利用しています。広告配信事業者は、利用者の興味に応じた広告を表示するためにCookie（クッキー）を使用することがあります。Cookieを無効にする設定およびGoogle AdSenseに関する詳細は、Googleの「<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">広告 – ポリシーと規約</a>」をご確認ください。</p>
-
-      <h3>3. アクセス解析について</h3>
-      <p>当サイトでは、サービス向上のためアクセス解析ツールを利用する場合があります。データは匿名で収集されており、個人を特定するものではありません。</p>
-    `,
-    terms_title: "免責事項",
-    terms_body: `
-      <h3>1. ソフトウェア・ツールの利用について</h3>
-      <p>当サイトで紹介および配布しているすべてのツール・ソフトウェアは、現状有姿（AS IS）で提供されます。ツールの利用によって生じた直接的・間接的な損害（データ消失、PCの不具合、API利用料金の発生等）について、開発者は一切の責任を負いません。ご自身の責任においてご利用ください。</p>
-
-      <h3>2. 掲載情報について</h3>
-      <p>当サイトに掲載されている情報には万全を期していますが、その正確性や完全性を保証するものではありません。予告なしにコンテンツの変更やツールの公開停止を行う場合があります。</p>
-    `
-  },
-  en: {
-    privacy_title: "Privacy Policy",
-    privacy_body: `
-      <h3>1. Collection and Use of Personal Information</h3>
-      <p>This website does not collect or retain personal identification information without your consent. Inquiries or correspondence will only be used for responding to your inquiries.</p>
-      
-      <h3>2. Advertising (Google AdSense)</h3>
-      <p>This website uses "Google AdSense", a third-party advertising service. Ad vendors may use cookies to serve ads based on prior visits to this or other websites. You may opt out of personalized advertising by visiting Google's <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Ads Settings</a>.</p>
-
-      <h3>3. Analytics</h3>
-      <p>Anonymous analytical cookies may be used to analyze traffic and improve user experience. No personal data is stored.</p>
-    `,
-    terms_title: "Disclaimer",
-    terms_body: `
-      <h3>1. Use of Software & Tools</h3>
-      <p>All software and tools introduced on this website are provided "AS IS", without warranty of any kind. The author shall not be liable for any damages, losses, or API charges arising from the use or inability to use these tools. Please use them at your own risk.</p>
-
-      <h3>2. Accuracy of Information</h3>
-      <p>While every effort is made to provide accurate information, the author does not guarantee the completeness or validity of the content. Content and tool distributions are subject to change without notice.</p>
-    `
-  }
-};
+// 日英ペアの静的サブページ一覧（将来の多言語拡張時もここにスラッグを集約）
+const BILINGUAL_PAGES = [
+  'youtube-multi-auto-playlist',
+  '4-screen-viewer',
+  'subtitlocar',
+  'trucker-walk-around',
+  'about',
+  'contact',
+  'privacy',
+  'disclaimer'
+];
 
 let currentLang = 'ja';
+
+function setHrefIfExists(id, href) {
+  const el = document.getElementById(id);
+  if (el) el.href = href;
+}
+
+function findMatchedBilingualPage(pathname) {
+  for (const slug of BILINGUAL_PAGES) {
+    if (pathname.includes(`${slug}-en`)) {
+      return { slug, lang: 'en' };
+    }
+    if (pathname.includes(slug)) {
+      return { slug, lang: 'ja' };
+    }
+  }
+  return null;
+}
 
 function updateLanguage(lang) {
   currentLang = lang;
@@ -419,6 +412,10 @@ function updateLanguage(lang) {
   try {
     localStorage.setItem('site_lang', lang);
   } catch (e) {}
+
+  document.title = lang === 'en'
+    ? 'SecreAI & Tools | Free Local AI, Streaming & Utility Software'
+    : 'SecreAI & Tools | 無料ローカルAI・配信支援・便利ツール公式サイト';
   
   // 各要素のテキストを更新
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -438,29 +435,24 @@ function updateLanguage(lang) {
     generalImg.src = lang === 'ja' ? 'image/setting全般設定.jpg' : 'image/settingGeneal.jpg';
   }
 
-  // YouTube Multi Auto Playlist 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
-  const linkYtDetail = document.getElementById('link-yt-detail');
-  if (linkYtDetail) {
-    linkYtDetail.href = lang === 'ja' ? 'youtube-multi-auto-playlist.html' : 'youtube-multi-auto-playlist-en.html';
-  }
+  // 各種サブページ・必須ページへのリンク切り替え（日本語版 ⇄ 英語版）
+  setHrefIfExists('link-yt-detail', lang === 'ja' ? 'youtube-multi-auto-playlist.html' : 'youtube-multi-auto-playlist-en.html');
+  setHrefIfExists('link-4v-detail', lang === 'ja' ? '4-screen-viewer.html' : '4-screen-viewer-en.html');
+  setHrefIfExists('link-subtitlocar-detail', lang === 'ja' ? 'subtitlocar.html' : 'subtitlocar-en.html');
+  setHrefIfExists('link-twa-detail', lang === 'ja' ? 'trucker-walk-around.html' : 'trucker-walk-around-en.html');
 
-  // 4 Screen Viewer 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
-  const link4vDetail = document.getElementById('link-4v-detail');
-  if (link4vDetail) {
-    link4vDetail.href = lang === 'ja' ? '4-screen-viewer.html' : '4-screen-viewer-en.html';
-  }
+  const aboutHref = lang === 'ja' ? 'about.html' : 'about-en.html';
+  const contactHref = lang === 'ja' ? 'contact.html' : 'contact-en.html';
+  const privacyHref = lang === 'ja' ? 'privacy.html' : 'privacy-en.html';
+  const disclaimerHref = lang === 'ja' ? 'disclaimer.html' : 'disclaimer-en.html';
 
-  // SubtitLocar 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
-  const linkSubtitlocarDetail = document.getElementById('link-subtitlocar-detail');
-  if (linkSubtitlocarDetail) {
-    linkSubtitlocarDetail.href = lang === 'ja' ? 'subtitlocar.html' : 'subtitlocar-en.html';
-  }
-
-  // TruckerWalkAround 紹介ページのリンク切り替え（日本語版 ⇄ 英語版）
-  const linkTwaDetail = document.getElementById('link-twa-detail');
-  if (linkTwaDetail) {
-    linkTwaDetail.href = lang === 'ja' ? 'trucker-walk-around.html' : 'trucker-walk-around-en.html';
-  }
+  setHrefIfExists('nav-about', aboutHref);
+  setHrefIfExists('footer-about', aboutHref);
+  setHrefIfExists('nav-contact', contactHref);
+  setHrefIfExists('footer-contact', contactHref);
+  setHrefIfExists('contact-page-btn', contactHref);
+  setHrefIfExists('footer-privacy', privacyHref);
+  setHrefIfExists('footer-disclaimer', disclaimerHref);
 
   // ボタンの表示テキストをトグル
   const langText = document.getElementById('current-lang-text');
@@ -472,27 +464,14 @@ function updateLanguage(lang) {
 // ページ初期化時の言語判定とlocalStorage同期
 (function initLanguageSettings() {
   const pathname = window.location.pathname.toLowerCase();
-  
-  // 個別ツールの英語ページの場合
-  if (pathname.includes('youtube-multi-auto-playlist-en') || 
-      pathname.includes('4-screen-viewer-en') || 
-      pathname.includes('subtitlocar-en') || 
-      pathname.includes('trucker-walk-around-en')) {
-    currentLang = 'en';
-    try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
+  const matched = findMatchedBilingualPage(pathname);
+
+  if (matched) {
+    currentLang = matched.lang;
+    try { localStorage.setItem('site_lang', matched.lang); } catch (e) {}
     return;
   }
-  
-  // 個別ツールの日本語ページの場合
-  if (pathname.includes('youtube-multi-auto-playlist') || 
-      pathname.includes('4-screen-viewer') || 
-      pathname.includes('subtitlocar') || 
-      pathname.includes('trucker-walk-around')) {
-    currentLang = 'ja';
-    try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
-    return;
-  }
-  
+
   // メインページ（index.html等）の場合、保存された言語設定があれば反映
   try {
     const savedLang = localStorage.getItem('site_lang');
@@ -507,51 +486,16 @@ const langBtn = document.getElementById('lang-btn');
 if (langBtn) {
   langBtn.addEventListener('click', () => {
     const pathname = window.location.pathname.toLowerCase();
-    
-    // YouTube Multi Auto Playlist
-    if (pathname.includes('youtube-multi-auto-playlist-en')) {
-      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
-      window.location.href = 'youtube-multi-auto-playlist.html';
-      return;
-    } else if (pathname.includes('youtube-multi-auto-playlist')) {
-      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
-      window.location.href = 'youtube-multi-auto-playlist-en.html';
-      return;
-    }
-    
-    // 4 Screen Viewer
-    if (pathname.includes('4-screen-viewer-en')) {
-      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
-      window.location.href = '4-screen-viewer.html';
-      return;
-    } else if (pathname.includes('4-screen-viewer')) {
-      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
-      window.location.href = '4-screen-viewer-en.html';
-      return;
-    }
-    
-    // SubtitLocar
-    if (pathname.includes('subtitlocar-en')) {
-      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
-      window.location.href = 'subtitlocar.html';
-      return;
-    } else if (pathname.includes('subtitlocar')) {
-      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
-      window.location.href = 'subtitlocar-en.html';
+    const matched = findMatchedBilingualPage(pathname);
+
+    if (matched) {
+      const nextLang = matched.lang === 'en' ? 'ja' : 'en';
+      const targetUrl = nextLang === 'en' ? `${matched.slug}-en.html` : `${matched.slug}.html`;
+      try { localStorage.setItem('site_lang', nextLang); } catch (e) {}
+      window.location.href = targetUrl;
       return;
     }
 
-    // TruckerWalkAround
-    if (pathname.includes('trucker-walk-around-en')) {
-      try { localStorage.setItem('site_lang', 'ja'); } catch(e) {}
-      window.location.href = 'trucker-walk-around.html';
-      return;
-    } else if (pathname.includes('trucker-walk-around')) {
-      try { localStorage.setItem('site_lang', 'en'); } catch(e) {}
-      window.location.href = 'trucker-walk-around-en.html';
-      return;
-    }
-    
     // メインページ
     const nextLang = currentLang === 'ja' ? 'en' : 'ja';
     updateLanguage(nextLang);
@@ -600,45 +544,7 @@ if (imageModalClose) {
   });
 }
 
-// プライバシーポリシー / 免責事項モーダル管理
-const modal = document.getElementById('modal');
-const modalBody = document.getElementById('modal-body');
-const modalClose = document.getElementById('modal-close');
-
-function openModal(title, content) {
-  if (!modal || !modalBody) return;
-  modalBody.innerHTML = `<h2>${title}</h2>${content}`;
-  modal.style.display = 'block';
-}
-
-const openPrivacy = document.getElementById('open-privacy');
-if (openPrivacy) {
-  openPrivacy.addEventListener('click', (e) => {
-    e.preventDefault();
-    const text = modalTexts[currentLang];
-    openModal(text.privacy_title, text.privacy_body);
-  });
-}
-
-const openTerms = document.getElementById('open-terms');
-if (openTerms) {
-  openTerms.addEventListener('click', (e) => {
-    e.preventDefault();
-    const text = modalTexts[currentLang];
-    openModal(text.terms_title, text.terms_body);
-  });
-}
-
-if (modalClose) {
-  modalClose.addEventListener('click', () => {
-    if (modal) modal.style.display = 'none';
-  });
-}
-
 window.addEventListener('click', (e) => {
-  if (modal && e.target === modal) {
-    modal.style.display = 'none';
-  }
   if (imageModal && e.target === imageModal) {
     imageModal.style.display = 'none';
   }

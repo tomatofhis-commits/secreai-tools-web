@@ -1771,3 +1771,449 @@ code {
 .changelog-scroll-box::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.6);
 }
+
+
+/* --- Phase 1: Dedicated Legal, About, Contact & Related Tools Styles --- */
+.nav-menu a.nav-active {
+  color: var(--primary);
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-menu a.nav-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+.page-hero-compact {
+  padding: 56px 0 40px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-body) 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.page-hero-subtitle {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.legal-section {
+  padding: 56px 0 84px;
+}
+
+.legal-card {
+  max-width: 880px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 44px 48px;
+  box-shadow: var(--shadow-sm);
+}
+
+.legal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 12px 16px;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.legal-content h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 36px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.legal-content h2:first-of-type {
+  margin-top: 24px;
+}
+
+.legal-content h3 {
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 18px 0 8px;
+}
+
+.legal-content p {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.legal-content ul {
+  margin: 10px 0 18px 22px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+}
+
+.legal-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-content a:hover {
+  color: var(--primary-hover);
+}
+
+.legal-content a.btn {
+  text-decoration: none;
+}
+
+/* Profile Table */
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.profile-table th,
+.profile-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  vertical-align: top;
+}
+
+.profile-table tr:last-child th,
+.profile-table tr:last-child td {
+  border-bottom: none;
+}
+
+.profile-table th {
+  width: 28%;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.profile-table td {
+  color: var(--text-muted);
+  background-color: #ffffff;
+}
+
+/* Policy Grid & About Projects */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 16px 0 28px;
+}
+
+.policy-item {
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.policy-item h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.policy-item p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.about-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 18px 0 28px;
+}
+
+.about-project-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.about-project-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.about-project-head img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.about-project-cat {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.about-project-head h3 {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+}
+
+.about-project-card p {
+  font-size: 0.89rem;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.about-project-card a.tool-link {
+  text-decoration: none;
+}
+
+/* Contact Page Embed & GitHub Issues */
+.contact-fallback {
+  background-color: var(--primary-light);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin: 16px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-fallback p {
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  color: var(--text-main);
+}
+
+.contact-form-embed {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form-embed iframe {
+  width: 100%;
+  min-height: 780px;
+  border: 0;
+  display: block;
+}
+
+.github-issues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin: 16px 0 28px;
+}
+
+.github-issue-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.github-issue-card:hover {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.issue-cat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.github-issue-card strong {
+  color: var(--text-main);
+  font-size: 0.98rem;
+}
+
+.github-issue-card span:last-child {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Related Tools Section on Product Subpages */
+.related-tools-section {
+  padding: 64px 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.related-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.related-tool-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.related-tool-card:hover {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.related-tool-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.related-tool-head img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.related-tool-cat {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.related-tool-head h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 2px 0 0;
+}
+
+.related-tool-card p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-links {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .legal-card {
+    padding: 28px 20px;
+  }
+  .page-hero-title {
+    font-size: 1.75rem;
+  }
+  .policy-grid,
+  .about-projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-table,
+  .profile-table tbody,
+  .profile-table tr,
+  .profile-table th,
+  .profile-table td {
+    display: block;
+    width: 100%;
+  }
+  .profile-table th {
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
+  .profile-table td {
+    padding-top: 4px;
+  }
+  .contact-form-embed iframe {
+    min-height: 680px;
+  }
+  .footer-links {
+    gap: 12px 18px;
+  }
+}
