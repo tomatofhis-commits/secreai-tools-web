@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Multi Auto Playlist - サイドウィンドウ1〜4画面再生＆自動プレイリスト作成 | SecreAI & Tools</title>
-  <meta name="description" content="ブラウザのサイドウィンドウで1〜4個のYouTube動画を同時ストリーミング！登録チャンネル等から再生リストを自動生成し、順番に自動再生できる便利なGoogle Chrome拡張機能「YouTube Multi Auto Playlist」の公式紹介ページです。">
+  <title>YouTube Multi Auto Playlist - サイドパネル1〜4画面再生・RSS対応＆自動プレイリスト | SecreAI &amp; Tools</title>
+  <meta name="description" content="Chromeサイドパネルで1〜4個のYouTube動画を同時再生＆自動連続再生！登録チャンネルやRSSフィードからプレイリストを自動生成し、日付・未視聴フィルタ、省メモリLiteモード＆3段階メモリ解放、音量・再生速度引き継ぎに対応したChrome拡張機能「YouTube Multi Auto Playlist」の公式紹介ページです。">
   <link rel="canonical" href="https://amachi-tools.win/youtube-multi-auto-playlist.html">
   <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/youtube-multi-auto-playlist.html">
   <link rel="alternate" hreflang="en" href="https://amachi-tools.win/youtube-multi-auto-playlist-en.html">
@@ -16,6 +16,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "YouTube Multi Auto Playlist",
+    "softwareVersion": "1.2.0",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "inLanguage": "ja",
+    "description": "Chromeサイドパネルで1〜4個のYouTube動画を同時再生＆自動連続再生できる拡張機能。登録チャンネル・RSSフィードからのリスト自動生成、日付・未視聴フィルタ、省メモリLiteモード、音量・再生速度の自動引き継ぎに対応。",
+    "url": "https://amachi-tools.win/youtube-multi-auto-playlist.html",
+    "downloadUrl": "https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja",
+    "author": {
+      "@type": "Person",
+      "name": "amachi"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -24,13 +47,14 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
-        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
       </a>
       <nav class="nav-menu">
         <a href="index.html">トップページへ戻る</a>
         <a href="#features">主な特徴</a>
         <a href="#usage">使い方</a>
-        <a href="#notes">注意事項</a>
+        <a href="#usecases">活用シーン</a>
+        <a href="#faq">FAQ・更新履歴</a>
         <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" style="color: #dc2626; font-weight: 700;">Chrome ストア</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -65,11 +89,12 @@
       <div class="product-badge-group">
         <span class="badge-yt-red">Google Chrome 拡張機能</span>
         <span class="tool-type-badge chrome-badge">無料公開中 (Free)</span>
+        <span class="tool-type-badge" style="background: #fef2f2; color: #b91c1c; border-color: #fecaca;">最新: v1.2.0 (2026-11-23)</span>
       </div>
       <h1 class="product-title">YouTube Multi Auto Playlist</h1>
       <p class="product-subtitle">
-        ブラウザのサイドウィンドウで<strong>1〜4個の動画を同時にストリーミング再生</strong>。<br>
-        登録チャンネルなどのページから再生リストをワンタッチ生成し、順番に自動再生できる快適視聴ツールです。
+        Chromeの<strong>サイドパネル（Side Panel）で1〜4個のYouTube動画を同時にストリーミング再生</strong>。<br>
+        登録チャンネルやRSSフィードから再生リストを自動生成し、日付・未視聴フィルタ、省メモリ <code>Lite</code> モード＆3段階メモリ解放、音量・再生速度の自動引き継ぎを備えた高機能プレイヤーです。
       </p>
 
       <div class="product-actions">
@@ -86,8 +111,8 @@
 
       <!-- Screenshot Showcase Frame -->
       <div class="product-showcase-frame">
-        <img src="image/YouTubeMultiAutoPlaylist.jpg" 
-             alt="YouTube Multi Auto Playlist 実際の操作画面（サイドウィンドウでの複数画面表示とリスト管理）" 
+        <img src="image/YouTubeMultiAutoPlaylistSC.jpg" 
+             alt="YouTube Multi Auto Playlist 実際の操作画面（サイドパネルでの4画面同時再生とリスト管理）" 
              class="product-showcase-img"
              onclick="openImageModal(this.src, this.alt)">
         <p class="showcase-caption">
@@ -103,13 +128,37 @@
     </div>
   </section>
 
+  <!-- Developer's Note / Background -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #fecaca; background: linear-gradient(180deg, #ffffff 0%, #fef2f2 100%); max-width: 960px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #fef2f2, #fee2e2); border-bottom-color: #fecaca;">
+          <span class="notice-badge" style="background-color: #dc2626;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #991b1b; font-size: 1.25rem; margin: 0;">開発の背景と設計思想 ― 作業を止めずに「自分専用の連続視聴環境」を</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.01rem; line-height: 1.9; color: var(--text-main);">
+          <p style="margin-bottom: 14px;">
+            調べ物やプログラミングをしながら登録チャンネルの新着動画を消化したいとき、YouTubeのメインタブを何度も行き来したり、動画が切り替わるたびに再生速度や音量を調整し直したりするのは意外と大きなストレスになります。<strong>YouTube Multi Auto Playlist</strong> は、ブラウザのサイドパネルに1〜4画面と再生キューを常駐させ、作業を邪魔せずに動画を自動巡回させる目的で開発しました。
+          </p>
+          <p style="margin-bottom: 14px;">
+            しかし、サイドパネル内で動画を次々と自動再生し続けると、<strong>古いプレイヤーのメモリが解放されず重くなる問題</strong>や、<strong>ページ取得だけでは大量チャンネルの新着を素早く集めにくい問題</strong>が見えてきました。
+          </p>
+          <p style="margin-bottom: 0;">
+            そこで <strong>v1.2.0</strong> では、動画終了時に「動画リソース解放（<code>releaseVideo</code>）→ <code>iframe</code> の破棄 → 新規生成」を行う <strong>3段階メモリ解放リセット</strong> と順次 <strong>ロードキュー制御</strong> を導入し、さらに最大2,000件のローカルアーカイブを持つ <strong>RSS一括取得機能</strong> や <strong>音量・再生速度の自動引き継ぎ</strong> を実装しました。軽快さと実用性を両立した、毎日使える連続再生ツールを目指しています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">主な機能とメリット</h2>
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">主な機能と技術的メリット</h2>
         <p class="section-description">
-          YouTubeでの動画巡回や生配信のチェック、作業用BGMの流し見を格段に快適にする機能を凝縮しています。
+          1〜4画面のマルチ表示からRSSによる自動リスト構築、長時間連続再生に耐える3段階メモリ解放までを一つのサイドパネルに凝縮しています。
         </p>
       </div>
 
@@ -123,9 +172,9 @@
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
           </div>
-          <h3 class="feature-heading">サイドウィンドウで1〜4動画を同時再生</h3>
+          <h3 class="feature-heading">サイドパネルで1〜4画面切替＆高さリサイズ</h3>
           <p class="feature-desc">
-            ブラウザのサイドウィンドウ（サブ枠）を活用し、1枠から最大4枠までお好みの分割レイアウトで動画を同時に流すことができます。複数視点の生配信やゲーム実況、ニュースと解説動画などを同時にチェックしたい時に高い利便性を発揮します。
+            Manifest V3 の <code>sidePanel</code> API により、アイコン1クリックでサイドパネルを起動。<code>1 Screen</code>〜<code>4 Screens</code> を即座に切り替えられ、非表示になった枠は自動停止します。下部のプレイリスト（Queue）領域は境界をドラッグして高さを自由に調整できます。
           </p>
         </div>
 
@@ -133,21 +182,31 @@
         <div class="feature-box">
           <div class="feature-icon-circle icon-circle-blue">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <line x1="3" y1="6" x2="3.01" y2="6"></line>
-              <line x1="3" y1="12" x2="3.01" y2="12"></line>
-              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              <path d="M4 11a9 9 0 0 1 9 9"></path>
+              <path d="M4 4a16 16 0 0 1 16 16"></path>
+              <circle cx="5" cy="19" r="1"></circle>
             </svg>
           </div>
-          <h3 class="feature-heading">登録チャンネル等から再生リストを自動生成</h3>
+          <h3 class="feature-heading">ページ取得＆RSS一括収集（最大2,000件保存）</h3>
           <p class="feature-desc">
-            YouTubeの「登録チャンネル」一覧や各動画ページから、見たい動画の再生リストを手間なく自動生成。毎回動画リンクを1つずつ探して登録する面倒な操作から解放され、最新動画を素早く整理できます。
+            開いているYouTubeページから動画一覧を取得する <code>Get Videos</code>（途中停止用 <code>Stop</code> 付き）に加え、<code>+ Ch</code> でチャンネルを登録し <code>RSS</code> ボタンから5件ずつのバッチ処理で高速一括取得が可能。取得データは最大2,000件のローカルアーカイブへ自動マージされます。
           </p>
         </div>
 
         <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-amber">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">日付・アンカータイトル・未視聴フィルタ＆ソート</h3>
+          <p class="feature-desc">
+            折りたたみ可能なフィルタ行から、指定日以降の抽出（<code>From:</code>）、特定タイトルまでの絞り込み（<code>Anchor title</code>）、未視聴のみ（<code>Unwatched</code>）の抽出に対応。取得順やタイムスタンプに基づく昇順（<code>▲</code>）・降順（<code>▼</code>）ソートや、<code>Clear Played</code> による再生済み整理もワンクリックです。
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
         <div class="feature-box">
           <div class="feature-icon-circle icon-circle-green">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -157,89 +216,371 @@
               <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
             </svg>
           </div>
-          <h3 class="feature-heading">リストを順番にシームレス自動再生</h3>
+          <h3 class="feature-heading">自動連続再生＆音量・再生速度の自動引き継ぎ</h3>
           <p class="feature-desc">
-            「自動再生」スイッチをONにしておけば、作成された再生リストの動画を上から順番に次々と自動再生します。作業中のBGM動画や、まとめて視聴したい連続動画を途切れることなくスムーズに楽しめます。
+            <code>Auto</code> スイッチをONにすると動画終了（<code>ended</code>）を検知して3秒後に次の動画を自動再生します。さらに <code>volumechange</code> / <code>ratechange</code> を監視して設定を保存するため、次の動画へ切り替わっても好みの音量・ミュート状態・再生速度がそのまま引き継がれます。
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">省メモリ Lite モード＆3段階メモリ解放リセット</h3>
+          <p class="feature-desc">
+            標準ONの <code>Lite</code> モードでは軽量な <code>/embed/</code> プレイヤーを使用（Referer最適化でエラー152-4を回避）。埋め込み制限動画はOFFで通常Watch表示に切替可能です。さらに動画終了ごとに「<code>releaseVideo</code> 解放 → <code>iframe</code> 破棄 → 再生成」の3段階リセットとロードキュー制御を行い、メモリ蓄積を抑えます。
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-teal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">通常タブ無干渉＆ローカル完結の安全設計</h3>
+          <p class="feature-desc">
+            <code>declarativeNetRequest</code> のヘッダー調整はサイドパネル内の <code>sub_frame</code> 等に厳格限定されているため、通常のYouTubeタブやライブチャットに影響しません。動画リスト・RSSチャンネル・アーカイブ・再生設定はすべて <code>chrome.storage.local</code> に保存され、外部送信は一切行われません。
           </p>
         </div>
       </div>
 
-      <!-- Recommended Usage & Caution Notice Section -->
-      <div id="notes" class="notice-section">
-        <div class="notice-card">
-          <div class="notice-header">
-            <span class="notice-badge">重要</span>
-            <h3 class="notice-title">ご利用にあたっての推奨事項とお知らせ</h3>
-          </div>
-          <div class="notice-body">
-            <!-- Item 1: Auto-play recommendation -->
-            <div class="notice-item">
-              <div class="notice-item-icon" style="color: #2563eb;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-              </div>
-              <div class="notice-item-content">
-                <h4>自動再生機能は「1画面」での再生をお勧めします</h4>
-                <p>
-                  確実かつ安定した動画の連続遷移・プレイリストの進行を維持するため、<strong>自動再生をONにしてご利用の際は「1画面」での再生を推奨</strong>いたします。
-                </p>
-              </div>
-            </div>
-
-            <!-- Item 2: Stopping frames during multi-screen -->
-            <div class="notice-item">
-              <div class="notice-item-icon" style="color: #d97706;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-              </div>
-              <div class="notice-item-content">
-                <h4>多画面再生中の他枠の停止操作について</h4>
-                <p>
-                  複数画面（2〜4画面）で同時に再生している最中に、他の再生枠を停止（枠自体のクローズや停止操作）すると、全体の再生管理に悪影響を与える可能性がありますのでご注意ください。
-                </p>
-                <div class="notice-subnote">
-                  [補足] 動画プレイヤー自体の「一時停止（Pause）」操作であれば不具合が起こることはありませんので、安心してお使いいただけます。
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Simple Steps / Usage Guide -->
-      <div id="usage" class="section-header" style="margin-top: 60px;">
-        <h2 class="section-title">使い方ガイド（3ステップ）</h2>
-        <p class="section-description">インストールから視聴開始まで、面倒な初期設定なしですぐにお使いいただけます。</p>
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">How to Use</div>
+        <h2 class="section-title">使い方ガイド（4ステップ）＆操作パネルリファレンス</h2>
+        <p class="section-description">
+          インストールからプレイリスト作成・連続再生まで、直感的なサイドパネル操作ですぐに始められます。
+        </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
           <span class="step-num">STEP 1</span>
           <h4 class="step-title">拡張機能をインストール</h4>
-          <p class="step-text">Chrome ウェブストアからワンクリックでブラウザに追加します（Google Chrome対応）。</p>
+          <p class="step-text">Chrome ウェブストアから「YouTube Multi Auto Playlist」をワンクリックで追加します（無料）。</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 2</span>
-          <h4 class="step-title">YouTubeでリストを生成</h4>
-          <p class="step-text">YouTubeの登録チャンネルページ等を開き、サイドウィンドウからプレイリストを作成します。</p>
+          <h4 class="step-title">サイドパネルを開く</h4>
+          <p class="step-text">ブラウザ右上の拡張機能アイコンをクリックすると、右側に専用のサイドパネルが開きます。</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 3</span>
-          <h4 class="step-title">画面数・自動再生を選んで視聴</h4>
-          <p class="step-text">1〜4画面の同時再生や、1画面での快適な自動連続再生をお好みに合わせて開始できます。</p>
+          <h4 class="step-title">動画リストを作成・絞り込み</h4>
+          <p class="step-text">YouTubeの登録チャンネル等で <code>Get Videos</code> を押すか、<code>+ Ch</code> → <code>RSS</code> で取得し、日付や <code>Unwatched</code> で絞り込みます。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">画面数・Lite・Auto を選んで視聴</h4>
+          <p class="step-text"><code>1〜4 Screens</code>、省メモリ <code>Lite</code>、自動再生 <code>Auto</code> を好みに合わせて設定し、快適な再生を開始します。</p>
+        </div>
+      </div>
+
+      <!-- Control Panel Visual Guide -->
+      <div class="product-showcase-frame" style="margin: 28px auto 36px;">
+        <img src="image/YouTubeMultiAutoPlaylistSC3.jpg"
+             alt="YouTube Multi Auto Playlist 操作メニュー番号付きガイド（[1]〜[12]）"
+             class="product-showcase-img"
+             style="cursor: default;">
+        <p class="showcase-caption">操作メニュー番号付きガイド（[1]〜[12]）</p>
+      </div>
+
+      <!-- 3 Practical List Acquisition Guides -->
+      <div class="section-header" style="margin-top: 24px;">
+        <h3 class="section-title" style="font-size: 1.45rem;">目的別：動画リストの獲得手順（番号ガイド）</h3>
+        <p class="section-description">
+          上の番号付きメニュー（<strong>[1]〜[12]</strong>）を使った、代表的な3つのリスト作成パターンです。
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">パターン 1：特定チャンネル・プレイリスト</span>
+          <h3>日付などを指定せず、そのまま全リストを獲得する方法</h3>
+          <p>
+            1. 取得したいYouTubeチャンネルの「動画」タブ、またはプレイリストのページを開きます。<br>
+            2. <strong>[1]</strong> でオプション行を開き、<strong>[8]</strong> <code>From:</code>（右隣の <code>×</code> でクリア）と <strong>[9]</strong> <code>Anchor title</code> が空になっていることを確認します（未視聴のみにしたい場合は <strong>[10]</strong> <code>Unwatched</code> をON）。<br>
+            3. <strong>[2]</strong> <code>Get Videos</code> をクリックすると、開いているページの動画一覧が自動でリストに追加されます。必要に応じて <strong>[3]</strong>（<code>▲</code> / <code>▼</code>）で並べ替え、<strong>[4]</strong>〜<strong>[6]</strong> で画面数・<code>Lite</code>・<code>Auto</code> を選んで再生します。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">パターン 2：お気に入りチャンネル × 日付指定</span>
+          <h3>お気に入りチャンネルを指定日付までさかのぼって全部入れる方法</h3>
+          <p>
+            1. YouTubeの「登録チャンネル」ページ（<code>youtube.com/feed/subscriptions</code>）を開きます。<br>
+            2. <strong>[1]</strong> を押してオプション行を展開します。<br>
+            3. お気に入りチャンネルをRSSで一括収集したい場合は、チャンネルページで <strong>[11]</strong> <code>+ Ch</code> を押して登録します（登録件数が <strong>[12]</strong> に表示されます）。<br>
+            4. <strong>[8]</strong> <code>From:</code> にさかのぼりたい開始日（例：<code>2026/10/06</code>）を入力します（未視聴のみなら <strong>[10]</strong> もON）。<br>
+            5. <strong>[2]</strong> <code>Get Videos</code>（RSS登録済みなら <strong>[12]</strong> <code>RSS</code>）をクリックすると、指定した日付以降の動画がすべてリストへ自動収集されます。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">パターン 3：動画タイトル指定（アンカー）</span>
+          <h3>動画名を指定して、そこまでさかのぼったリストを獲得する方法</h3>
+          <p>
+            日付指定（<strong>[8]</strong>）でうまくリストを獲得できない場合でも、目印となる動画タイトルを指定しておくことで、その動画の手前まで確実にリストを獲得できる機能です。<br>
+            1. YouTubeの「登録チャンネル」ページ（または対象のチャンネルページ）を開きます。<br>
+            2. <strong>[1]</strong> でオプション行を開き、日付指定が不要な場合は <strong>[8]</strong> の右隣の <code>×</code> ボタンで日付をクリアします。<br>
+            3. <strong>[9]</strong> <code>Anchor title</code> に、さかのぼりの目印にしたい動画タイトル（前回最後に視聴した動画名やその一部など）を入力します。<br>
+            4. <strong>[2]</strong> <code>Get Videos</code>（RSS登録済みチャンネルなら <strong>[12]</strong> <code>RSS</code>）をクリックすると、最新動画から <strong>[9]</strong> で指定した動画に到達するまでさかのぼってリストを獲得できます。
+          </p>
+        </div>
+      </div>
+
+      <!-- Control Panel Reference Table -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 26%;">番号 / UI要素</th>
+              <th style="width: 22%;">機能</th>
+              <th style="width: 52%;">動作の詳細・活用のコツ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>[1]</strong> <code>▾</code> / <code>▸</code> ボタン</td>
+              <td>オプション行の開閉</td>
+              <td>日付指定・アンカータイトル・未視聴フィルタ・RSS登録ボタンが並ぶ下段メニューを表示／非表示にします。</td>
+            </tr>
+            <tr>
+              <td><strong>[2]</strong> <code>Get Videos</code> / <code>Stop</code></td>
+              <td>YouTubeページから取得</td>
+              <td>現在開いているYouTubeの登録チャンネル・チャンネル動画一覧・プレイリストから動画を自動収集します。途中で止めたい場合は <code>Stop</code> で中断できます。</td>
+            </tr>
+            <tr>
+              <td><strong>[3]</strong> <code>▲</code> / <code>▼</code></td>
+              <td>リストの昇順・降順ソート</td>
+              <td>取得順やタイムスタンプを基準にキュー内の動画を並べ替え、先頭インデックスをリセットします。</td>
+            </tr>
+            <tr>
+              <td><strong>[4]</strong> <code>1〜4 Screens</code></td>
+              <td>表示画面数の切替</td>
+              <td>サイドパネル内に表示する画面数を1〜4画面で切り替えます。非表示になった枠は自動で停止します。</td>
+            </tr>
+            <tr>
+              <td><strong>[5]</strong> <code>Lite</code> スイッチ</td>
+              <td>省メモリモード切替</td>
+              <td>ONで軽量な <code>/embed/</code> プレイヤーを使用しメモリ消費を抑えます。埋め込み制限動画ではOFFにして通常Watch表示に切り替えられます。</td>
+            </tr>
+            <tr>
+              <td><strong>[6]</strong> <code>Auto</code> スイッチ</td>
+              <td>自動連続再生のON/OFF</td>
+              <td>ONにすると動画終了（<code>ended</code>）を検知し、3秒待機後に次の動画を自動で読み込み・再生します。</td>
+            </tr>
+            <tr>
+              <td><strong>[7]</strong> 赤い <code>■</code> ボタン</td>
+              <td>全画面一括停止</td>
+              <td>再生中のすべての画面をまとめて停止・リセットします。</td>
+            </tr>
+            <tr>
+              <td><strong>[8]</strong> <code>From:</code> ＋ <code>×</code></td>
+              <td>日付フィルタ</td>
+              <td>指定した日付以降に公開された動画のみを抽出します。右隣の <code>×</code> で日付指定をワンクリックで解除できます。</td>
+            </tr>
+            <tr>
+              <td><strong>[9]</strong> <code>Anchor title</code></td>
+              <td>基準動画タイトル指定</td>
+              <td>ここに入力した動画タイトルに到達するまでさかのぼってリストを取得します（前回の続きから収集したいときに便利です）。</td>
+            </tr>
+            <tr>
+              <td><strong>[10]</strong> <code>Unwatched</code></td>
+              <td>未視聴のみ抽出</td>
+              <td>チェックを入れると、まだ視聴していない動画だけを絞り込んでリストに追加します。</td>
+            </tr>
+            <tr>
+              <td><strong>[11]</strong> <code>+ Ch</code></td>
+              <td>RSSチャンネル登録</td>
+              <td>開いているYouTubeチャンネルをお気に入りRSS取得リストへ追加します。</td>
+            </tr>
+            <tr>
+              <td><strong>[12]</strong> <code>RSS (件数)</code></td>
+              <td>RSS一括取得</td>
+              <td>登録済みチャンネルのRSSフィードを5件ずつバッチ取得し、最大2,000件のローカルアーカイブへマージします。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Use Cases & Comparison -->
+      <div id="usecases" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Use Cases</div>
+        <h2 class="section-title">おすすめの活用シーン＆姉妹ツールとの使い分け</h2>
+        <p class="section-description">
+          日々の情報収集や作業用BGM消化に最適な運用パターンと、姉妹ツール「4 Screen Viewer」との違いをご紹介します。
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 1 Screen / Auto ON / Unwatched ON</span>
+          <h3>登録チャンネルの未視聴動画をラジオ感覚で消化</h3>
+          <p>
+            <code>Unwatched</code> と <code>From:</code> フィルタでまだ見ていない新着動画だけを抽出し、<code>1 Screen</code> ＋ <code>Auto ON</code> で連続再生。設定した倍速や音量を維持したまま、メイン画面での作業中に自動で消化できます。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: + Ch / RSS / Lite ON</span>
+          <h3>RSSアーカイブを使ったお気に入りチャンネル巡回</h3>
+          <p>
+            よく見るチャンネルを <code>+ Ch</code> で登録しておけば、毎回登録チャンネルページを開いてスクロールしなくても <code>RSS</code> ボタン1つで最新動画を高速収集できます。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 2〜4 Screens / Lite ON</span>
+          <h3>サイドパネルでの小規模マルチ配信チェック</h3>
+          <p>
+            メインのブラウザ画面で記事やSNSを見ながら、右側のサイドパネルで2〜4つのライブ配信や解説動画を同時表示。省メモリ <code>Lite</code> モードにより狭いサイドパネルでも軽快に動作します。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 1 Screen / 再生速度維持</span>
+          <h3>技術講座・語学動画のながら学習</h3>
+          <p>
+            1.5倍速や2倍速で技術解説動画を連続再生したい場合でも、次の動画へ切り替わるたびに速度が自動復元されるため、キーボードやマウスを動画側へ持ち替える手間がありません。
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison with Sister Extension -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">比較項目</th>
+              <th style="width: 39%;">YouTube Multi Auto Playlist（本拡張機能）</th>
+              <th style="width: 39%;"><a href="4-screen-viewer.html" style="color: var(--primary); text-decoration: underline;">4 Screen Viewer</a>（姉妹ツール）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>表示場所・方式</strong></td>
+              <td>ブラウザ右側のサイドパネル（Side Panel）で1〜4画面表示</td>
+              <td>1つのブラウザタブ全体を4種レイアウトで分割表示</td>
+            </tr>
+            <tr>
+              <td><strong>対応動画サイト</strong></td>
+              <td>YouTube 特化（登録チャンネル取得・RSS収集・再生リスト自動化）</td>
+              <td>YouTube、ニコニコ動画、Twitch、Vimeo、汎用iframe</td>
+            </tr>
+            <tr>
+              <td><strong>主な強み</strong></td>
+              <td><code>Get Videos</code> / <code>RSS</code> による自動リスト作成、未視聴・日付フィルタ、連続自動再生、音量/速度引き継ぎ</td>
+              <td><code>4 Grid</code> / <code>2 Side</code> / <code>1 Main + 2 Sub</code> / <code>1 Main + 3 Sub</code> の柔軟な大画面レイアウト切替</td>
+            </tr>
+            <tr>
+              <td><strong>おすすめの選び方</strong></td>
+              <td>「メイン作業の横で、登録チャンネルやRSSの新着動画を自動で連続再生したい」場合</td>
+              <td>「ライブ配信やコラボ放送のURLを手動で並べて、画面全体で多視点視聴したい」場合</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ Section -->
+      <div id="faq" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">FAQ &amp; Troubleshooting</div>
+        <h2 class="section-title">よくある質問とトラブルシューティング</h2>
+        <p class="section-description">
+          連続再生時の挙動やRSS取得、メモリ最適化、プライバシー保護に関する疑問にお答えします。
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3 class="faq-q">Q1. YouTubeで埋め込みエラー（152-4など）が表示された場合は？</h3>
+          <p class="faq-a">
+            投稿者側で外部埋め込みが禁止されている動画の場合、<code>Lite</code> モードでは再生できないことがあります。その場合は上部バーの <strong><code>Lite</code> のチェックを外してOFF</strong> にしてください。通常のWatchモード（シアター全画面表示）に切り替わり再生できるようになります。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q2. 次の動画に切り替わったとき、音量や再生速度は維持されますか？</h3>
+          <p class="faq-a">
+            はい、維持されます。拡張機能内のスクリプトが <code>volumechange</code> と <code>ratechange</code> を監視して <code>chrome.storage.local</code> に保存しているため、次の動画が読み込まれた際に自動で前回の音量・ミュート状態・再生速度が復元されます。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q3. <code>Get Videos</code> と <code>RSS</code> 機能はどのように使い分ければよいですか？</h3>
+          <p class="faq-a">
+            今開いている登録チャンネルや特定チャンネルの動画一覧からすぐリストを作りたいときは <code>Get Videos</code> が手軽です。一方、決まった複数チャンネルの新着を毎回素早く集めたい場合は、<code>+ Ch</code> で登録しておき <code>RSS</code> ボタンで一括取得する方が高速で安定しています。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q4. 長時間連続再生しているとブラウザが重くなりませんか？</h3>
+          <p class="faq-a">
+            <code>Lite</code> モードをONにしておくことでベースメモリ消費を抑えられるほか、動画終了ごとに「動画リソース解放（<code>releaseVideo</code>）→ <code>iframe</code> 破棄 → 再生成」の3段階リセットを実行しているため、長時間視聴でもメモリが溜まりにくい設計になっています。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q5. 通常のYouTube閲覧タブやライブチャットに影響はありませんか？</h3>
+          <p class="faq-a">
+            ありません。<code>background.js</code> のヘッダー調整ルールは <code>sub_frame</code> 等に限定されており、コンテンツスクリプトのUI非表示・DOM削除処理もサイドパネル内のプレイヤーフレームでのみ動作します。通常のYouTubeタブはそのままお使いいただけます。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q6. 取得した動画リストやRSSチャンネル情報は外部へ送信されますか？</h3>
+          <p class="faq-a">
+            一切送信されません。プレイリスト・RSS登録チャンネル・最大2,000件のアーカイブ・再生設定はすべてお使いのブラウザ内の <code>chrome.storage.local</code> にのみ保存されます（詳細は <a href="privacy.html" style="color: var(--primary); text-decoration: underline;">プライバシーポリシー</a> をご覧ください）。
+          </p>
+        </div>
+      </div>
+
+      <!-- Changelog Section -->
+      <div id="changelog" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Release Notes</div>
+        <h2 class="section-title">更新履歴 (Changelog)</h2>
+        <p class="section-description">
+          YouTube Multi Auto Playlist の機能追加および安定性・省メモリ改善の履歴です。
+        </p>
+      </div>
+
+      <div class="notice-card" style="border-color: #cbd5e1; margin-bottom: 48px;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Changelog</span>
+          <h3 class="notice-title" style="color: #0f172a;">バージョン履歴 ― 最新 v1.2.0</h3>
+        </div>
+        <div class="notice-body">
+          <div class="changelog-scroll-box">
+            <ul class="feature-list" style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.85; font-size: 0.95rem;">
+              <li style="margin-bottom: 12px;">
+                <strong>v1.2.0 (2026-11-23):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li><strong>省メモリ <code>Lite</code> モード＆3段階メモリ解放リセットを実装：</strong> <code>/embed/</code> 向け Referer 最適化（エラー152-4回避）と通常Watchモードの切替に対応。動画終了時の <code>releaseVideo</code> 解放・<code>iframe</code> 破棄・再生成およびロードキュー（<code>videoLoadQueue</code>）による順次ロードで安定性を大幅に向上しました。</li>
+                  <li><strong>RSSチャンネル登録・バッチ取得＆アーカイブ機能を追加：</strong> <code>+ Ch</code> でチャンネルを登録し、<code>RSS</code> ボタンから5件ずつのバッチ処理で新着動画を高速取得。最大2,000件のローカルアーカイブへ自動マージします。</li>
+                  <li><strong>フィルタ＆リスト操作の強化：</strong> 日付指定（<code>From:</code>）、アンカータイトル指定（<code>Anchor title</code>）、未視聴のみ（<code>Unwatched</code>）フィルタ、昇順・降順ソート（<code>▲</code> / <code>▼</code>）、およびプレイリスト領域の高さドラッグリサイズを追加しました。</li>
+                  <li><strong>音量・再生速度の自動引き継ぎ＆不要DOM物理削除：</strong> <code>volumechange</code> / <code>ratechange</code> の保存・復元に対応し、Watchモード再生時もライブチャット・コメント・関連動画DOMを物理削除して負荷を軽減しました。</li>
+                </ul>
+              </li>
+              <li>
+                <strong>v1.1.x 以前 (ベースラインリリース):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li>Chrome サイドパネル上で1〜4画面の同時再生と、YouTube登録チャンネル等からの自動プレイリスト生成・順番自動再生機能を公開。</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- Bottom CTA Banner -->
       <div class="product-bottom-cta">
-        <h3>今すぐ無料で利用開始</h3>
-        <p>日々の動画視聴やライブ配信の同時チェックをもっと自由に、もっと快適に。</p>
+        <h3>v1.2.0 を今すぐ無料で利用開始</h3>
+        <p>サイドパネルでの自動連続再生・RSS収集・省メモリ Lite モードで、日々の動画視聴をもっとスマートに。</p>
         <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="btn-store-primary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
@@ -297,7 +638,7 @@
               <h3>4 Screen Viewer</h3>
             </div>
           </div>
-          <p>1つのタブを2×2の4画面グリッドに分割し、YouTubeやニコニコ動画などの複数配信を同時視聴できるマルチビューア。</p>
+          <p>1つのタブで最大4動画を同時視聴できるマルチビューア。4種類のレイアウト切替や省メモリLiteモード、YouTube・Twitch・ニコニコ動画等に対応。</p>
         </a>
       </div>
     </div>

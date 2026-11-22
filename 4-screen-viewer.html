@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4 Screen Viewer - 1タブで最大4動画を同時視聴できる4画面ビューア | SecreAI & Tools</title>
-  <meta name="description" content="1つのブラウザタブ内で最大4つの動画（YouTube、ニコニコ動画、Vimeo、Dailymotion等）を2×2グリッドで同時に並べて再生できるGoogle Chrome拡張機能「4 Screen Viewer」の紹介ページです。">
+  <title>4 Screen Viewer - 4種レイアウト切替＆省メモリ対応のマルチ画面動画ビューア | SecreAI &amp; Tools</title>
+  <meta name="description" content="1つのブラウザタブ内で最大4つの動画（YouTube、ニコニコ動画、Twitch、Vimeo等）を同時視聴できるGoogle Chrome拡張機能「4 Screen Viewer」の公式紹介ページ。4種類のレイアウト切替と省メモリLite (Embed) モード、更新履歴を掲載。">
   <link rel="canonical" href="https://amachi-tools.win/4-screen-viewer.html">
   <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/4-screen-viewer.html">
   <link rel="alternate" hreflang="en" href="https://amachi-tools.win/4-screen-viewer-en.html">
@@ -16,6 +16,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "4 Screen Viewer",
+    "softwareVersion": "1.4.0",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "inLanguage": "ja",
+    "description": "1つのブラウザタブ内で最大4つの動画（YouTube、ニコニコ動画、Twitch、Vimeo等）を同時視聴できるマルチ画面ビューア拡張機能。4種類のレイアウト切替と省メモリLite (Embed) モードを搭載。",
+    "url": "https://amachi-tools.win/4-screen-viewer.html",
+    "downloadUrl": "https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=ja",
+    "author": {
+      "@type": "Person",
+      "name": "amachi"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -24,12 +47,14 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
-        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
       </a>
       <nav class="nav-menu">
         <a href="index.html">トップページへ戻る</a>
+        <a href="#layouts">レイアウト</a>
         <a href="#features">主な特徴</a>
         <a href="#usage">使い方</a>
+        <a href="#faq">FAQ・更新履歴</a>
         <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" style="color: #2563eb; font-weight: 700;">Chrome ストア</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -64,11 +89,12 @@
       <div class="product-badge-group">
         <span class="badge-4v-blue">Google Chrome 拡張機能</span>
         <span class="tool-type-badge chrome-badge">無料公開中 (Free)</span>
+        <span class="tool-type-badge" style="background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe;">最新: v1.4.0 (2026-11-22)</span>
       </div>
       <h1 class="product-title">4 Screen Viewer</h1>
       <p class="product-subtitle">
-        1つのブラウザタブ内で<strong>最大4つの動画を2×2グリッドで同時に並べて再生</strong>！<br>
-        YouTube、ニコニコ動画、Vimeo、Dailymotionなど多彩な動画配信を1画面で手軽に同時視聴できる拡張機能です。
+        1つのブラウザタブ内で<strong>最大4つの動画を同時に並べて視聴できる</strong>マルチ画面動画ビューア。<br>
+        v1.4.0 で <strong>4種類の柔軟なレイアウト切替</strong> と <strong>省メモリ <code>Lite (Embed)</code> モード</strong> を搭載し、YouTube・ニコニコ動画・Twitch・Vimeo などを快適かつ低負荷に同時再生できます。
       </p>
 
       <div class="product-actions">
@@ -86,7 +112,7 @@
       <!-- Screenshot Showcase Frame -->
       <div class="product-showcase-frame">
         <img src="image/4ScreenViewer.png" 
-             alt="4 Screen Viewer 実際の操作画面（2×2グリッドでの4画面同時視聴）" 
+             alt="4 Screen Viewer 実際の操作画面（1つのブラウザタブ内でのマルチ画面同時視聴）" 
              class="product-showcase-img"
              onclick="openImageModal(this.src, this.alt)">
         <p class="showcase-caption">
@@ -102,13 +128,115 @@
     </div>
   </section>
 
+  <!-- Developer's Note / Background -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #bfdbfe; background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%); max-width: 960px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-bottom-color: #bfdbfe;">
+          <span class="notice-badge" style="background-color: #2563eb;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #1e3a8a; font-size: 1.25rem; margin: 0;">開発の背景と設計思想 ― 低負荷で途切れない多視点視聴を実現するために</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.01rem; line-height: 1.9; color: var(--text-main);">
+          <p style="margin-bottom: 14px;">
+            コラボ配信や大会中継、複数のニュース番組を同時に追いたいとき、ブラウザのウィンドウを手動で4つ並べてサイズ調整し、タブを行き来しながら管理するのは大きな手間がかかります。<strong>4 Screen Viewer</strong> は、拡張機能のアイコンを1回クリックするだけで専用ビューアを開き、1つのタブ内で複数動画をスマートにまとめられるよう開発しました。
+          </p>
+          <p style="margin-bottom: 14px;">
+            一方で、ブラウザ上でYouTube動画を4つ同時に開くと、各フレームが裏側でライブチャットやコメント欄・関連動画のスクリプトを読み込み続け、<strong>メモリ消費が急激に膨らむ課題</strong>や、逆に軽量な埋め込みプレイヤーでは配信側の制限で<strong>「エラー 152-4」が出て再生できない課題</strong>に直面します。
+          </p>
+          <p style="margin-bottom: 0;">
+            そこで <strong>v1.4.0</strong> では、<code>declarativeNetRequest</code> による埋め込み時 Referer 最適化と省メモリな <strong><code>Lite (Embed)</code> モード</strong> を標準搭載しつつ、制限動画に出会った瞬間だけワンクリックで <strong>通常（Watch）モード</strong> へ切り替えられるハイブリッド方式を採用しました。さらに非表示フレームの完全破棄や重い裏処理DOMの物理削除を組み合わせることで、<strong>「軽さ」と「再生の確実性」の両立</strong>を追求しています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layouts Section -->
+  <section id="layouts" class="section" style="padding-bottom: 16px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Layouts (v1.4.0 New)</div>
+        <h2 class="section-title">視聴スタイルに合わせて選べる4種類のレイアウト</h2>
+        <p class="section-description">
+          上部コントロールバーのドロップダウンから4つの画面構成をいつでも切り替えられます。選択したレイアウトは <code>localStorage</code> に自動保存され、次回起動時もそのまま復元されます。
+        </p>
+      </div>
+
+      <div class="layout-preview-grid">
+        <!-- Layout 1 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-2x2" aria-hidden="true">
+            <div class="diag-cell">1</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+            <div class="diag-cell">4</div>
+          </div>
+          <h3 class="layout-preview-title">4 Grid (2x2)</h3>
+          <span class="layout-preview-meta">4画面均等 (1fr 1fr / 1fr 1fr)</span>
+          <p class="layout-preview-desc">
+            画面全体を縦横2×2の等サイズに分割します。4つの配信やニュース番組をすべて同じ大きさで公平にモニタリングしたい場合に最適です。
+          </p>
+        </div>
+
+        <!-- Layout 2 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1x2" aria-hidden="true">
+            <div class="diag-cell">1</div>
+            <div class="diag-cell">2</div>
+          </div>
+          <h3 class="layout-preview-title">2 Side (1x2)</h3>
+          <span class="layout-preview-meta">2画面横並び (1fr 1fr / 1fr)</span>
+          <p class="layout-preview-desc">
+            左右2画面を広く使う横並び構成です。2人コラボ配信、解説動画と資料動画の比較、1画面あたりの面積を確保したいときに便利です。
+          </p>
+        </div>
+
+        <!-- Layout 3 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1-2" aria-hidden="true">
+            <div class="diag-cell diag-main">1 (Main)</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+          </div>
+          <h3 class="layout-preview-title">1 Main + 2 Sub</h3>
+          <span class="layout-preview-meta">左大1＋右小2 (2.5fr : 1fr)</span>
+          <p class="layout-preview-desc">
+            左側に大きなメイン枠、右側に2つのサブ枠を縦積みする3画面構成です。本配信を主役にしながらサブ視点や別カメラを並べて追えます。
+          </p>
+        </div>
+
+        <!-- Layout 4 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1-3" aria-hidden="true">
+            <div class="diag-cell diag-main">1 (Main)</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+            <div class="diag-cell">4</div>
+          </div>
+          <h3 class="layout-preview-title">1 Main + 3 Sub</h3>
+          <span class="layout-preview-meta">左大1＋右小3 (3fr : 1fr)</span>
+          <p class="layout-preview-desc">
+            左側に最大サイズのメイン枠（幅比 3:1）、右側に3つのサブ枠を縦に並べます。4人チーム戦や推し視点＋仲間3視点の同時視聴にぴったりです。
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <p class="notice-subnote" style="max-width: 860px; text-align: left;">
+          <strong>メモリ解放と入力URL保持の両立：</strong>4画面から「2 Side (1x2)」や「1 Main + 2 Sub」へ枠数を減らすと、非表示になったスロット内の動画フレーム（<code>iframe</code>）だけがDOMから完全破棄されてメモリが即座に解放されます。一方、<strong>入力欄のURLテキスト自体は消えずに残る</strong>ため、再び4画面に戻した際も入力し直すことなく <code>Load</code> できます。
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">主な機能とメリット</h2>
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">主な機能と技術的メリット</h2>
         <p class="section-description">
-          複数の動画配信をひとつのタブに集約し、シンプルかつ効率的に同時チェックできます。
+          マルチ視聴の使いやすさだけでなく、長時間視聴でもブラウザが重くなりにくい省メモリ設計と安全性を細部まで作り込んでいます。
         </p>
       </div>
 
@@ -123,70 +251,400 @@
               <rect x="3" y="14" width="7" height="7"></rect>
             </svg>
           </div>
-          <h3 class="feature-heading">2×2グリッドの4画面同時視聴</h3>
+          <h3 class="feature-heading">4種類の柔軟なレイアウト切替</h3>
           <p class="feature-desc">
-            1つのブラウザタブを均等な2×2の4画面グリッドに分割。複数のウィンドウやタブを行き来する必要がなく、デスクトップをスッキリ保ちながら複数動画を同時にモニタリングできます。
+            <code>4 Grid (2x2)</code>・<code>2 Side (1x2)</code>・<code>1 Main + 2 Sub</code>・<code>1 Main + 3 Sub</code> の4パターンをワンクリックで切り替え可能。選択した構成は自動保存され、複数ウィンドウを並べる手間なく1タブ内で常に理想の視聴画面を再現できます。
           </p>
         </div>
 
         <!-- Feature 2 -->
         <div class="feature-box">
-          <div class="feature-icon-circle icon-circle-red">
+          <div class="feature-icon-circle icon-circle-green">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
             </svg>
           </div>
-          <h3 class="feature-heading">多彩な動画プラットフォームに対応</h3>
+          <h3 class="feature-heading">省メモリ「Lite (Embed)」＆通常モード切替</h3>
           <p class="feature-desc">
-            YouTubeをはじめ、ニコニコ動画、Vimeo、Dailymotionなどの主要動画配信サービスに対応。異なる配信プラットフォームの動画であっても、同じ画面内で同時に並べて再生できます。
+            標準ONの <code>Lite (Embed)</code> モードは軽量な埋め込みプレイヤーを使用し、Referer最適化ルールによりエラー152-4を抑えながら通常ページ再生と比べてメモリ消費を約30〜40%規模まで削減します。投稿者が埋め込み禁止にしている動画に当たった場合も、チェックを外すだけで即座に通常（Watch）モードへ切り替えて視聴を継続できます。
           </p>
         </div>
 
         <!-- Feature 3 -->
         <div class="feature-box">
-          <div class="feature-icon-circle icon-circle-green">
+          <div class="feature-icon-circle icon-circle-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">不要DOM削除＆フレーム破棄の軽量化設計</h3>
+          <p class="feature-desc">
+            親タブ起動直後に <code>window.stop()</code> で元ページの重いスクリプト読み込みを遮断し、各枠はURL読み込み時にのみ動的生成します。<code>Clear</code> やモード切替・レイアウト縮小時には古い <code>iframe</code> を <code>about:blank</code> 遷移後にDOMから完全破棄。さらに通常モード使用時でもライブチャットやコメント欄・関連動画DOMを物理削除し、自動再生補助タイマーも再生確認後に停止してメモリ膨張を防ぎます。
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
             </svg>
           </div>
-          <h3 class="feature-heading">URL貼り付け＆自動変換</h3>
+          <h3 class="feature-heading">主要動画サイト＆汎用埋め込みの自動URL変換</h3>
           <p class="feature-desc">
-            見たい動画の通常URLを入力フォームにコピー＆ペーストするだけで、プレイヤー用の埋め込み形式へ自動変換。複雑な設定やHTMLの知識は一切不要で、誰でも直感的にすぐ再生を開始できます。
+            普段ブラウザで見ている通常URLを貼り付けるだけで埋め込み用URLへ自動変換します。YouTube（通常・<code>youtu.be</code>・<code>/live/</code>）、ニコニコ動画、Twitch（チャンネル配信・アーカイブ・クリップ）、Vimeo に加え、HTMLの <code>&lt;iframe src="..."&gt;</code> タグからのURL自動抽出にも対応しています。
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-amber">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">1クリック起動・Enter即再生・没入ダークUI</h3>
+          <p class="feature-desc">
+            ツールバーの拡張機能アイコンを押すだけで新しい専用ビューアタブが即起動します。URL入力欄に貼り付けて <code>Enter</code> キーを押すだけですぐに読み込みが開始され、無駄な余白やヘッダーを排した黒背景（<code>#0f0f0f</code>）のシアター表示で映像に集中できます。
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-teal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">通常タブ無干渉＆ローカル完結の安全設計</h3>
+          <p class="feature-desc">
+            最新の Manifest V3 に準拠し、ヘッダー調整ルールは <code>sub_frame</code> 等の専用条件に限定しているため、通常のブラウザタブで開いているYouTubeのチャットやセキュリティ動作に干渉しません。入力したURLやレイアウト設定もすべてブラウザ内の <code>localStorage</code> でのみ管理され、外部サーバーへの送信は一切行われません。
           </p>
         </div>
       </div>
 
+      <!-- Supported Platforms Table -->
+      <div id="platforms" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Compatibility</div>
+        <h2 class="section-title">対応動画プラットフォーム＆URL自動変換一覧</h2>
+        <p class="section-description">
+          各配信サイトの共有URLをそのまま貼り付けるだけで、専用の変換ロジックが最適な再生形式を自動判定します。
+        </p>
+      </div>
+
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">プラットフォーム</th>
+              <th style="width: 30%;">対応URL・入力形式の例</th>
+              <th style="width: 28%;">自動変換・再生方式</th>
+              <th style="width: 24%;">特徴・補足</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>YouTube</strong></td>
+              <td><code>youtube.com/watch?v=...</code><br><code>youtu.be/...</code><br><code>youtube.com/live/...</code></td>
+              <td><strong>Lite ON:</strong> <code>/embed/&lt;ID&gt;?autoplay=1&amp;rel=0</code><br><strong>Lite OFF:</strong> <code>watch?v=&lt;ID&gt;&amp;subscreen=1</code></td>
+              <td>Referer最適化とシアター全画面化の両方に対応。埋め込み制限動画もOFF切替で再生可能。</td>
+            </tr>
+            <tr>
+              <td><strong>ニコニコ動画</strong></td>
+              <td><code>nicovideo.jp/watch/sm...</code><br><code>mosasaur.nicovideo.jp/watch/...</code></td>
+              <td><code>embed.nicovideo.jp/watch/&lt;ID&gt;</code></td>
+              <td><code>sm</code> / <code>so</code> / <code>nm</code> および数字IDを自動抽出し埋め込みプレイヤーへ変換。</td>
+            </tr>
+            <tr>
+              <td><strong>Twitch</strong></td>
+              <td><code>twitch.tv/&lt;channel&gt;</code><br><code>twitch.tv/videos/&lt;id&gt;</code><br><code>clips.twitch.tv/...</code> / <code>/clip/...</code></td>
+              <td><code>player.twitch.tv/</code> または<br><code>clips.twitch.tv/embed</code></td>
+              <td>ライブ配信チャンネル・アーカイブ動画・クリップの3形式を自動判別し自動再生。</td>
+            </tr>
+            <tr>
+              <td><strong>Vimeo</strong></td>
+              <td><code>vimeo.com/&lt;id&gt;</code></td>
+              <td><code>player.vimeo.com/video/&lt;id&gt;</code></td>
+              <td>動画IDを抽出し、すっきりとした専用プレイヤー形式で枠内にフィット表示。</td>
+            </tr>
+            <tr>
+              <td><strong>その他・汎用</strong></td>
+              <td><code>&lt;iframe src="..."&gt;...&lt;/iframe&gt;</code><br>任意の埋め込み対応URL</td>
+              <td><code>src</code> 属性の自動抽出<br>（プロトコル未記載時は <code>https://</code> 補完）</td>
+              <td>Web上の埋め込みコード（iframeタグ）をそのまま貼り付けてもURL部分だけを抽出して読み込みます。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- Simple Steps / Usage Guide -->
-      <div id="usage" class="section-header" style="margin-top: 60px;">
-        <h2 class="section-title">使い方ガイド（3ステップ）</h2>
-        <p class="section-description">インストール後、見たい動画のURLを用意するだけですぐに始められます。</p>
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">How to Use</div>
+        <h2 class="section-title">使い方ガイド（4ステップ）＆操作リファレンス</h2>
+        <p class="section-description">
+          インストール後、複雑な初期設定は不要です。アイコンをクリックしてURLを貼るだけですぐに多画面視聴を始められます。
+        </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
           <span class="step-num">STEP 1</span>
-          <h4 class="step-title">拡張機能をインストール</h4>
-          <p class="step-text">Chrome ウェブストアからワンクリックでブラウザに追加します（Google Chrome対応）。</p>
+          <h4 class="step-title">拡張機能を追加</h4>
+          <p class="step-text">Chrome ウェブストアから「4 Screen Viewer」をワンクリックで Google Chrome に追加します（無料）。</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 2</span>
-          <h4 class="step-title">動画URLを貼り付け</h4>
-          <p class="step-text">各枠の入力フォームに、YouTubeやニコニコ動画などの動画URLを貼り付けます。</p>
+          <h4 class="step-title">専用ビューアを起動</h4>
+          <p class="step-text">ブラウザ右上の拡張機能アイコンをクリックすると、マルチ画面ビューア専用の新しいタブが開きます。</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 3</span>
-          <h4 class="step-title">4画面で同時視聴スタート</h4>
-          <p class="step-text">URLが自動変換され、2×2の均等レイアウトで複数動画を快適に同時視聴できます。</p>
+          <h4 class="step-title">レイアウトとモードを選択</h4>
+          <p class="step-text">上部のメニューから <code>4 Grid (2x2)</code> や <code>1 Main + 3 Sub</code> 等のレイアウトを選択します（<code>Lite (Embed)</code> は標準でON）。</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">URLを貼って同時再生</h4>
+          <p class="step-text">各枠の入力欄（<code>URL 1</code>〜<code>4</code>）に動画URLを貼り付け、<code>Load</code> ボタンまたは <code>Enter</code> キーで同時再生を開始します。</p>
+        </div>
+      </div>
+
+      <!-- Control Bar Reference Table -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 24%;">コントロール要素</th>
+              <th style="width: 26%;">役割</th>
+              <th style="width: 50%;">動作の詳細・活用のコツ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>URL 1</code> 〜 <code>URL 4</code> / <code>Load</code></td>
+              <td>動画URL入力と読み込み</td>
+              <td>対応サイトの通常URLや <code>&lt;iframe&gt;</code> コードを貼り付け、<code>Load</code> ボタンまたは <code>Enter</code> キーで再生を開始します。既に再生中の枠へ別URLを読み込む際は、古いフレームを完全破棄してから再生成します。</td>
+            </tr>
+            <tr>
+              <td><code>Clear</code></td>
+              <td>個別スロットの終了</td>
+              <td>対象スロットの入力欄を空にし、中の動画フレーム（<code>iframe</code>）をDOMから破棄してメモリを解放します。見終わった枠だけを止めたいときに便利です。</td>
+            </tr>
+            <tr>
+              <td><code>Lite (Embed)</code></td>
+              <td>省メモリ / 通常モード切替</td>
+              <td>チェックONで省メモリな埋め込み再生、OFFで通常ページ再生（エラー152-4回避用）に切り替わります。切替時は表示・再生中の全スロットを新モードで自動再読み込みし、設定は保存されます。</td>
+            </tr>
+            <tr>
+              <td><code>Layout</code> セレクト</td>
+              <td>4種レイアウト切替</td>
+              <td><code>4 Grid (2x2)</code> / <code>2 Side (1x2)</code> / <code>1 Main + 2 Sub</code> / <code>1 Main + 3 Sub</code> を切り替えます。縮小時に隠れたスロットはフレーム破棄され、URL文字列のみ保持されます。</td>
+            </tr>
+            <tr>
+              <td><code>Clear All</code></td>
+              <td>全スロット一括リセット</td>
+              <td>表示中の全スロットのURL入力欄をクリアし、すべての動画フレームを一括破棄します。次の配信グループへ丸ごと入れ替える際に役立ちます。</td>
+            </tr>
+            <tr>
+              <td><code>Back to YouTube</code></td>
+              <td>ビューアモード終了</td>
+              <td>URLの <code>4screen</code> パラメータを解除し、通常のYouTubeトップページへ戻ります。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Use Cases & Comparison -->
+      <div id="usecases" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Use Cases</div>
+        <h2 class="section-title">おすすめの活用シーン＆姉妹ツールとの使い分け</h2>
+        <p class="section-description">
+          利用目的に合わせた推奨レイアウト設定と、同じく公開している YouTube 向け拡張機能との違いをまとめました。
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 1 Main + 3 Sub / Lite ON</span>
+          <h3>VTuber・ゲーム実況の複数視点コラボ</h3>
+          <p>
+            最も見たい主役視点を左側の大きなメイン枠（スロット1）に配置し、右側の3つの小枠にコラボ仲間の視点を並べられます。全員の反応を追いながらメイン画面の細部もしっかり楽しめます。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 4 Grid (2x2) / Lite ON</span>
+          <h3>eスポーツ大会・スポーツ中継の多視点観戦</h3>
+          <p>
+            公式本配信と各チーム視点・マップ視点、あるいはYouTubeとTwitchの異なるプラットフォームの配信を均等4画面に集約。切り替えラグなしで決定的瞬間を同時に見守れます。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 2 Side (1x2) / Lite ON</span>
+          <h3>速報ニュース・マーケット情報の並列モニタリング</h3>
+          <p>
+            国内外のライブニュース配信や経済指標プログラムを左右2画面で常時表示。不要な2枠はDOM生成されないため、作業用PCのサブモニターでも軽快に稼働します。
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">推奨: 2 Side (1x2) / Lite ON</span>
+          <h3>語学学習・技術チュートリアルの比較視聴</h3>
+          <p>
+            同じテーマを解説する2つの講座動画や、元の映像と解説動画を並べて再生できます。ウィンドウの整列作業が不要なため、勉強や検証のテンポを崩しません。
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison with Sister Extension -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">比較項目</th>
+              <th style="width: 39%;">4 Screen Viewer（本拡張機能）</th>
+              <th style="width: 39%;"><a href="youtube-multi-auto-playlist.html" style="color: var(--primary); text-decoration: underline;">YouTube Multi Auto Playlist</a>（姉妹ツール）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>表示方式</strong></td>
+              <td>1つのブラウザタブ全体を分割して表示</td>
+              <td>独立したサイドパネル（Side Panel）で1〜4画面表示</td>
+            </tr>
+            <tr>
+              <td><strong>対応動画サイト</strong></td>
+              <td>YouTube、ニコニコ動画、Twitch、Vimeo、汎用iframe</td>
+              <td>YouTube 専用（登録チャンネル連携・RSS取得・自動再生リスト生成）</td>
+            </tr>
+            <tr>
+              <td><strong>レイアウト構成</strong></td>
+              <td>4種切替（4 Grid / 2 Side / 1 Main + 2 Sub / 1 Main + 3 Sub）</td>
+              <td>1〜4画面のサイドパネル構成（リスト領域の高さリサイズ対応）</td>
+            </tr>
+            <tr>
+              <td><strong>主な強み</strong></td>
+              <td>異なる配信サイト混在OK、省メモリ <code>Lite (Embed)</code> 切替、ライブ多視点視聴に最適</td>
+              <td>登録チャンネル・RSSからの自動プレイリスト構築、未視聴/日付フィルタ、音量/速度引き継ぎ</td>
+            </tr>
+            <tr>
+              <td><strong>おすすめの選び方</strong></td>
+              <td>「見たい配信や動画のURLを手動で並べて同時に監視・視聴したい」場合</td>
+              <td>「YouTubeの未視聴動画や登録チャンネルを自動でプレイリスト化して連続再生したい」場合</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ Section -->
+      <div id="faq" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">FAQ &amp; Troubleshooting</div>
+        <h2 class="section-title">よくある質問とトラブルシューティング</h2>
+        <p class="section-description">
+          ご利用時につまずきやすいポイントや、安全面・メモリ仕様についての疑問にお答えします。
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3 class="faq-q">Q1. YouTubeで「エラー 152-4」や「再生できません」と表示された場合は？</h3>
+          <p class="faq-a">
+            動画の投稿者側が「外部サイト等への埋め込み再生」を無効化している場合、<code>Lite (Embed)</code> モードではエラーが表示されることがあります。その場合は上部コントロールバーの <strong><code>Lite (Embed)</code> のチェックを外してOFF</strong> にしてください。通常ページ方式（Watchモード）に切り替わり、埋め込み制限動画でも再生できるようになります。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q2. 別の枠に動画を読み込むと、再生中の動画が一時停止することがあります。</h3>
+          <p class="faq-a">
+            ブラウザのメディア再生制御により、別フレームの自動再生が走った瞬間に既存のプレイヤーが一時停止する場合があります。再生ボタンを押して再開するか、あらかじめ再生中の動画を一時停止した状態で新しい枠の <code>Load</code> を行うと回避しやすくなります。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q3. 長時間の視聴でブラウザのメモリ消費を抑えるコツはありますか？</h3>
+          <p class="faq-a">
+            まずは <strong><code>Lite (Embed)</code> をON</strong> のまま視聴するのが最も効果的です（通常モードに比べメモリ消費を大幅削減できます）。また、3画面以下で十分な場合はレイアウトを <code>2 Side (1x2)</code> や <code>1 Main + 2 Sub</code> に絞ると未使用フレームが完全破棄されます。数時間以上連続再生して重く感じた場合は、その枠だけ <code>Clear</code> → <code>Load</code> し直すとフレームが作り直されてリフレッシュされます。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q4. 通常のYouTube閲覧タブやライブチャットに影響は出ませんか？</h3>
+          <p class="faq-a">
+            影響ありません。<code>background.js</code> のヘッダー調整ルールは <code>sub_frame</code> 等の専用条件に限定されており、コンテンツスクリプトのUI非表示・DOM削除処理も <code>?4screen=1</code> や <code>&amp;subscreen=1</code> パラメータが付いたビューア専用画面でのみ発動します。普段お使いのYouTubeタブの動作やチャット表示はそのまま維持されます。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q5. 入力した動画URLや視聴履歴が外部へ送信されることはありますか？</h3>
+          <p class="faq-a">
+            一切ありません。レイアウト設定（<code>4screen_layout</code>）やモード設定（<code>4screen_lite_mode</code>）はお使いのブラウザ内の <code>localStorage</code> に保存され、URL変換処理もすべてブラウザ内で完結します。運営者のサーバー等へ閲覧履歴や個人データを送信・収集する機能はありません（詳細は <a href="privacy.html" style="color: var(--primary); text-decoration: underline;">プライバシーポリシー</a> をご覧ください）。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q6. 複数画面の音声が重なって聞き取りづらいときはどうすればいいですか？</h3>
+          <p class="faq-a">
+            各枠は独立した動画プレイヤーとして動作しているため、プレイヤー下部の音量アイコンやミュート機能も枠ごとに個別操作できます。<code>1 Main + 3 Sub</code> などの構成では、左側のメイン枠だけ音声をONにし、右側のサブ枠はミュートにして映像の変化だけを監視する使い方がおすすめです。
+          </p>
+        </div>
+      </div>
+
+      <!-- Changelog Section -->
+      <div id="changelog" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Release Notes</div>
+        <h2 class="section-title">更新履歴 (Changelog)</h2>
+        <p class="section-description">
+          4 Screen Viewer の機能追加およびパフォーマンス改善の履歴です。
+        </p>
+      </div>
+
+      <div class="notice-card" style="border-color: #cbd5e1; margin-bottom: 48px;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Changelog</span>
+          <h3 class="notice-title" style="color: #0f172a;">バージョン履歴 ― 最新 v1.4.0</h3>
+        </div>
+        <div class="notice-body">
+          <div class="changelog-scroll-box">
+            <ul class="feature-list" style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.85; font-size: 0.95rem;">
+              <li style="margin-bottom: 12px;">
+                <strong>v1.4.0 (2026-11-22):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li><strong>4種類のレイアウト切替機能を追加：</strong> <code>4 Grid (2x2)</code>・<code>2 Side (1x2)</code>・<code>1 Main + 2 Sub</code>・<code>1 Main + 3 Sub</code> から選択可能になり、選択状態を <code>localStorage</code> に自動保存するようにしました。</li>
+                  <li><strong>省メモリ <code>Lite (Embed)</code> モードを実装：</strong> <code>declarativeNetRequest</code> による <code>/embed/</code> 向け Referer 最適化（エラー152-4回避対策）と軽量プレイヤー再生に対応し、通常再生比で大幅な省メモリ化を実現しました。埋め込み制限動画向けに通常（Watch）モードとのワンクリック切替・設定保存も備えています。</li>
+                  <li><strong>メモリ占有・リーク対策の強化：</strong> 親タブ起動時の <code>window.stop()</code> による不要リソース遮断、未使用スロットの <code>iframe</code> 遅延生成、<code>Clear</code> / モード切替 / レイアウト縮小時の <code>about:blank</code> 遷移＋DOM完全破棄（<code>.remove()</code>）を実装しました。通常モード再生時もライブチャット・コメント・関連動画DOMを物理削除し、自動再生試行タイマーを再生確認後に停止するよう改善しました。</li>
+                  <li><strong>UI表記の英語統一：</strong> コントロールバーのボタン・セレクトメニュー・タイトル表記をクリーンな英語表記へ統一しました。</li>
+                </ul>
+              </li>
+              <li>
+                <strong>v1.3.1 以前 (ベースラインリリース):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li>1つのブラウザタブを2×2グリッドに分割し、最大4つの動画を同時視聴できるマルチ画面ビューアの基本機能を公開。</li>
+                  <li>YouTube（通常・短縮・ライブ）、ニコニコ動画、Twitch（チャンネル・アーカイブ・クリップ）、Vimeo および汎用 <code>&lt;iframe&gt;</code> コードのURL自動変換に対応。</li>
+                  <li>Manifest V3 の <code>declarativeNetRequest</code> をサブフレーム限定で適用し、通常タブへの影響を抑えつつエラー152-4対策となる通常ページベース再生＆シアター全画面表示を実装。</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- Bottom CTA Banner -->
       <div class="product-bottom-cta">
-        <h3>今すぐ無料で利用開始</h3>
-        <p>ライブ配信の多視点チェックや作業中の並行モニタリングをもっとシンプルに。</p>
+        <h3>v1.4.0 を今すぐ無料で利用開始</h3>
+        <p>4種類の柔軟なレイアウトと省メモリ Lite モードで、ライブ配信の多視点チェックや並行モニタリングをより軽快に。</p>
         <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=ja" target="_blank" rel="noopener noreferrer" class="btn-store-blue">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>

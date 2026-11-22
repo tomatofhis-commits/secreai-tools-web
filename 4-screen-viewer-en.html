@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4 Screen Viewer - Simultaneous 4-Video Streaming in 2x2 Grid | SecreAI & Tools</title>
-  <meta name="description" content="Stream up to 4 videos (YouTube, Nico Nico, Vimeo, Dailymotion, etc.) simultaneously in a neat 2x2 grid inside a single browser tab. Official introduction to the 4 Screen Viewer Chrome extension.">
+  <title>4 Screen Viewer - Multi-Layout &amp; Memory-Optimized Video Viewer | SecreAI &amp; Tools</title>
+  <meta name="description" content="Watch up to 4 videos (YouTube, Nico Nico, Twitch, Vimeo, etc.) simultaneously in one browser tab. Official guide to 4 Screen Viewer v1.4.0 featuring 4 flexible layouts, Lite (Embed) memory-saving mode, and changelog.">
   <link rel="canonical" href="https://amachi-tools.win/4-screen-viewer-en.html">
   <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/4-screen-viewer.html">
   <link rel="alternate" hreflang="en" href="https://amachi-tools.win/4-screen-viewer-en.html">
@@ -16,6 +16,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "4 Screen Viewer",
+    "softwareVersion": "1.4.0",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "inLanguage": "en",
+    "description": "Multi-screen Google Chrome extension for watching up to 4 videos (YouTube, Nico Nico, Twitch, Vimeo, etc.) simultaneously in one browser tab with 4 switchable layouts and a memory-saving Lite (Embed) mode.",
+    "url": "https://amachi-tools.win/4-screen-viewer-en.html",
+    "downloadUrl": "https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en",
+    "author": {
+      "@type": "Person",
+      "name": "amachi"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -24,12 +47,14 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
-        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
       </a>
       <nav class="nav-menu">
         <a href="index.html">Back to Home</a>
+        <a href="#layouts">Layouts</a>
         <a href="#features">Features</a>
         <a href="#usage">How to Use</a>
+        <a href="#faq">FAQ &amp; Changelog</a>
         <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color: #2563eb; font-weight: 700;">Chrome Store</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -64,11 +89,12 @@
       <div class="product-badge-group">
         <span class="badge-4v-blue">Google Chrome Extension</span>
         <span class="tool-type-badge chrome-badge">Free</span>
+        <span class="tool-type-badge" style="background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe;">Latest: v1.4.0 (2026-11-22)</span>
       </div>
       <h1 class="product-title">4 Screen Viewer</h1>
       <p class="product-subtitle">
-        Stream <strong>up to 4 videos simultaneously in a neat 2x2 grid</strong> within a single browser tab.<br>
-        Watch multiple YouTube, Nico Nico, Vimeo, and Dailymotion streams side-by-side with automatic URL conversion.
+        Stream <strong>up to 4 videos simultaneously</strong> inside a single browser tab.<br>
+        Updated to v1.4.0 with <strong>4 flexible screen layouts</strong> and a memory-saving <strong><code>Lite (Embed)</code> mode</strong> for smoother multitasking across YouTube, Nico Nico, Twitch, and Vimeo.
       </p>
 
       <div class="product-actions">
@@ -86,7 +112,7 @@
       <!-- Screenshot Showcase Frame -->
       <div class="product-showcase-frame">
         <img src="image/4ScreenViewer.png" 
-             alt="4 Screen Viewer Screenshot (2x2 Quad-screen simultaneous video playback)" 
+             alt="4 Screen Viewer Screenshot (Multi-screen simultaneous video playback in one tab)" 
              class="product-showcase-img"
              onclick="openImageModal(this.src, this.alt)">
         <p class="showcase-caption">
@@ -102,13 +128,115 @@
     </div>
   </section>
 
+  <!-- Developer's Note / Background -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #bfdbfe; background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%); max-width: 960px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-bottom-color: #bfdbfe;">
+          <span class="notice-badge" style="background-color: #2563eb;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #1e3a8a; font-size: 1.25rem; margin: 0;">Design Philosophy — Lightweight Multi-POV Streaming Without Playback Barriers</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.01rem; line-height: 1.9; color: var(--text-main);">
+          <p style="margin-bottom: 14px;">
+            Following collaborative streams, esports tournaments, or breaking news from multiple sources usually forces you to resize separate browser windows or juggle tabs constantly. <strong>4 Screen Viewer</strong> was built to eliminate that clutter—launching a dedicated multi-view workspace inside a single tab with just one click on the extension icon.
+          </p>
+          <p style="margin-bottom: 14px;">
+            Running four full video pages concurrently in a browser introduces two real-world challenges: <strong>heavy memory consumption</strong> from background scripts like live chat and comments, and <strong>embedding restrictions (Error 152-4)</strong> when using standard embedded players.
+          </p>
+          <p style="margin-bottom: 0;">
+            In <strong>v1.4.0</strong>, the extension introduces a hybrid playback engine. By default, <strong><code>Lite (Embed)</code> mode</strong> pairs lightweight <code>/embed/</code> players with <code>declarativeNetRequest</code> Referer optimization to minimize Error 152-4 while cutting memory usage dramatically. Whenever a creator explicitly blocks embedding, a single toggle switches seamlessly to <strong>Standard (Watch) mode</strong>—backed by full frame destruction and heavy DOM removal to keep your browser responsive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layouts Section -->
+  <section id="layouts" class="section" style="padding-bottom: 16px;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Layouts (v1.4.0 New)</div>
+        <h2 class="section-title">4 Switchable Screen Layouts</h2>
+        <p class="section-description">
+          Switch instantly between four CSS Grid configurations from the top control bar. Your chosen layout is automatically saved in <code>localStorage</code> and restored on your next session.
+        </p>
+      </div>
+
+      <div class="layout-preview-grid">
+        <!-- Layout 1 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-2x2" aria-hidden="true">
+            <div class="diag-cell">1</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+            <div class="diag-cell">4</div>
+          </div>
+          <h3 class="layout-preview-title">4 Grid (2x2)</h3>
+          <span class="layout-preview-meta">4 Equal Screens (1fr 1fr / 1fr 1fr)</span>
+          <p class="layout-preview-desc">
+            Divides the viewport into four equal quadrants. Ideal for monitoring four simultaneous streams, tournament feeds, or news broadcasts on equal footing.
+          </p>
+        </div>
+
+        <!-- Layout 2 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1x2" aria-hidden="true">
+            <div class="diag-cell">1</div>
+            <div class="diag-cell">2</div>
+          </div>
+          <h3 class="layout-preview-title">2 Side (1x2)</h3>
+          <span class="layout-preview-meta">2 Side-by-Side (1fr 1fr / 1fr)</span>
+          <p class="layout-preview-desc">
+            Splits the screen into two wide side-by-side panels. Great for duo collaborations, video comparisons, or pairing a lecture with a demonstration.
+          </p>
+        </div>
+
+        <!-- Layout 3 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1-2" aria-hidden="true">
+            <div class="diag-cell diag-main">1 (Main)</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+          </div>
+          <h3 class="layout-preview-title">1 Main + 2 Sub</h3>
+          <span class="layout-preview-meta">Large Left + 2 Right (2.5fr : 1fr)</span>
+          <p class="layout-preview-desc">
+            Features one large primary screen on the left and two stacked sub-screens on the right. Focus on a main broadcast while keeping tabs on two secondary POVs.
+          </p>
+        </div>
+
+        <!-- Layout 4 -->
+        <div class="layout-preview-card">
+          <div class="layout-diagram diag-1-3" aria-hidden="true">
+            <div class="diag-cell diag-main">1 (Main)</div>
+            <div class="diag-cell">2</div>
+            <div class="diag-cell">3</div>
+            <div class="diag-cell">4</div>
+          </div>
+          <h3 class="layout-preview-title">1 Main + 3 Sub</h3>
+          <span class="layout-preview-meta">Large Left + 3 Right (3fr : 1fr)</span>
+          <p class="layout-preview-desc">
+            Gives maximum space (3:1 ratio) to your primary perspective on the left while stacking three sub-screens on the right—perfect for 4-player squad streams.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <p class="notice-subnote" style="max-width: 860px; text-align: left;">
+          <strong>Smart Memory Cleanup &amp; URL Retention:</strong> When switching to a smaller layout such as <code>2 Side (1x2)</code> or <code>1 Main + 2 Sub</code>, hidden slots completely destroy their <code>iframe</code> elements from the DOM to release memory immediately—while keeping your typed URL text intact in the input boxes for quick reloading later.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Key Features & Benefits</h2>
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">Key Features &amp; Technical Advantages</h2>
         <p class="section-description">
-          Consolidate multiple video streams into one organized tab for efficient multitasking.
+          Engineered for multi-stream convenience, reduced memory footprint during long viewing sessions, and zero interference with normal browsing.
         </p>
       </div>
 
@@ -123,70 +251,400 @@
               <rect x="3" y="14" width="7" height="7"></rect>
             </svg>
           </div>
-          <h3 class="feature-heading">Simultaneous 4-Screen 2x2 Grid</h3>
+          <h3 class="feature-heading">4 Flexible Layouts with Auto-Save</h3>
           <p class="feature-desc">
-            Evenly splits a single browser tab into a clean 2x2 quad-screen layout. Keeps your desktop clutter-free without juggling between multiple open browser windows or tabs.
+            Switch seamlessly between <code>4 Grid (2x2)</code>, <code>2 Side (1x2)</code>, <code>1 Main + 2 Sub</code>, and <code>1 Main + 3 Sub</code>. Your layout preference is saved automatically in <code>localStorage</code> so your workspace opens just the way you left it.
           </p>
         </div>
 
         <!-- Feature 2 -->
         <div class="feature-box">
-          <div class="feature-icon-circle icon-circle-red">
+          <div class="feature-icon-circle icon-circle-green">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
             </svg>
           </div>
-          <h3 class="feature-heading">Multi-Platform Compatibility</h3>
+          <h3 class="feature-heading">Lite (Embed) Memory-Saving Mode</h3>
           <p class="feature-desc">
-            Supports major video streaming sites including YouTube, Nico Nico Douga, Vimeo, and Dailymotion. Stream from different platforms simultaneously within the exact same view.
+            Enabled by default, <code>Lite (Embed)</code> uses lightweight YouTube embed players paired with Referer header optimization to prevent Error 152-4 and cut memory usage to roughly 30–40% of full-page loading. If a video owner disables embedding, simply uncheck <code>Lite (Embed)</code> to reload instantly in full Watch mode.
           </p>
         </div>
 
         <!-- Feature 3 -->
         <div class="feature-box">
-          <div class="feature-icon-circle icon-circle-green">
+          <div class="feature-icon-circle icon-circle-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Deep DOM Cleanup &amp; Frame Disposal</h3>
+          <p class="feature-desc">
+            Parent tab initialization calls <code>window.stop()</code> immediately to block unnecessary YouTube homepage scripts, and iframes are created only when loaded. Clearing a slot, toggling modes, or shrinking layouts sets <code>about:blank</code> and calls <code>.remove()</code> to reclaim memory. Even in Watch mode, live chat, comments, and related panels are physically removed from the DOM and autoplay timers stop once active.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-red">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
             </svg>
           </div>
-          <h3 class="feature-heading">Paste URL & Auto-Conversion</h3>
+          <h3 class="feature-heading">Multi-Platform Auto URL Conversion</h3>
           <p class="feature-desc">
-            Simply paste standard video share URLs into any input field. The extension automatically transforms them into optimal embed formats without requiring complex settings or code.
+            Paste standard share URLs directly without manual editing. Built-in regex converters recognize YouTube (standard, <code>youtu.be</code>, <code>/live/</code>), Nico Nico Douga, Twitch (channels, VODs, clips), Vimeo, and raw <code>&lt;iframe src="..."&gt;</code> embed snippets.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-amber">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="feature-heading">1-Click Launch, Enter Key &amp; Dark Theater UI</h3>
+          <p class="feature-desc">
+            Click the toolbar icon to open the viewer tab immediately. Press <code>Enter</code> right after pasting a URL to load instantly, and enjoy distraction-free playback against a clean dark theme (<code>#0f0f0f</code>) with zero wasted screen space.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-teal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Privacy-First &amp; Isolated Sub-Frame Rules</h3>
+          <p class="feature-desc">
+            Built on Manifest V3 using scoped <code>declarativeNetRequest</code> rules restricted to <code>sub_frame</code> contexts so regular browser tabs and YouTube live chats remain completely untouched. All URLs and preferences stay local in your browser with zero external tracking.
           </p>
         </div>
       </div>
 
+      <!-- Supported Platforms Table -->
+      <div id="platforms" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Compatibility</div>
+        <h2 class="section-title">Supported Platforms &amp; URL Conversion Rules</h2>
+        <p class="section-description">
+          Paste standard browser links from any supported platform and let 4 Screen Viewer convert them into embed-ready playback URLs automatically.
+        </p>
+      </div>
+
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Platform</th>
+              <th style="width: 30%;">Supported Input URL Formats</th>
+              <th style="width: 28%;">Converted Playback Format</th>
+              <th style="width: 24%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>YouTube</strong></td>
+              <td><code>youtube.com/watch?v=...</code><br><code>youtu.be/...</code><br><code>youtube.com/live/...</code></td>
+              <td><strong>Lite ON:</strong> <code>/embed/&lt;ID&gt;?autoplay=1&amp;rel=0</code><br><strong>Lite OFF:</strong> <code>watch?v=&lt;ID&gt;&amp;subscreen=1</code></td>
+              <td>Supports both lightweight embed playback with Referer fix and theater Watch fallback.</td>
+            </tr>
+            <tr>
+              <td><strong>Nico Nico Douga</strong></td>
+              <td><code>nicovideo.jp/watch/sm...</code><br><code>mosasaur.nicovideo.jp/watch/...</code></td>
+              <td><code>embed.nicovideo.jp/watch/&lt;ID&gt;</code></td>
+              <td>Automatically extracts <code>sm</code>, <code>so</code>, <code>nm</code>, or numeric video IDs.</td>
+            </tr>
+            <tr>
+              <td><strong>Twitch</strong></td>
+              <td><code>twitch.tv/&lt;channel&gt;</code><br><code>twitch.tv/videos/&lt;id&gt;</code><br><code>clips.twitch.tv/...</code> / <code>/clip/...</code></td>
+              <td><code>player.twitch.tv/</code> or<br><code>clips.twitch.tv/embed</code></td>
+              <td>Detects live channels, VODs, and clips separately with autoplay enabled.</td>
+            </tr>
+            <tr>
+              <td><strong>Vimeo</strong></td>
+              <td><code>vimeo.com/&lt;id&gt;</code></td>
+              <td><code>player.vimeo.com/video/&lt;id&gt;</code></td>
+              <td>Extracts the video ID and loads the responsive Vimeo player inside the slot.</td>
+            </tr>
+            <tr>
+              <td><strong>Generic / Other</strong></td>
+              <td><code>&lt;iframe src="..."&gt;...&lt;/iframe&gt;</code><br>Any direct embed URL</td>
+              <td>Extracts <code>src</code> attribute<br>(Auto-prepends <code>https://</code> if omitted)</td>
+              <td>Paste full HTML iframe tags or direct embed links from other compatible video services.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- Simple Steps / Usage Guide -->
-      <div id="usage" class="section-header" style="margin-top: 60px;">
-        <h2 class="section-title">Quick 3-Step Setup Guide</h2>
-        <p class="section-description">Ready to watch in seconds with zero complicated configuration.</p>
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">How to Use</div>
+        <h2 class="section-title">Quick 4-Step Guide &amp; Control Bar Reference</h2>
+        <p class="section-description">
+          Get started in seconds with zero complex configuration—launch the viewer, choose your layout, and paste your links.
+        </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
           <span class="step-num">STEP 1</span>
           <h4 class="step-title">Install Extension</h4>
-          <p class="step-text">Add 4 Screen Viewer to Google Chrome with one click directly from the Chrome Web Store.</p>
+          <p class="step-text">Add 4 Screen Viewer to Google Chrome for free with one click from the Chrome Web Store.</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 2</span>
-          <h4 class="step-title">Paste Video URLs</h4>
-          <p class="step-text">Paste YouTube, Nico Nico, or other video URLs into the input slots of your choice.</p>
+          <h4 class="step-title">Open the Viewer Tab</h4>
+          <p class="step-text">Click the 4 Screen Viewer icon on your Chrome toolbar to open the multi-screen workspace in a new tab.</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 3</span>
-          <h4 class="step-title">Enjoy 4-Screen Playback</h4>
-          <p class="step-text">URLs convert automatically, letting you monitor and enjoy all 4 streams in a balanced 2x2 grid.</p>
+          <h4 class="step-title">Choose Layout &amp; Mode</h4>
+          <p class="step-text">Select <code>4 Grid (2x2)</code>, <code>2 Side (1x2)</code>, <code>1 Main + 2 Sub</code>, or <code>1 Main + 3 Sub</code>. Keep <code>Lite (Embed)</code> ON for lowest memory usage.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">Paste URLs &amp; Press Enter</h4>
+          <p class="step-text">Paste video URLs into <code>URL 1</code>–<code>4</code> and click <code>Load</code> (or press <code>Enter</code>) to begin simultaneous playback.</p>
+        </div>
+      </div>
+
+      <!-- Control Bar Reference Table -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 24%;">Control Element</th>
+              <th style="width: 26%;">Function</th>
+              <th style="width: 50%;">Behavior &amp; Tips</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>URL 1</code> – <code>URL 4</code> / <code>Load</code></td>
+              <td>Input &amp; Load Stream</td>
+              <td>Paste a video URL or <code>&lt;iframe&gt;</code> tag and click <code>Load</code> or press <code>Enter</code>. Reloading a slot automatically destroys any prior iframe before creating a fresh one.</td>
+            </tr>
+            <tr>
+              <td><code>Clear</code></td>
+              <td>Unload Individual Slot</td>
+              <td>Clears the input box and completely removes that slot's <code>iframe</code> from the DOM to reclaim memory immediately.</td>
+            </tr>
+            <tr>
+              <td><code>Lite (Embed)</code></td>
+              <td>Toggle Lightweight Mode</td>
+              <td>Checked = memory-saving <code>/embed/</code> player. Unchecked = standard Watch theater mode (bypasses creator embed blocks). Active slots reload automatically when toggled, and the choice persists.</td>
+            </tr>
+            <tr>
+              <td><code>Layout</code> Dropdown</td>
+              <td>Switch Grid Layout</td>
+              <td>Choose among <code>4 Grid (2x2)</code>, <code>2 Side (1x2)</code>, <code>1 Main + 2 Sub</code>, and <code>1 Main + 3 Sub</code>. Hidden slots release their iframes while keeping input URLs intact.</td>
+            </tr>
+            <tr>
+              <td><code>Clear All</code></td>
+              <td>Reset All Slots</td>
+              <td>Clears every visible input box and removes all active iframes in one click so you can quickly set up a new set of streams.</td>
+            </tr>
+            <tr>
+              <td><code>Back to YouTube</code></td>
+              <td>Exit Viewer Mode</td>
+              <td>Removes the <code>4screen</code> query parameter and returns the tab to standard YouTube browsing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Use Cases & Comparison -->
+      <div id="usecases" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Use Cases</div>
+        <h2 class="section-title">Popular Use Cases &amp; Tool Comparison</h2>
+        <p class="section-description">
+          Recommended presets for common viewing scenarios, plus how 4 Screen Viewer compares to its sister Chrome extension.
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 1 Main + 3 Sub / Lite ON</span>
+          <h3>Multi-POV VTuber &amp; Gaming Collabs</h3>
+          <p>
+            Place your primary streamer in the large left slot and stack three squadmates on the right. Enjoy crisp main-screen gameplay while keeping every reaction in view simultaneously.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 4 Grid (2x2) / Lite ON</span>
+          <h3>Esports Tournaments &amp; Live Sports</h3>
+          <p>
+            Combine the official broadcast, map stream, and player POVs—even across YouTube and Twitch in the same grid—without ever losing track of key moments.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 2 Side (1x2) / Lite ON</span>
+          <h3>Live News &amp; Market Monitoring</h3>
+          <p>
+            Keep two live news feeds or financial streams side-by-side on a secondary monitor. Unused slots stay unmounted, keeping background RAM usage minimal.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 2 Side (1x2) / Lite ON</span>
+          <h3>Side-by-Side Tutorials &amp; Comparisons</h3>
+          <p>
+            Compare two product reviews, language lessons, or coding walkthroughs in one clean tab without manually snapping browser windows to screen edges.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison with Sister Extension -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Feature</th>
+              <th style="width: 39%;">4 Screen Viewer (This Extension)</th>
+              <th style="width: 39%;"><a href="youtube-multi-auto-playlist-en.html" style="color: var(--primary); text-decoration: underline;">YouTube Multi Auto Playlist</a> (Sister Tool)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Window Style</strong></td>
+              <td>Splits a single browser tab into responsive grids</td>
+              <td>Opens 1 to 4 screens in Chrome's Side Panel</td>
+            </tr>
+            <tr>
+              <td><strong>Supported Sites</strong></td>
+              <td>YouTube, Nico Nico, Twitch, Vimeo, generic iframe URLs</td>
+              <td>YouTube-focused (subscriptions, RSS feeds &amp; playlist automation)</td>
+            </tr>
+            <tr>
+              <td><strong>Layouts</strong></td>
+              <td>4 layouts (4 Grid, 2 Side, 1 Main + 2 Sub, 1 Main + 3 Sub)</td>
+              <td>1 to 4 simultaneous side-panel players (resizable queue height)</td>
+            </tr>
+            <tr>
+              <td><strong>Core Strengths</strong></td>
+              <td>Cross-platform URL mixing, memory-saving <code>Lite (Embed)</code> toggle, live multi-POV viewing</td>
+              <td>Auto-generating playlists from subscriptions/RSS, date &amp; unwatched filters, volume/speed persistence</td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td>Manually curating and monitoring live streams or mixed-platform videos in one tab</td>
+              <td>Automatically queueing and playing through YouTube channel uploads in the background</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ Section -->
+      <div id="faq" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">FAQ &amp; Troubleshooting</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">
+          Solutions for common playback restrictions, memory management tips, and privacy details.
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3 class="faq-q">Q1. What should I do if YouTube shows "Error 152-4" or "Video unavailable"?</h3>
+          <p class="faq-a">
+            Some creators disable external embedding on their videos, which blocks playback inside standard <code>/embed/</code> frames. Simply uncheck <strong><code>Lite (Embed)</code></strong> in the top control bar to switch to Watch theater mode—the extension will reload active slots automatically and bypass the embed restriction.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q2. Why does a playing video occasionally pause when I load another slot?</h3>
+          <p class="faq-a">
+            Chrome's media focus handling can sometimes pause an existing stream when a new iframe starts autoplaying. You can simply click play to resume, or pause your current stream right before loading a new URL into another slot.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q3. How can I keep memory usage as low as possible during long streams?</h3>
+          <p class="faq-a">
+            Keep <strong><code>Lite (Embed)</code> checked ON</strong> whenever possible, as it avoids loading the heavy YouTube SPA. Also select <code>2 Side (1x2)</code> or <code>1 Main + 2 Sub</code> when you do not need all four slots, since hidden slots destroy their iframes automatically. After hours of continuous playback, clicking <code>Clear</code> and <code>Load</code> on a slot resets its buffers cleanly.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q4. Does this affect my regular YouTube tabs or live chat?</h3>
+          <p class="faq-a">
+            No. Header rules in <code>background.js</code> are scoped strictly to <code>sub_frame</code> contexts, and the UI cleanup script only activates when <code>?4screen=1</code> or <code>&amp;subscreen=1</code> is present in the URL. Your normal YouTube tabs and live chats continue working normally.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q5. Are my video URLs or viewing history sent to any external server?</h3>
+          <p class="faq-a">
+            Never. Layout and Lite mode preferences are stored strictly inside your browser's <code>localStorage</code>, and all URL parsing runs locally on your machine. No browsing history or personal data is ever transmitted to our servers (see our <a href="privacy-en.html" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>).
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q6. How do I manage audio when multiple streams are playing at once?</h3>
+          <p class="faq-a">
+            Each slot hosts an independent player with its own volume and mute controls. When using <code>1 Main + 3 Sub</code> or <code>4 Grid (2x2)</code>, a practical setup is keeping audio enabled only on your primary slot while muting the sub-screens to monitor visual action.
+          </p>
+        </div>
+      </div>
+
+      <!-- Changelog Section -->
+      <div id="changelog" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Release Notes</div>
+        <h2 class="section-title">Changelog</h2>
+        <p class="section-description">
+          Feature updates and memory optimization improvements for 4 Screen Viewer.
+        </p>
+      </div>
+
+      <div class="notice-card" style="border-color: #cbd5e1; margin-bottom: 48px;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Changelog</span>
+          <h3 class="notice-title" style="color: #0f172a;">Version History — Latest v1.4.0</h3>
+        </div>
+        <div class="notice-body">
+          <div class="changelog-scroll-box">
+            <ul class="feature-list" style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.85; font-size: 0.95rem;">
+              <li style="margin-bottom: 12px;">
+                <strong>v1.4.0 (2026-11-22):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li><strong>Added 4 Switchable Layouts:</strong> Choose between <code>4 Grid (2x2)</code>, <code>2 Side (1x2)</code>, <code>1 Main + 2 Sub</code>, and <code>1 Main + 3 Sub</code>, with automatic persistence via <code>localStorage</code>.</li>
+                  <li><strong>Added Memory-Saving <code>Lite (Embed)</code> Mode:</strong> Implemented lightweight YouTube <code>/embed/</code> playback paired with <code>declarativeNetRequest</code> Referer optimization to avoid Error 152-4 and slash RAM usage, plus a one-click toggle to fall back to Standard Watch mode for embed-restricted videos.</li>
+                  <li><strong>Enhanced Memory Optimization:</strong> Added immediate <code>window.stop()</code> on parent tab startup, lazy <code>iframe</code> creation on load, complete DOM removal (<code>about:blank</code> + <code>.remove()</code>) when clearing slots, switching modes, or shrinking layouts, physical removal of heavy live chat/comment/related DOM nodes in Watch mode, and auto-stopping playback timers.</li>
+                  <li><strong>Unified English Control UI:</strong> Standardized control bar labels, dropdown options, and page titles in clean English.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>v1.3.1 and earlier (Baseline Releases):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li>Released the core single-tab 2x2 quad-screen video viewer extension for simultaneous playback.</li>
+                  <li>Added automatic URL conversion for YouTube (watch, short links, live), Nico Nico Douga, Twitch (channels, VODs, clips), Vimeo, and generic <code>&lt;iframe&gt;</code> embed tags.</li>
+                  <li>Implemented Manifest V3 scoped <code>declarativeNetRequest</code> rules for sub-frames and full-bleed dark theater CSS injection without affecting regular browser tabs.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- Bottom CTA Banner -->
       <div class="product-bottom-cta">
-        <h3>Start Watching Smarter Today</h3>
-        <p>Monitor multiple live streams, e-sports perspectives, and tutorials side-by-side with ease.</p>
+        <h3>Start Watching Smarter with v1.4.0</h3>
+        <p>Monitor multiple live streams, squad POVs, and tutorials side-by-side with flexible layouts and Lite memory savings.</p>
         <a href="https://chromewebstore.google.com/detail/4-screen-viewer/mkflkhjhdhgmachcdmnepelobnoiebho?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="btn-store-blue">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Multi Auto Playlist - 1-4 Screen Multi-View & Auto Playlist Generator | SecreAI & Tools</title>
-  <meta name="description" content="Stream 1 to 4 YouTube videos simultaneously in your browser's side window! Auto-generate playlists from subscription feeds and enjoy seamless sequential playback with the YouTube Multi Auto Playlist Chrome extension.">
+  <title>YouTube Multi Auto Playlist - Side Panel 1-4 Screen Player &amp; RSS Auto Playlist | SecreAI &amp; Tools</title>
+  <meta name="description" content="Stream 1 to 4 YouTube videos simultaneously in Chrome's Side Panel! Auto-generate playlists from subscriptions or RSS feeds with date/unwatched filters, Lite memory-saving mode, 3-stage frame cleanup, and persistent volume/speed settings.">
   <link rel="canonical" href="https://amachi-tools.win/youtube-multi-auto-playlist-en.html">
   <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/youtube-multi-auto-playlist.html">
   <link rel="alternate" hreflang="en" href="https://amachi-tools.win/youtube-multi-auto-playlist-en.html">
@@ -16,6 +16,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "YouTube Multi Auto Playlist",
+    "softwareVersion": "1.2.0",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "inLanguage": "en",
+    "description": "Google Chrome Side Panel extension for 1 to 4 screen YouTube playback and auto-generated playlists from subscriptions or RSS feeds, featuring date/unwatched filters, Lite memory-saving mode, and persistent volume/speed settings.",
+    "url": "https://amachi-tools.win/youtube-multi-auto-playlist-en.html",
+    "downloadUrl": "https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=en",
+    "author": {
+      "@type": "Person",
+      "name": "amachi"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -24,13 +47,14 @@
     <div class="container nav-container">
       <a href="index.html" class="brand-logo">
         <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
-        <span><span class="logo-accent">SecreAI</span> & Tools</span>
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
       </a>
       <nav class="nav-menu">
         <a href="index.html">Back to Home</a>
         <a href="#features">Features</a>
         <a href="#usage">How to Use</a>
-        <a href="#notes">Notes</a>
+        <a href="#usecases">Use Cases</a>
+        <a href="#faq">FAQ &amp; Changelog</a>
         <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color: #dc2626; font-weight: 700;">Chrome Store</a>
         <div class="lang-switcher">
           <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
@@ -65,11 +89,12 @@
       <div class="product-badge-group">
         <span class="badge-yt-red">Google Chrome Extension</span>
         <span class="tool-type-badge chrome-badge">Free</span>
+        <span class="tool-type-badge" style="background: #fef2f2; color: #b91c1c; border-color: #fecaca;">Latest: v1.2.0 (2026-11-23)</span>
       </div>
       <h1 class="product-title">YouTube Multi Auto Playlist</h1>
       <p class="product-subtitle">
-        Stream <strong>1 to 4 videos simultaneously</strong> in your browser's side window.<br>
-        Instantly create playlists from your YouTube subscriptions and enjoy seamless sequential auto-play.
+        Stream <strong>1 to 4 YouTube videos simultaneously</strong> right inside Chrome's <strong>Side Panel</strong>.<br>
+        Auto-generate queues from subscriptions or RSS feeds with date/unwatched filters, memory-saving <code>Lite</code> mode, 3-stage frame cleanup, and persistent volume &amp; playback speed.
       </p>
 
       <div class="product-actions">
@@ -86,8 +111,8 @@
 
       <!-- Screenshot Showcase Frame -->
       <div class="product-showcase-frame">
-        <img src="image/YouTubeMultiAutoPlaylist.jpg" 
-             alt="YouTube Multi Auto Playlist Screenshot (Multi-screen view and playlist management in side window)" 
+        <img src="image/YouTubeMultiAutoPlaylistSC.jpg" 
+             alt="YouTube Multi Auto Playlist Screenshot (4-screen playback and queue management in Chrome Side Panel)" 
              class="product-showcase-img"
              onclick="openImageModal(this.src, this.alt)">
         <p class="showcase-caption">
@@ -103,13 +128,37 @@
     </div>
   </section>
 
+  <!-- Developer's Note / Background -->
+  <section id="story" class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div class="notice-card" style="border-color: #fecaca; background: linear-gradient(180deg, #ffffff 0%, #fef2f2 100%); max-width: 960px; margin: 0 auto;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #fef2f2, #fee2e2); border-bottom-color: #fecaca;">
+          <span class="notice-badge" style="background-color: #dc2626;">Developer's Note</span>
+          <h2 class="notice-title" style="color: #991b1b; font-size: 1.25rem; margin: 0;">Design Philosophy — Hands-Free Playlist Playback Alongside Your Main Work</h2>
+        </div>
+        <div class="notice-body" style="padding: 28px 32px; font-size: 1.01rem; line-height: 1.9; color: var(--text-main);">
+          <p style="margin-bottom: 14px;">
+            Catching up on YouTube subscriptions while coding, researching, or browsing usually means switching tabs repeatedly and re-adjusting volume or playback speed every time a new video starts. <strong>YouTube Multi Auto Playlist</strong> was created to keep 1 to 4 video players and a smart queue docked inside Chrome's Side Panel so your main workspace stays undisturbed.
+          </p>
+          <p style="margin-bottom: 14px;">
+            Continuous auto-play in a browser panel presents two technical hurdles: <strong>memory buildup</strong> from recycled video frames over long sessions, and <strong>the hassle of scraping</strong> dozens of channels manually every day.
+          </p>
+          <p style="margin-bottom: 0;">
+            In <strong>v1.2.0</strong>, the extension introduces a <strong>3-stage memory reset</strong> (<code>releaseVideo</code> resource cleanup, full <code>iframe</code> destruction, and fresh recreation) paired with a sequential <strong>load queue</strong> to prevent browser freezes. Combined with batch <strong>RSS feed fetching</strong> (archiving up to 2,000 videos locally) and automatic <strong>volume &amp; playback speed persistence</strong>, it delivers a reliable, lightweight companion for daily YouTube viewing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Key Features & Benefits</h2>
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">Key Features &amp; Technical Advantages</h2>
         <p class="section-description">
-          Engineered to give you flexible multitasking, stream monitoring, and hassle-free background watching.
+          From 1–4 screen side-panel layouts and RSS feed batching to 3-stage memory cleanup for marathon auto-play sessions.
         </p>
       </div>
 
@@ -123,9 +172,9 @@
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
           </div>
-          <h3 class="feature-heading">Stream 1 to 4 Videos in Side Window</h3>
+          <h3 class="feature-heading">1–4 Screen Side Panel &amp; Resizable Queue</h3>
           <p class="feature-desc">
-            Display between 1 and 4 video frames side-by-side right inside your browser's side window. Perfect for following multiple live stream perspectives, gaming tournaments, news coverage, and tutorials without overcrowding your main tabs.
+            Powered by Chrome's Manifest V3 <code>sidePanel</code> API—open the player with one toolbar click. Switch between <code>1 Screen</code> and <code>4 Screens</code> anytime (hidden frames stop automatically), and drag the divider above the Queue to resize the playlist height freely.
           </p>
         </div>
 
@@ -133,21 +182,31 @@
         <div class="feature-box">
           <div class="feature-icon-circle icon-circle-blue">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <line x1="3" y1="6" x2="3.01" y2="6"></line>
-              <line x1="3" y1="12" x2="3.01" y2="12"></line>
-              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              <path d="M4 11a9 9 0 0 1 9 9"></path>
+              <path d="M4 4a16 16 0 0 1 16 16"></path>
+              <circle cx="5" cy="19" r="1"></circle>
             </svg>
           </div>
-          <h3 class="feature-heading">Auto-Generate Playlists from Channels</h3>
+          <h3 class="feature-heading">Page Scraping &amp; Batch RSS Fetching (2,000 Archive)</h3>
           <p class="feature-desc">
-            Automatically create ready-to-watch playlists directly from your YouTube subscriptions and channel feeds. Stop wasting time manually finding and queuing each new upload.
+            Collect videos directly from your active YouTube tab via <code>Get Videos</code> (with a <code>Stop</code> button to halt scrolling), or register favorite channels with <code>+ Ch</code> and fetch their XML feeds in batches of 5 via <code>RSS</code>. Fetched videos merge into a local archive of up to 2,000 entries.
           </p>
         </div>
 
         <!-- Feature 3 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-amber">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Date, Anchor Title, Unwatched Filters &amp; Sort</h3>
+          <p class="feature-desc">
+            Expand the collapsible filter bar to narrow your queue by start date (<code>From:</code>), <code>Anchor title</code>, or <code>Unwatched</code> status. Sort ascending (<code>▲</code>) or descending (<code>▼</code>) by fetch order/timestamp, and tidy up played items with <code>Clear Played</code>.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
         <div class="feature-box">
           <div class="feature-icon-circle icon-circle-green">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -157,89 +216,371 @@
               <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
             </svg>
           </div>
-          <h3 class="feature-heading">Continuous Sequential Auto-Play</h3>
+          <h3 class="feature-heading">Auto-Play &amp; Persistent Volume / Speed</h3>
           <p class="feature-desc">
-            Toggle on the "Auto-Play" switch to let the extension seamlessly play through your generated list in order. Great for background music or binge-watching your favorite series uninterrupted.
+            With <code>Auto</code> enabled, the extension detects video completion (<code>ended</code>) and loads the next queued video after a 3-second buffer. It also listens to <code>volumechange</code> and <code>ratechange</code> events so your preferred volume, mute state, and playback speed carry over automatically.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Lite Mode &amp; 3-Stage Memory Cleanup</h3>
+          <p class="feature-desc">
+            <code>Lite</code> mode (ON by default) uses lightweight <code>/embed/</code> players with Referer optimization to avoid Error 152-4; uncheck it anytime to fall back to Watch theater mode. Each video transition runs a 3-stage reset (<code>releaseVideo</code> → iframe removal → fresh recreation) through a sequential load queue to keep RAM in check.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-box">
+          <div class="feature-icon-circle icon-circle-teal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-heading">Isolated Sub-Frame Rules &amp; Local Storage</h3>
+          <p class="feature-desc">
+            Scoped <code>declarativeNetRequest</code> rules apply only to <code>sub_frame</code> contexts inside the Side Panel, leaving your regular YouTube tabs and live chats completely untouched. All playlists, RSS channels, and preferences stay local in <code>chrome.storage.local</code>.
           </p>
         </div>
       </div>
 
-      <!-- Recommended Usage & Caution Notice Section -->
-      <div id="notes" class="notice-section">
-        <div class="notice-card">
-          <div class="notice-header">
-            <span class="notice-badge">Important</span>
-            <h3 class="notice-title">Recommendations & Usage Notes</h3>
-          </div>
-          <div class="notice-body">
-            <!-- Item 1: Auto-play recommendation -->
-            <div class="notice-item">
-              <div class="notice-item-icon" style="color: #2563eb;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-              </div>
-              <div class="notice-item-content">
-                <h4>Single-Screen Playback (1 Window) is Recommended for Auto-Play</h4>
-                <p>
-                  To ensure maximum stability and reliable sequential video transitions, <strong>we recommend using 1-screen playback when the Auto-Play feature is turned on</strong>.
-                </p>
-              </div>
-            </div>
-
-            <!-- Item 2: Stopping frames during multi-screen -->
-            <div class="notice-item">
-              <div class="notice-item-icon" style="color: #d97706;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-              </div>
-              <div class="notice-item-content">
-                <h4>Stopping Video Frames During Multi-Screen Playback</h4>
-                <p>
-                  Stopping or closing other video frames while playing across multiple screens (2 to 4 screens) may negatively affect playback management and cause unexpected behavior.
-                </p>
-                <div class="notice-subnote">
-                  [Note] Pausing a video directly using the native video player controls will not cause any issues and is completely safe to use.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Simple Steps / Usage Guide -->
-      <div id="usage" class="section-header" style="margin-top: 60px;">
-        <h2 class="section-title">Quick 3-Step Setup Guide</h2>
-        <p class="section-description">Get started in seconds with zero complicated configuration.</p>
+      <div id="usage" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">How to Use</div>
+        <h2 class="section-title">Quick 4-Step Guide &amp; Control Panel Reference</h2>
+        <p class="section-description">
+          Get up and running in seconds—open the Side Panel, build your queue, and start hands-free playback.
+        </p>
       </div>
 
       <div class="steps-grid">
         <div class="step-card">
           <span class="step-num">STEP 1</span>
           <h4 class="step-title">Install Extension</h4>
-          <p class="step-text">Add the extension to Google Chrome with one click directly from the Chrome Web Store.</p>
+          <p class="step-text">Add YouTube Multi Auto Playlist to Google Chrome for free from the Chrome Web Store.</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 2</span>
-          <h4 class="step-title">Generate Playlist</h4>
-          <p class="step-text">Open YouTube subscriptions or channel pages and click to build your playlist from the side window.</p>
+          <h4 class="step-title">Open the Side Panel</h4>
+          <p class="step-text">Click the extension icon on your Chrome toolbar to dock the Side Panel on the right side of your browser.</p>
         </div>
         <div class="step-card">
           <span class="step-num">STEP 3</span>
-          <h4 class="step-title">Choose Layout & Watch</h4>
-          <p class="step-text">Select 1-4 simultaneous screens or enjoy uninterrupted 1-screen sequential auto-play.</p>
+          <h4 class="step-title">Build &amp; Filter Your Queue</h4>
+          <p class="step-text">Click <code>Get Videos</code> on a YouTube feed, or register channels with <code>+ Ch</code> and click <code>RSS</code>, then apply date or <code>Unwatched</code> filters.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">STEP 4</span>
+          <h4 class="step-title">Choose Screens &amp; Auto-Play</h4>
+          <p class="step-text">Pick <code>1–4 Screens</code>, toggle <code>Lite</code> and <code>Auto</code> as desired, and enjoy uninterrupted playback.</p>
+        </div>
+      </div>
+
+      <!-- Control Panel Visual Guide -->
+      <div class="product-showcase-frame" style="margin: 28px auto 36px;">
+        <img src="image/YouTubeMultiAutoPlaylistSC3.jpg"
+             alt="YouTube Multi Auto Playlist Numbered Control Menu Guide ([1] to [12])"
+             class="product-showcase-img"
+             style="cursor: default;">
+        <p class="showcase-caption">Numbered Control Menu Guide ([1]–[12])</p>
+      </div>
+
+      <!-- 3 Practical List Acquisition Guides -->
+      <div class="section-header" style="margin-top: 24px;">
+        <h3 class="section-title" style="font-size: 1.45rem;">How to Build Your Queue by Goal (Numbered Guide)</h3>
+        <p class="section-description">
+          Step-by-step workflows using the numbered controls (<strong>[1]–[12]</strong>) shown above.
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Pattern 1: Specific Channel or Playlist</span>
+          <h3>Grab All Videos Without Date or Title Filters</h3>
+          <p>
+            1. Open the target YouTube channel's "Videos" tab or a playlist page.<br>
+            2. Open the options row with <strong>[1]</strong> and make sure <strong>[8]</strong> <code>From:</code> (click <code>×</code> next to it to clear) and <strong>[9]</strong> <code>Anchor title</code> are empty (enable <strong>[10]</strong> <code>Unwatched</code> if you only want unseen videos).<br>
+            3. Click <strong>[2]</strong> <code>Get Videos</code> to collect the page's videos automatically. Use <strong>[3]</strong> (<code>▲</code> / <code>▼</code>) to sort and <strong>[4]</strong>–<strong>[6]</strong> to set screens, <code>Lite</code>, and <code>Auto</code>.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Pattern 2: Favorite Channels × Date Filter</span>
+          <h3>Collect Favorite Channels Back to a Specific Date</h3>
+          <p>
+            1. Open your YouTube "Subscriptions" page (<code>youtube.com/feed/subscriptions</code>).<br>
+            2. Click <strong>[1]</strong> to expand the options row.<br>
+            3. If you want to fetch via RSS, visit your favorite channels and click <strong>[11]</strong> <code>+ Ch</code> to register them (the registered count appears on <strong>[12]</strong>).<br>
+            4. Enter your target start date in <strong>[8]</strong> <code>From:</code> (e.g., <code>2026/10/06</code>) and optionally check <strong>[10]</strong> <code>Unwatched</code>.<br>
+            5. Click <strong>[2]</strong> <code>Get Videos</code> (or <strong>[12]</strong> <code>RSS</code> for registered channels) to queue every video published from that date onward.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Pattern 3: Anchor Video Title</span>
+          <h3>Collect Videos Back to a Specific Video Title</h3>
+          <p>
+            Even when date filtering (<strong>[8]</strong>) does not capture the exact range you expect, setting a landmark video title ensures you reliably collect every video right up to that point.<br>
+            1. Open your YouTube "Subscriptions" page (or a target channel page).<br>
+            2. Click <strong>[1]</strong> to open the options row, and clear <strong>[8]</strong> using the <code>×</code> button if you do not need a date limit.<br>
+            3. Type the title (or part of the title) of your stopping-point video—such as the last video you watched—into <strong>[9]</strong> <code>Anchor title</code>.<br>
+            4. Click <strong>[2]</strong> <code>Get Videos</code> (or <strong>[12]</strong> <code>RSS</code> for registered channels) to gather videos backward until <strong>[9]</strong> is reached.
+          </p>
+        </div>
+      </div>
+
+      <!-- Control Panel Reference Table -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 26%;">Number / Control</th>
+              <th style="width: 22%;">Function</th>
+              <th style="width: 52%;">Behavior &amp; Tips</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>[1]</strong> <code>▾</code> / <code>▸</code> Button</td>
+              <td>Toggle Options Row</td>
+              <td>Shows or hides the lower filter and RSS toolbar.</td>
+            </tr>
+            <tr>
+              <td><strong>[2]</strong> <code>Get Videos</code> / <code>Stop</code></td>
+              <td>Scrape Active YouTube Tab</td>
+              <td>Collects videos from your open YouTube subscriptions, channel, or playlist page. Click <code>Stop</code> to halt scrolling early.</td>
+            </tr>
+            <tr>
+              <td><strong>[3]</strong> <code>▲</code> / <code>▼</code></td>
+              <td>Sort Queue</td>
+              <td>Sorts queued videos ascending or descending by fetch index or timestamp and resets the queue pointer.</td>
+            </tr>
+            <tr>
+              <td><strong>[4]</strong> <code>1–4 Screens</code></td>
+              <td>Screen Count</td>
+              <td>Switches between 1 and 4 Side Panel screens; hidden slots stop automatically.</td>
+            </tr>
+            <tr>
+              <td><strong>[5]</strong> <code>Lite</code> Switch</td>
+              <td>Memory-Saving Mode</td>
+              <td>Uses lightweight <code>/embed/</code> players when ON; toggle OFF to fall back to Watch theater mode for embed-restricted videos.</td>
+            </tr>
+            <tr>
+              <td><strong>[6]</strong> <code>Auto</code> Switch</td>
+              <td>Sequential Auto-Play</td>
+              <td>Detects video completion (<code>ended</code>) and loads the next queued video after a 3-second buffer.</td>
+            </tr>
+            <tr>
+              <td><strong>[7]</strong> Red <code>■</code> Button</td>
+              <td>Stop All Screens</td>
+              <td>Stops and resets all active player frames at once.</td>
+            </tr>
+            <tr>
+              <td><strong>[8]</strong> <code>From:</code> + <code>×</code></td>
+              <td>Date Filter</td>
+              <td>Collects videos published on or after the specified date. Click <code>×</code> to clear the date filter in one click.</td>
+            </tr>
+            <tr>
+              <td><strong>[9]</strong> <code>Anchor title</code></td>
+              <td>Anchor Video Title</td>
+              <td>Stops collecting once a video matching this title is reached—ideal for resuming where you left off.</td>
+            </tr>
+            <tr>
+              <td><strong>[10]</strong> <code>Unwatched</code></td>
+              <td>Unwatched Only</td>
+              <td>Filters out already-watched videos when building your queue.</td>
+            </tr>
+            <tr>
+              <td><strong>[11]</strong> <code>+ Ch</code></td>
+              <td>Register RSS Channel</td>
+              <td>Adds the currently open YouTube channel to your RSS fetch list.</td>
+            </tr>
+            <tr>
+              <td><strong>[12]</strong> <code>RSS (count)</code></td>
+              <td>Batch RSS Fetch</td>
+              <td>Fetches XML feeds from registered channels in batches of 5 and merges up to 2,000 items into your local archive.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Use Cases & Comparison -->
+      <div id="usecases" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Use Cases</div>
+        <h2 class="section-title">Popular Use Cases &amp; Tool Comparison</h2>
+        <p class="section-description">
+          Recommended setups for daily routines, plus how this extension compares to its sister tool 4 Screen Viewer.
+        </p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 1 Screen / Auto ON / Unwatched ON</span>
+          <h3>Hands-Free Subscription Catch-Up</h3>
+          <p>
+            Filter out already-watched uploads with <code>Unwatched</code> and <code>From:</code>, then let <code>1 Screen</code> + <code>Auto ON</code> play through your morning queue while you read or work in the main tab.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: + Ch / RSS / Lite ON</span>
+          <h3>Fast RSS Feed Roundups</h3>
+          <p>
+            Register your go-to channels once with <code>+ Ch</code>. Anytime you want an update, click <code>RSS</code> to pull the latest uploads in batches without opening multiple YouTube tabs.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 2–4 Screens / Lite ON</span>
+          <h3>Compact Side-Panel Multi-Monitoring</h3>
+          <p>
+            Keep 2 to 4 streams docked neatly on the right side of your screen while browsing articles or social feeds on the left—with <code>Lite</code> mode keeping RAM usage low.
+          </p>
+        </div>
+
+        <div class="usecase-card">
+          <span class="usecase-preset-badge">Preset: 1 Screen / Speed Persistence</span>
+          <h3>Background Lectures &amp; Podcasts at 1.5x–2x</h3>
+          <p>
+            Set your preferred playback speed and volume once; every subsequent video in the queue automatically restores those exact settings without manual tweaking.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison with Sister Extension -->
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Feature</th>
+              <th style="width: 39%;">YouTube Multi Auto Playlist (This Extension)</th>
+              <th style="width: 39%;"><a href="4-screen-viewer-en.html" style="color: var(--primary); text-decoration: underline;">4 Screen Viewer</a> (Sister Tool)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Display Style</strong></td>
+              <td>Chrome Side Panel (1 to 4 screens docked beside your main tab)</td>
+              <td>Full browser tab split into 4 switchable grid layouts</td>
+            </tr>
+            <tr>
+              <td><strong>Supported Sites</strong></td>
+              <td>YouTube-focused (subscriptions, RSS feeds, automated queues)</td>
+              <td>YouTube, Nico Nico, Twitch, Vimeo, generic iframe URLs</td>
+            </tr>
+            <tr>
+              <td><strong>Core Strengths</strong></td>
+              <td><code>Get Videos</code> / <code>RSS</code> queue generation, date &amp; unwatched filters, auto-play, volume/speed persistence</td>
+              <td><code>4 Grid</code>, <code>2 Side</code>, <code>1 Main + 2 Sub</code>, and <code>1 Main + 3 Sub</code> full-tab layouts</td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td>Automated hands-free catch-up of YouTube channels alongside your main browsing</td>
+              <td>Manually arranging live streams and multi-POV broadcasts across the whole tab</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ Section -->
+      <div id="faq" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">FAQ &amp; Troubleshooting</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">
+          Answers on embed restrictions, volume/speed persistence, RSS vs. scraping, memory usage, and privacy.
+        </p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3 class="faq-q">Q1. What if YouTube shows an embed restriction error (such as Error 152-4)?</h3>
+          <p class="faq-a">
+            If a creator disables external embedding, uncheck <strong><code>Lite</code></strong> in the top control bar. The player will switch to standard Watch theater mode so you can continue watching without embed restrictions.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q2. Do my volume and playback speed stay the same on the next video?</h3>
+          <p class="faq-a">
+            Yes. The extension listens to <code>volumechange</code> and <code>ratechange</code> events, saves your settings in <code>chrome.storage.local</code>, and automatically restores your volume, mute state, and playback speed when the next video starts.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q3. When should I use <code>Get Videos</code> vs. <code>RSS</code>?</h3>
+          <p class="faq-a">
+            Use <code>Get Videos</code> when you want to grab videos from the YouTube page currently open in your tab. Use <code>+ Ch</code> and <code>RSS</code> when you want fast, repeatable batch updates from your favorite channels without scrolling through YouTube pages.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q4. Will long auto-play sessions slow down my browser?</h3>
+          <p class="faq-a">
+            Keeping <code>Lite</code> ON minimizes baseline RAM usage, and every video transition runs a 3-stage memory reset (<code>releaseVideo</code> → iframe removal → fresh recreation) through a sequential load queue to prevent memory leaks.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q5. Does this affect my regular YouTube tabs or live chat?</h3>
+          <p class="faq-a">
+            No. Header rules in <code>background.js</code> are scoped to <code>sub_frame</code> contexts, and UI cleanup runs only inside Side Panel player frames—your normal YouTube tabs and live chats remain unaffected.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Q6. Are my playlists or registered channels sent to external servers?</h3>
+          <p class="faq-a">
+            Never. All playlists, RSS channels, up to 2,000 archived items, and player preferences are stored locally in <code>chrome.storage.local</code> (see our <a href="privacy-en.html" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>).
+          </p>
+        </div>
+      </div>
+
+      <!-- Changelog Section -->
+      <div id="changelog" class="section-header" style="margin-top: 64px;">
+        <div class="section-badge">Release Notes</div>
+        <h2 class="section-title">Changelog</h2>
+        <p class="section-description">
+          Feature updates and memory stability improvements for YouTube Multi Auto Playlist.
+        </p>
+      </div>
+
+      <div class="notice-card" style="border-color: #cbd5e1; margin-bottom: 48px;">
+        <div class="notice-header" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-bottom-color: #e2e8f0;">
+          <span class="notice-badge" style="background-color: #0f172a;">Changelog</span>
+          <h3 class="notice-title" style="color: #0f172a;">Version History — Latest v1.2.0</h3>
+        </div>
+        <div class="notice-body">
+          <div class="changelog-scroll-box">
+            <ul class="feature-list" style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.85; font-size: 0.95rem;">
+              <li style="margin-bottom: 12px;">
+                <strong>v1.2.0 (2026-11-23):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li><strong>Added Memory-Saving <code>Lite</code> Mode &amp; 3-Stage Reset:</strong> Paired lightweight <code>/embed/</code> playback (with Referer optimization for Error 152-4) and Watch mode fallback. Added <code>releaseVideo</code> cleanup, full iframe destruction/recreation, and sequential <code>videoLoadQueue</code> loading.</li>
+                  <li><strong>Added RSS Channel Registration &amp; Batch Fetching:</strong> Register channels with <code>+ Ch</code> and fetch XML feeds in batches of 5 via <code>RSS</code>, merging up to 2,000 items into a local archive.</li>
+                  <li><strong>Enhanced Filters &amp; Resizable Queue:</strong> Added collapsible <code>From:</code> date, <code>Anchor title</code>, and <code>Unwatched</code> filters, ascending/descending sort (<code>▲</code> / <code>▼</code>), and drag-to-resize playlist height.</li>
+                  <li><strong>Persistent Volume/Speed &amp; Heavy DOM Removal:</strong> Automatically saves/restores volume, mute, and playback rate across queued videos, and physically removes heavy chat/comment/related DOM nodes in Watch mode.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>v1.1.x and earlier (Baseline Releases):</strong>
+                <ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+                  <li>Released 1–4 screen Side Panel playback with YouTube subscription playlist generation and sequential auto-play.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- Bottom CTA Banner -->
       <div class="product-bottom-cta">
-        <h3>Start Watching Smarter Today</h3>
-        <p>Take control of your YouTube viewing experience with multi-window streaming and automated playlists.</p>
+        <h3>Start Watching Smarter with v1.2.0</h3>
+        <p>Dock 1–4 YouTube streams in your Side Panel with RSS queues, smart filters, and Lite memory savings.</p>
         <a href="https://chromewebstore.google.com/detail/youtube-multi-auto-playli/jjagfbhnlcamnkgbgajhhfamcdcfocbh?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="btn-store-primary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
@@ -297,7 +638,7 @@
               <h3>4 Screen Viewer</h3>
             </div>
           </div>
-          <p>Split a single browser tab into a 2x2 grid to watch up to 4 streams from YouTube, Nico Nico, and more simultaneously.</p>
+          <p>Watch up to 4 videos simultaneously in one tab with 4 flexible layouts, a memory-saving Lite mode, and support for YouTube, Twitch, Nico Nico, and more.</p>
         </a>
       </div>
     </div>
