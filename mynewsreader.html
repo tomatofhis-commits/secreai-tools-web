@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyNewsReader - Ollama &amp; LM Studio 対応・ローカルAI自動要約RSSニュースリーダー | SecreAI &amp; Tools</title>
+  <meta name="description" content="OllamaやLM StudioなどのローカルLLMと連携し、膨大なRSSニュース記事を自動要約・重複統合して日付順に整理するWindows向け無料ニュースリーダー「MyNewsReader」の公式紹介・導入ガイドページです。">
+  <link rel="canonical" href="https://amachi-tools.win/mynewsreader.html">
+  <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/mynewsreader.html">
+  <link rel="alternate" hreflang="en" href="https://amachi-tools.win/mynewsreader-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/mynewsreader.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページへ戻る</a>
+        <a href="#features">主な特徴</a>
+        <a href="#mechanism">要約・統合の仕組み</a>
+        <a href="#usage">導入・使い方</a>
+        <a href="#notes">注意点・更新履歴</a>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">English</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">公開ツール一覧</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">MyNewsReader</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/MyNewsReader.png" alt="MyNewsReader Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-4v-blue" style="background-color: #ecfdf5; color: #059669;">Windows デスクトップアプリ</span>
+        <span class="tool-type-badge">ver 0.2 無料公開中</span>
+        <span class="tool-type-badge" style="background-color: #eff6ff; color: #2563eb;">10言語対応</span>
+      </div>
+
+      <h1 class="product-title">MyNewsReader</h1>
+      <p class="product-subtitle">
+        Ollama・LM Studio によるローカルAI自動要約＆重複統合機能を備えた、システムトレイ常駐型・多言語RSSニュースリーダー。<br>
+        クラウドAPI課金や情報送信なしで、毎日の膨大なニュース収集を完全に手元のPCだけで効率化します。
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          無料ダウンロード (GitHub Releases)
+        </a>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          GitHub リポジトリを見る
+        </a>
+      </div>
+
+      <div class="product-showcase-frame">
+        <img src="image/MyNewsReaderSS.jpg" alt="MyNewsReader ブラウザUIおよび要約画面のスクリーンショット" class="product-showcase-img" onclick="openImageModal(this.src, this.alt)">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">※画像をクリックすると拡大表示されます（ローカルブラウザUI：<code>http://localhost:3001</code>）</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section" style="background-color: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">MyNewsReader の主な特徴</h2>
+        <p class="section-description">
+          「ローカルAIで完結するプライバシー性」と「日常的に起動したまま使える軽快なトレイ常駐設計」を両立しています。
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">01</div>
+          <h3 class="feature-heading">Ollama ＆ LM Studio 両対応（ワンタップ切替）</h3>
+          <p class="feature-desc">
+            バックエンドに統一AI抽象化レイヤーを搭載。ブラウザ設定画面からワンタップで Ollama と LM Studio を切り替えられ、各プロバイダーの接続・稼働状態は LED ステータスインジケーターでリアルタイムに確認できます。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">02</div>
+          <h3 class="feature-heading">AI自動要約＆重複記事の自動マージ</h3>
+          <p class="feature-desc">
+            巡回取得したRSS記事をローカルLLMが約300文字に簡潔要約。さらにタイトル・本文タグをもとに同一トピックの続報や重複記事を自動判定し、1つの見出し内に日付降順で整理します。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">03</div>
+          <h3 class="feature-heading">10言語フルローカライズ対応</h3>
+          <p class="feature-desc">
+            OSの表示言語を自動検知し、ランチャーUI・ブラウザ画面・AI要約用のシステムプロンプト・言語別の初期RSSフィードまで、日本語を含む10言語へ自動的に切り替えます。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">04</div>
+          <h3 class="feature-heading">黒画面なしのトレイ常駐＆ブラウザ自動起動</h3>
+          <p class="feature-desc">
+            黒いコマンドプロンプト画面を表示させずに Node.js サーバーをバックグラウンド起動。起動から約3秒後に既定のWebブラウザで <code>http://localhost:3001</code> を自動的に開きます。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">05</div>
+          <h3 class="feature-heading">双方向リアルタイム同期＆ログコンソール</h3>
+          <p class="feature-desc">
+            システムトレイの操作パネルとブラウザ画面間で「自動巡回の一時停止／再開」やニュース取得の進捗状況を2秒以内に相互同期。動作ログも重要メッセージのみを見やすく表示します。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">06</div>
+          <h3 class="feature-heading">Windowsスタートアップ＆完全クリーンアップ</h3>
+          <p class="feature-desc">
+            操作パネルから Windows 起動時の自動実行をワンクリックで登録可能。トレイアイコン右クリック「終了 (Exit)」時には Node.js プロセスツリーを確実に終了し、ポート3001とメモリを解放します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mechanism Section -->
+  <section id="mechanism" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Smart Summarization &amp; Deduplication</div>
+        <h2 class="section-title">AI要約・重複記事統合の仕組み</h2>
+        <p class="section-description">
+          同じニュースが複数メディアから配信されてもタイムラインが散らからないよう、独自のタグ照合＋AI判定ロジックを組み込んでいます。
+        </p>
+      </div>
+
+      <div class="prep-columns">
+        <div class="prep-card">
+          <h3>コンテキスト最適化とタグ自動生成</h3>
+          <ul class="prep-list">
+            <li><strong>適切な本文抽出</strong>：ローカルLLMのコンテキスト4K以内に収まるよう、記事本文を約5,000〜7,000文字程度で取得します。</li>
+            <li><strong>約300文字の簡潔要約</strong>：要点が一目で把握できるよう、日本語・英語など指定言語で約300文字程度に要約します。</li>
+            <li><strong>2段階タグ紐付け</strong>：要約と同時に「タイトル用タグ（2〜5個）」と「本文用タグ（10〜20個）」をAIが生成し、SQLiteデータベース（<code>news_reader.db</code>）へ保存・紐付けます。</li>
+          </ul>
+        </div>
+
+        <div class="prep-card">
+          <h3>既存記事との3パターン自動判定</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            データベース内に「タイトルタグが1つ以上一致」または「本文タグが40%以上一致」する既存トピックが見つかった場合、AIが以下の3パターンから自動判定します。
+          </p>
+          <ul class="prep-list">
+            <li><strong>パターン A（スキップ）</strong>：ほぼ同一内容の重複記事と判断し、タイムラインへの重複登録を回避します。</li>
+            <li><strong>パターン B（続報追記）</strong>：関連記事だが新たな情報を含むと判断し、既存見出しの内部へ日付降順で追記・統合します。</li>
+            <li><strong>パターン C（新規登録）</strong>：関連性がない別ニュースとして、新しい見出し・トピックを作成します。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements & Usage Guide -->
+  <section id="usage" class="section" style="background-color: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Setup &amp; Usage</div>
+        <h2 class="section-title">動作環境・推奨モデル・導入手順</h2>
+        <p class="section-description">
+          Windows 標準の .NET Framework 4.8 上で動作する軽量ランチャーを採用しており、複雑な環境構築なしで始められます。
+        </p>
+      </div>
+
+      <div class="prep-columns" style="margin-bottom: 36px;">
+        <div class="prep-card">
+          <h3>動作環境</h3>
+          <ul class="prep-list">
+            <li><strong>対応OS</strong>：Windows 10 / Windows 11</li>
+            <li><strong>ランチャー基盤</strong>：.NET Framework 4.8（Windows標準搭載）</li>
+            <li><strong>サーバー環境</strong>：Node.js v18 以上推奨</li>
+            <li><strong>AIエンジン</strong>：Ollama または LM Studio</li>
+          </ul>
+        </div>
+        <div class="prep-card">
+          <h3>推奨ローカルLLMモデル例</h3>
+          <ul class="prep-list">
+            <li><strong>Ollama</strong>：<code>gemma4:12b</code>、<code>llama3.1:latest</code> など</li>
+            <li><strong>LM Studio</strong>：<code>gemma-4-12b-it</code> など</li>
+            <li>※設定画面から使用する Host URL やモデル名を自由に変更・テストできます。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="usage-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 class="step-title">ローカルLLMを起動する</h4>
+          <p class="step-text">
+            お使いのPCで <strong>Ollama</strong> または <strong>LM Studio</strong>（ローカルサーバー有効化）を起動し、要約に使用したいモデルを準備します。
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 class="step-title">MyNewsReader.exe を起動</h4>
+          <p class="step-text">
+            GitHub Releases からダウンロードし、<code>MyNewsReader.exe</code> をダブルクリックします。約3秒後に既定ブラウザで <code>http://localhost:3001</code> が自動で開きます。
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 class="step-title">ニュース閲覧とトレイ操作</h4>
+          <p class="step-text">
+            ブラウザの左ペインでカテゴリを選択し、要約された記事を日付順に閲覧できます。トレイアイコンをダブルクリックすると巡回制御・ログ確認・スタートアップ登録用の操作パネルが開きます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notes & Changelog -->
+  <section id="notes" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Notes &amp; Changelog</div>
+        <h2 class="section-title">使用上の注意点・更新履歴</h2>
+      </div>
+
+      <div class="prep-columns">
+        <div class="prep-card">
+          <h3>ご利用上の注意・FAQ</h3>
+          <ul class="prep-list">
+            <li><strong>アプリの完全終了方法</strong>：操作パネル右上の「×」ボタンは誤終了を防ぐため「システムトレイへの最小化」として動作します。完全に終了してポート3001を解放したい場合は、トレイアイコンを右クリックして<strong>「終了 (Exit)」</strong>を選択してください。</li>
+            <li><strong>プライバシーと通信先</strong>：RSS取得とローカルLLMへの要約リクエストはすべてご自身のPC環境内で完結します。購読フィードや閲覧履歴が開発者サーバーへ送信されることはありません。</li>
+          </ul>
+        </div>
+
+        <div class="prep-card">
+          <h3>更新履歴（Changelog）</h3>
+          <div class="changelog-scroll-box">
+            <div style="margin-bottom: 16px;">
+              <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">ver 0.2</p>
+              <ul class="prep-list" style="margin-bottom: 0;">
+                <li><strong>Ollama / LM Studio 選択制対応</strong>：統一AI抽象化レイヤーを構築し、両プロバイダーのAPI仕様・レスポンス差分を自動吸収。個別Host URL設定・モデル指定・接続テストに対応。</li>
+                <li><strong>ワンタップAI切替＆LEDインジケーター</strong>：ブラウザ設定画面にプロバイダー切替トグルスイッチとリアルタイム疎通LEDを搭載。</li>
+                <li><strong>見出し内要約の日付降順ソート</strong>：見出しを展開した際の各記事要約リストが新しい日付順に並ぶよう自動ソートを強化。</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">ver 0.1</p>
+              <ul class="prep-list" style="margin-bottom: 0;">
+                <li>コマンドプロンプト非表示でのバックグラウンド起動、システムトレイ常駐、Windowsスタートアップ登録を実装。</li>
+                <li>起動3秒後の規定ブラウザ自動起動、10言語UI・AIプロンプト・初期RSSフィードの自動ローカライズに対応。</li>
+                <li>トレイ操作パネルとブラウザ間の双方向リアルタイム同期、進捗バー表示、動作ログコンソール、プロセスツリー確実終了を実装。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>完全ローカルのAIニュース環境を始めよう</h3>
+        <p>API課金を気にせず、毎日の情報収集をローカルLLMでスマートに自動化できます。</p>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          GitHub Releases から無料ダウンロード
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools Section -->
+  <section class="related-tools-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 28px;">
+        <div class="section-badge">Related Tools</div>
+        <h2 class="section-title" style="font-size: 1.65rem;">その他の公開ツールを見る</h2>
+      </div>
+      <div class="related-tools-grid">
+        <a href="index.html#featured" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/SecreAIicon1.png" alt="SecreAI Icon">
+            <div>
+              <span class="related-tool-cat">Desktop AI Assistant</span>
+              <h3>SecreAI</h3>
+            </div>
+          </div>
+          <p>ワンボタンで画面をキャプチャし、ChromaDBの長期記憶やローカルLLMと連携して質問できる常駐型AIアシスタント。</p>
+        </a>
+        <a href="subtitlocar.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/subtitlocar.png" alt="SubtitLocar Icon">
+            <div>
+              <span class="related-tool-cat">Subtitle &amp; Translation</span>
+              <h3>SubtitLocar</h3>
+            </div>
+          </div>
+          <p>Faster-WhisperとOllamaを組み合わせた完全無料のリアルタイム文字起こし・翻訳システム。OBSや透過オーバーレイ対応。</p>
+        </a>
+        <a href="trucker-walk-around.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/TWAico.ico" alt="TruckerWalkAround Icon">
+            <div>
+              <span class="related-tool-cat">ETS2 / ATS Plugin</span>
+              <h3>TruckerWalkAround</h3>
+            </div>
+          </div>
+          <p>ETS2 / ATSでトラックから降りて街並みを自由に歩ける物理歩行プラグイン。ランチャー終了時に自動削除される安全設計。</p>
+        </a>
+        <a href="4-screen-viewer.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/4ScreenViewericon.png" alt="4 Screen Viewer Icon">
+            <div>
+              <span class="related-tool-cat">Chrome Extension</span>
+              <h3>4 Screen Viewer</h3>
+            </div>
+          </div>
+          <p>1つのタブを2×2の4画面グリッドに分割し、YouTubeやニコニコ動画などの複数配信を同時視聴できるマルチビューア。</p>
+        </a>
+        <a href="youtube-multi-auto-playlist.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/YouTubeMultiAutoPlaylisticon.png" alt="YouTube Multi Auto Playlist Icon">
+            <div>
+              <span class="related-tool-cat">Chrome Extension</span>
+              <h3>YouTube Multi Auto Playlist</h3>
+            </div>
+          </div>
+          <p>サイドウィンドウで1〜4個のYouTube動画を同時視聴し、登録チャンネル等から自動再生リストを作成できる拡張機能。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Enlarging Screenshots -->
+  <div id="image-modal" class="modal image-lightbox">
+    <span class="modal-close lightbox-close" id="image-modal-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">開発・運営：amachi</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

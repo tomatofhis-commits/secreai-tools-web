@@ -381,6 +381,7 @@ const BILINGUAL_PAGES = [
   '4-screen-viewer',
   'subtitlocar',
   'trucker-walk-around',
+  'mynewsreader',
   'about',
   'contact',
   'privacy',
@@ -440,6 +441,7 @@ function updateLanguage(lang) {
   setHrefIfExists('link-4v-detail', lang === 'ja' ? '4-screen-viewer.html' : '4-screen-viewer-en.html');
   setHrefIfExists('link-subtitlocar-detail', lang === 'ja' ? 'subtitlocar.html' : 'subtitlocar-en.html');
   setHrefIfExists('link-twa-detail', lang === 'ja' ? 'trucker-walk-around.html' : 'trucker-walk-around-en.html');
+  setHrefIfExists('link-mynewsreader-detail', lang === 'ja' ? 'mynewsreader.html' : 'mynewsreader-en.html');
 
   const aboutHref = lang === 'ja' ? 'about.html' : 'about-en.html';
   const contactHref = lang === 'ja' ? 'contact.html' : 'contact-en.html';

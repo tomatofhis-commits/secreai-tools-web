@@ -70,6 +70,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/4-screen-viewer.html" />
   </url>
 
+  <!-- MyNewsReader -->
+  <url>
+    <loc>https://amachi-tools.win/mynewsreader.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amachi-tools.win/mynewsreader.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://amachi-tools.win/mynewsreader-en.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/mynewsreader.html" />
+  </url>
+  <url>
+    <loc>https://amachi-tools.win/mynewsreader-en.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://amachi-tools.win/mynewsreader.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://amachi-tools.win/mynewsreader-en.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/mynewsreader.html" />
+  </url>
+
   <!-- About -->
   <url>
     <loc>https://amachi-tools.win/about.html</loc>

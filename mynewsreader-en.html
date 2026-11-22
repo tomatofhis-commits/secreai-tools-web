@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyNewsReader - Local AI Summarized Multilingual RSS Reader for Windows | SecreAI &amp; Tools</title>
+  <meta name="description" content="Official overview of MyNewsReader, a free Windows system-tray RSS news reader powered by Ollama and LM Studio for local AI summarization, smart deduplication, and 10-language localization.">
+  <link rel="canonical" href="https://amachi-tools.win/mynewsreader-en.html">
+  <link rel="alternate" hreflang="ja" href="https://amachi-tools.win/mynewsreader.html">
+  <link rel="alternate" hreflang="en" href="https://amachi-tools.win/mynewsreader-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/mynewsreader.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">Back to Home</a>
+        <a href="#features">Features</a>
+        <a href="#mechanism">AI Deduplication</a>
+        <a href="#usage">Setup &amp; Usage</a>
+        <a href="#notes">Notes &amp; Changelog</a>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 700;">GitHub</a>
+        <div class="lang-switcher">
+          <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+            <span class="lang-code">EN / JA</span>
+            <span id="current-lang-text">日本語</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">MyNewsReader</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Product Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div style="margin-bottom: 20px;">
+        <img src="image/MyNewsReader.png" alt="MyNewsReader Icon" style="width: 84px; height: 84px; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge-4v-blue" style="background-color: #ecfdf5; color: #059669;">Windows Desktop App</span>
+        <span class="tool-type-badge">ver 0.2 Free</span>
+        <span class="tool-type-badge" style="background-color: #eff6ff; color: #2563eb;">10 Languages</span>
+      </div>
+
+      <h1 class="product-title">MyNewsReader</h1>
+      <p class="product-subtitle">
+        A multilingual, system-tray RSS news reader powered by Ollama and LM Studio for local AI summarization and smart duplicate merging.<br>
+        Streamline your daily news reading entirely on your own PC—with zero cloud API fees and zero external tracking.
+      </p>
+
+      <div class="product-actions">
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          Download Free (GitHub Releases)
+        </a>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="product-showcase-frame">
+        <img src="image/MyNewsReaderSS.jpg" alt="MyNewsReader local browser UI screenshot" class="product-showcase-img" onclick="openImageModal(this.src, this.alt)">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Click the image to enlarge (Local Browser UI: <code>http://localhost:3001</code>)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section" style="background-color: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">Why MyNewsReader?</h2>
+        <p class="section-description">
+          Built to combine local-first AI privacy with a lightweight Windows system-tray controller you can keep running effortlessly all day.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">01</div>
+          <h3 class="feature-heading">Ollama &amp; LM Studio Support (One-Tap Toggle)</h3>
+          <p class="feature-desc">
+            A unified AI abstraction layer handles both Ollama and LM Studio seamlessly. Switch providers in one tap from the browser settings and monitor live connectivity via the LED status indicator.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">02</div>
+          <h3 class="feature-heading">AI Summarization &amp; Smart Duplicate Merging</h3>
+          <p class="feature-desc">
+            Automatically condenses lengthy RSS articles into concise ~300-character summaries using your local LLM, while merging follow-up stories under the same topic in descending date order.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">03</div>
+          <h3 class="feature-heading">10-Language Full Localization</h3>
+          <p class="feature-desc">
+            Automatically detects your OS display language and localizes the tray launcher, browser UI, LLM summarization system prompts, and default starter RSS feeds across 10 languages.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">04</div>
+          <h3 class="feature-heading">Silent Tray Residency &amp; Auto Browser Launch</h3>
+          <p class="feature-desc">
+            Launches the background Node.js server silently without an intrusive console window, and opens <code>http://localhost:3001</code> in your default browser 3 seconds after startup.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">05</div>
+          <h3 class="feature-heading">Two-Way Real-Time Sync &amp; Log Console</h3>
+          <p class="feature-desc">
+            Pause or resume background crawling from either the tray controller or the browser UI—changes sync within 2 seconds alongside live progress bars and filtered server logs.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">06</div>
+          <h3 class="feature-heading">Windows Startup &amp; Clean Process Exit</h3>
+          <p class="feature-desc">
+            Toggle Windows auto-start directly from the control panel. Right-clicking the tray icon and selecting "Exit" cleanly terminates the entire Node.js process tree, freeing port 3001 and RAM.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mechanism Section -->
+  <section id="mechanism" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Smart Summarization &amp; Deduplication</div>
+        <h2 class="section-title">How AI Summarization &amp; Merging Works</h2>
+        <p class="section-description">
+          Even when multiple outlets cover the same breaking story, MyNewsReader keeps your timeline clean using tag matching and AI classification.
+        </p>
+      </div>
+
+      <div class="prep-columns">
+        <div class="prep-card">
+          <h3>Context Optimization &amp; Auto-Tagging</h3>
+          <ul class="prep-list">
+            <li><strong>Smart Content Extraction</strong>: Fetches roughly 5,000–7,000 characters of article text so inference fits comfortably within a 4K context window.</li>
+            <li><strong>Concise ~300-Char Summaries</strong>: Generates clear, scannable summaries in your configured language.</li>
+            <li><strong>Two-Tier Tag Indexing</strong>: Extracts 2–5 title tags and 10–20 body tags simultaneously, linking them in the local SQLite database (<code>news_reader.db</code>).</li>
+          </ul>
+        </div>
+
+        <div class="prep-card">
+          <h3>3-Pattern Duplicate Classification</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            When an incoming article matches at least one title tag or 40%+ of body tags with an existing entry, the AI decides among three actions:
+          </p>
+          <ul class="prep-list">
+            <li><strong>Pattern A (Skip)</strong>: Treated as a near-duplicate report and skipped to avoid clutter.</li>
+            <li><strong>Pattern B (Append Update)</strong>: Recognized as a related follow-up with new details and appended inside the existing topic in descending date order.</li>
+            <li><strong>Pattern C (New Topic)</strong>: Registered as a brand-new headline when unrelated.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements & Usage Guide -->
+  <section id="usage" class="section" style="background-color: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Setup &amp; Usage</div>
+        <h2 class="section-title">Requirements, Recommended Models &amp; Setup</h2>
+        <p class="section-description">
+          Built on standard Windows .NET Framework 4.8 so you can get started quickly without complex setup.
+        </p>
+      </div>
+
+      <div class="prep-columns" style="margin-bottom: 36px;">
+        <div class="prep-card">
+          <h3>System Requirements</h3>
+          <ul class="prep-list">
+            <li><strong>OS</strong>: Windows 10 / Windows 11</li>
+            <li><strong>Launcher Runtime</strong>: .NET Framework 4.8 (built into Windows)</li>
+            <li><strong>Backend</strong>: Node.js v18 or higher recommended</li>
+            <li><strong>AI Engine</strong>: Ollama or LM Studio</li>
+          </ul>
+        </div>
+        <div class="prep-card">
+          <h3>Recommended Local LLM Models</h3>
+          <ul class="prep-list">
+            <li><strong>Ollama</strong>: <code>gemma4:12b</code>, <code>llama3.1:latest</code>, etc.</li>
+            <li><strong>LM Studio</strong>: <code>gemma-4-12b-it</code>, etc.</li>
+            <li>You can customize the Host URL, model name, and test connectivity directly from the UI settings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="usage-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 class="step-title">Start Your Local LLM</h4>
+          <p class="step-text">
+            Launch <strong>Ollama</strong> or <strong>LM Studio</strong> (with its local server enabled) and make sure your preferred model is ready.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 class="step-title">Run MyNewsReader.exe</h4>
+          <p class="step-text">
+            Download from GitHub Releases and double-click <code>MyNewsReader.exe</code>. Your default browser will automatically open <code>http://localhost:3001</code> after ~3 seconds.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 class="step-title">Browse &amp; Manage via Tray</h4>
+          <p class="step-text">
+            Select categories in the left pane to read date-sorted AI summaries. Double-click the system-tray icon anytime to open the control panel for crawl toggles, logs, and startup settings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notes & Changelog -->
+  <section id="notes" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Notes &amp; Changelog</div>
+        <h2 class="section-title">Usage Notes &amp; Changelog</h2>
+      </div>
+
+      <div class="prep-columns">
+        <div class="prep-card">
+          <h3>Important Notes</h3>
+          <ul class="prep-list">
+            <li><strong>How to Fully Exit</strong>: Clicking the top-right "×" button minimizes the controller to the system tray instead of stopping the server. To exit completely and free port 3001, right-click the tray icon and choose <strong>"Exit"</strong>.</li>
+            <li><strong>100% Local Privacy</strong>: RSS fetching and LLM summarization run strictly on your local machine; no feed lists or reading history are ever sent to external developer servers.</li>
+          </ul>
+        </div>
+
+        <div class="prep-card">
+          <h3>Changelog</h3>
+          <div class="changelog-scroll-box">
+            <div style="margin-bottom: 16px;">
+              <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">ver 0.2</p>
+              <ul class="prep-list" style="margin-bottom: 0;">
+                <li><strong>Ollama / LM Studio Provider Selection</strong>: Added a unified AI abstraction layer supporting per-provider Host URLs, model selection, and connection testing.</li>
+                <li><strong>One-Tap Toggle &amp; LED Indicator</strong>: Switch between Ollama and LM Studio directly from the browser settings with live LED status feedback.</li>
+                <li><strong>Descending Date Sort</strong>: Improved automatic descending date sorting for summaries inside expanded headlines.</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">ver 0.1</p>
+              <ul class="prep-list" style="margin-bottom: 0;">
+                <li>Silent background Node.js startup, system-tray residency, and Windows startup auto-run support.</li>
+                <li>Auto-launch of default browser after 3 seconds, plus 10-language UI, prompt, and starter RSS localization.</li>
+                <li>Two-way real-time sync between tray panel and browser UI, progress bar, filtered log console, and clean process-tree termination.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Banner -->
+      <div class="product-bottom-cta">
+        <h3>Build Your Private AI News Timeline Today</h3>
+        <p>Automate your daily news reading with local LLMs—completely free and without API token fees.</p>
+        <a href="https://github.com/tomatofhis-commits/MyNewsReader/releases" target="_blank" rel="noopener noreferrer" class="btn-store-blue" style="background: linear-gradient(135deg, #059669, #047857);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          Download Free on GitHub Releases
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools Section -->
+  <section class="related-tools-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 28px;">
+        <div class="section-badge">Related Tools</div>
+        <h2 class="section-title" style="font-size: 1.65rem;">Explore Other Free Tools</h2>
+      </div>
+      <div class="related-tools-grid">
+        <a href="index.html#featured" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/SecreAIicon1.png" alt="SecreAI Icon">
+            <div>
+              <span class="related-tool-cat">Desktop AI Assistant</span>
+              <h3>SecreAI</h3>
+            </div>
+          </div>
+          <p>One-button screen capture AI companion with ChromaDB multi-layer memory and local LLM support.</p>
+        </a>
+        <a href="subtitlocar-en.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/subtitlocar.png" alt="SubtitLocar Icon">
+            <div>
+              <span class="related-tool-cat">Subtitle &amp; Translation</span>
+              <h3>SubtitLocar</h3>
+            </div>
+          </div>
+          <p>Free real-time speech recognition and subtitle translation powered by Faster-Whisper and Ollama for OBS &amp; gaming.</p>
+        </a>
+        <a href="trucker-walk-around-en.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/TWAico.ico" alt="TruckerWalkAround Icon">
+            <div>
+              <span class="related-tool-cat">ETS2 / ATS Plugin</span>
+              <h3>TruckerWalkAround</h3>
+            </div>
+          </div>
+          <p>Step out of your truck in ETS2 &amp; ATS with PhysX walking collision, automated setup, and clean exit removal.</p>
+        </a>
+        <a href="4-screen-viewer-en.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/4ScreenViewericon.png" alt="4 Screen Viewer Icon">
+            <div>
+              <span class="related-tool-cat">Chrome Extension</span>
+              <h3>4 Screen Viewer</h3>
+            </div>
+          </div>
+          <p>Split a single browser tab into a 2x2 grid to watch up to 4 streams from YouTube, Nico Nico, and more simultaneously.</p>
+        </a>
+        <a href="youtube-multi-auto-playlist-en.html" class="related-tool-card">
+          <div class="related-tool-head">
+            <img src="image/YouTubeMultiAutoPlaylisticon.png" alt="YouTube Multi Auto Playlist Icon">
+            <div>
+              <span class="related-tool-cat">Chrome Extension</span>
+              <h3>YouTube Multi Auto Playlist</h3>
+            </div>
+          </div>
+          <p>Stream 1 to 4 YouTube videos in a side window with auto-generated playlists and sequential playback.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Enlarging Screenshots -->
+  <div id="image-modal" class="modal image-lightbox">
+    <span class="modal-close lightbox-close" id="image-modal-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">Developed &amp; Maintained by amachi</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about-en.html">About</a>
+        <a href="contact-en.html">Contact</a>
+        <a href="privacy-en.html">Privacy Policy</a>
+        <a href="disclaimer-en.html">Disclaimer</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
