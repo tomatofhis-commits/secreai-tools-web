@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity × ローカルAI（MCPサーバー）で開発コストを劇的に下げる方法 | SecreAI &amp; Tools</title>
+  <meta name="description" content="ローカルLLM（Gemma 4 12B / LM Studio）をMCPサーバーとしてAntigravityに組み込み、トークン消費を大幅に削減するハイブリッド開発手法と設定方法を解説します。">
+  <link rel="canonical" href="https://amachi-tools.win/article-antigravity-local-ai-mcp.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .article-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .toc-box {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 24px 0 32px;
+    }
+    .toc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+    .toc-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .toc-list a:hover {
+      text-decoration: underline;
+    }
+    .pros-cons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 20px 0 28px;
+    }
+    .pc-card {
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .pc-card.pros {
+      border-top: 4px solid var(--accent-green);
+      background: var(--accent-green-light);
+    }
+    .pc-card.cons {
+      border-top: 4px solid var(--accent-amber);
+      background: var(--accent-amber-light);
+    }
+    .pc-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.08rem;
+      color: var(--text-main);
+    }
+    .pc-card ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+    .callout-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 20px 0;
+    }
+    .callout-box.purple {
+      border-left-color: var(--accent-purple);
+      background: var(--accent-purple-light);
+    }
+    .callout-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .architecture-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 20px 0 28px;
+    }
+    .flow-step {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .flow-step-num {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .flow-step h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .flow-step p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px 18px;
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin: 16px 0 24px;
+      border: 1px solid #1e293b;
+    }
+    .code-block code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+    }
+    .bonus-section {
+      margin-top: 36px;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-body);
+    }
+    .bonus-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-purple-light);
+      color: var(--accent-purple);
+      margin-bottom: 10px;
+    }
+    .article-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 26px;
+      font-size: 0.93rem;
+    }
+    .article-table th,
+    .article-table td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .article-table th {
+      background: var(--bg-body);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .article-figure {
+      margin: 22px 0 28px;
+      padding: 16px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .article-figure img {
+      max-width: min(100%, 560px);
+      height: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .article-figure figcaption {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+    .code-details {
+      margin: 16px 0 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-body);
+    }
+    .code-details summary {
+      padding: 12px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--primary);
+      user-select: none;
+    }
+    .code-details summary:hover {
+      background: var(--primary-light);
+    }
+    .code-details .code-block {
+      margin: 0;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページ</a>
+        <a href="index.html#tools">公開ツール一覧</a>
+        <a href="index.html#articles" class="nav-active">記事・コラム</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="index.html">トップ</a></li>
+        <li><span>/</span></li>
+        <li><a href="index.html#articles">記事・コラム</a></li>
+        <li><span>/</span></li>
+        <li style="color: var(--text-main); font-weight: 600;">Antigravity × ローカルAI（MCPサーバー）</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="page-hero-compact">
+    <div class="container">
+      <div class="section-badge">Tech Article / Cost Optimization</div>
+      <h1 class="page-hero-title">Antigravity × ローカルAI（MCPサーバー）でコストダウンする方法</h1>
+      <p class="page-hero-subtitle">ログ解析やコード検索などの「大量テキスト処理」をローカルLLMに任せ、クラウドAIのトークン消費を劇的に抑えるハイブリッド開発の実践ガイド。</p>
+      <div class="article-meta">
+        <span class="article-tag">Antigravity</span>
+        <span class="article-tag">MCPサーバー</span>
+        <span class="article-tag">LM Studio / Gemma 4</span>
+        <span>公開日: 2026年11月</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section legal-section">
+    <div class="container">
+      <div class="legal-card">
+        <div class="legal-content">
+
+          <p>AIコーディングエージェント（Antigravityなど）は非常に強力ですが、大規模なリポジトリや長大なログファイルをそのままクラウドAIに読み込ませると、<strong>入力トークン（コンテキスト）が雪だるま式に膨らみ、APIコストや利用枠の消費が激しくなる</strong>という課題があります。</p>
+
+          <div class="callout-box purple">
+            <strong>個人開発でもどれくらい費用がかかるのか？（Geminiの場合の目安）</strong>
+            本格的にAIコーディングを回し始めると、標準的な <strong>Google AI Proプラン（月額約2,900円 / $19.99相当）</strong> の利用枠ではあっという間に上限に達してしまいます。ストレスなく開発を続けるには、上位の <strong>Ultraプラン（月額14,500円〜 / $99.99〜）</strong> へのアップグレードや、APIの従量課金で <strong>月数万円規模</strong> のコストがかかることも珍しくありません。
+          </div>
+
+          <p>そこで有効なのが、<strong>ローカルAI（LM Studioなど）を「MCPサーバー」としてAntigravityに組み込み、作業を分担させるハイブリッド構成</strong>です。本記事では、この仕組みのメリット・デメリット、実際の運用構成、そしてAntigravity自身に設定を任せる方法まで詳しく解説します。</p>
+
+          <div class="toc-box">
+            <div class="toc-title">この記事の目次</div>
+            <ol class="toc-list">
+              <li><a href="#pros-cons">ローカルAIを使うメリット・デメリットとトークン削減効果</a></li>
+              <li><a href="#hybrid-architecture">実際にやっていること：MCPサーバーによる作業分担</a></li>
+              <li><a href="#setup-guide">設定の詳細と、Antigravityに任せるやり方</a></li>
+              <li><a href="#bonus-gemma4">おまけ1：Gemma 4 12Bを選んで使っている理由</a></li>
+              <li><a href="#bonus-aimeeting">おまけ2：AIミーティングのMCPサーバー機能</a></li>
+            </ol>
+          </div>
+
+          <h2 id="pros-cons">1. ローカルAIを使うメリット・デメリット</h2>
+          <p>ローカルLLMをコーディング支援に組み込む場合、「すべてをローカルで完結させる」のではなく、得意・不得意を見極めて導入することが重要です。</p>
+
+          <div class="pros-cons-grid">
+            <div class="pc-card pros">
+              <h3>メリット：電気代のみで定型作業を処理</h3>
+              <ul>
+                <li><strong>ランニングコストの大幅削減：</strong>ログ解析、ファイル検索、定型要約、テキスト抽出、コミットメッセージ作成などの作業を電気代だけで回せます。</li>
+                <li><strong>トークン消費の劇的な抑制：</strong>コード全文や数千行のログをクラウドに送らず、ローカルAIが抽出した「該当箇所と要点」だけをクラウドAIに渡すため、<strong>AIコーディング全体のトークン消費を約40%〜70%程度抑える</strong>効果が期待できます。</li>
+                <li><strong>機密性・安心感：</strong>ローカル環境内で下処理が完結するため、不要なファイル全体を外部へ送信する機会を減らせます。</li>
+              </ul>
+            </div>
+            <div class="pc-card cons">
+              <h3>デメリット：GPUコストと推論時間</h3>
+              <ul>
+                <li><strong>ハードウェア（特にGPU/VRAM）の要求が高い：</strong>実用的な速度と精度で動かすには相応のVRAM容量とGPUパワーが必要です。近年のGPU価格の高騰化がこの初期投資のハードルを大きくしています。</li>
+                <li><strong>レスポンス時間の増加：</strong>クラウドの高速な推論APIと比べると、ローカル推論は1回あたりの待ち時間が長くなりやすく、全体のランニングタイム（作業完了までの時間）は増加します。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout-box">
+            <strong>なぜ「約40%〜70%」ものトークン削減になるのか？</strong>
+            通常のAIコーディングでは、「関連ファイルを探す」「エラーログ全体を読む」「変更差分を確認する」といった<strong>前処理の段階</strong>で大量のトークンを消費します。これらをローカルAIにオフロードし、クラウドAIには「抽出された数十行のコード」や「整理されたエラー原因」だけを渡すことで、入力トークンを最小限に抑えられます。
+          </div>
+
+          <h2 id="hybrid-architecture">2. 実際にやっていること：MCPサーバーによる作業分担</h2>
+          <p>重要なのは、<strong>「すべてをローカルAIに任せるのではなく、MCP（Model Context Protocol）サーバーという形をとっている」</strong>点です。</p>
+          <p>ローカルAI単体に複雑な設計やマルチファイルの正確な編集まで任せようとすると、精度不足や手戻りが発生します。一方で、MCPサーバーとしてツール化しておけば、<strong>Antigravity（クラウドAI）が司令塔となり、必要なときだけローカルAIを呼び出す</strong>という非常にバランスの良い作業分担が実現します。</p>
+
+          <div class="architecture-flow">
+            <div class="flow-step">
+              <span class="flow-step-num">STEP 1</span>
+              <h4>Antigravityが指示</h4>
+              <p>「このログの原因を調べて」「このファイルから初期化処理を抽出して」とMCPツールを呼び出す。</p>
+            </div>
+            <div class="flow-step">
+              <span class="flow-step-num">STEP 2</span>
+              <h4>ローカルAIが下処理</h4>
+              <p>LM Studio上のモデルがファイル全文やGit差分を読み込み、必要な情報だけをピンポイントで抽出・要約。</p>
+            </div>
+            <div class="flow-step">
+              <span class="flow-step-num">STEP 3</span>
+              <h4>クラウドAIが判断・編集</h4>
+              <p>受け取った最小限の情報をもとに、高度な設計判断や実際のコード修正をクラウドAIが実行する。</p>
+            </div>
+          </div>
+
+          <figure class="article-figure">
+            <img src="image/GemmaRUN.jpg" alt="AntigravityがMCPツール（gemma_code_search）を呼び出してローカルAIにHTML構造を抽出させている画面" loading="lazy">
+            <figcaption>実際にAntigravityがMCPツール（gemma_code_search）を呼び出し、ローカルAIにHTML構造の抽出を任せている様子</figcaption>
+          </figure>
+
+          <p>実際にMCPサーバー（例：<code>gemma_code_search</code>）では、以下のように1つの窓口から用途別にローカルAIを使い分けています。</p>
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>活用モード</th>
+                <th>ローカルAIに任せる内容</th>
+                <th>効果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>コード検索・抽出</strong></td>
+                <td>指定ファイルから特定の関数やロジックだけを抜き出す</td>
+                <td>長大なソースコード全文をクラウドに送らずに済む</td>
+              </tr>
+              <tr>
+                <td><strong>ログ解析</strong></td>
+                <td>エラーログやスタックトレースから原因と対策案を要約</td>
+                <td>数千行のログ読み込みによるトークン爆増を防止</td>
+              </tr>
+              <tr>
+                <td><strong>リファクタリング・解説</strong></td>
+                <td>関数単位の整理やDocstring・コメントの生成</td>
+                <td>定型的なドキュメント作業を電気代のみで完結</td>
+              </tr>
+              <tr>
+                <td><strong>コミットメッセージ生成</strong></td>
+                <td><code>git diff</code> の内容を読み取り日本語で要約</td>
+                <td>毎回のコミット作業でクラウドの枠を消費しない</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="setup-guide">3. 設定の詳細と、Antigravityに任せるやり方</h2>
+          <p>「MCPサーバー」や「ローカルLLM」と聞くと難しそうに感じるかもしれませんが、仕組み自体はシンプルです。まずは前提条件から確認しましょう。</p>
+
+          <h3>前提条件：LM Studio（またはOllama）の導入は必須</h3>
+          <p>ローカルAIを動かすための土台として、<strong>LM Studio</strong> または <strong>Ollama</strong> のインストールが必須になります。ネット上の技術記事では「Linux環境やコマンドプロンプト（黒い画面）に詳しくないと触れない」ような雰囲気で書かれていることが多いのですが、<strong>Windows環境でも公式インストーラーを使えば普通のアプリと同じようにGUI（マウス操作）で比較的簡単に導入できます</strong>。</p>
+          <p>たとえばLM Studioであれば、公式サイトからインストーラーをダウンロードして実行し、アプリ内の検索欄から「Gemma 4 12B」などを選んでダウンロードし、<strong>「Start Server」ボタンを1回押すだけ</strong>でローカルAPIサーバー（<code>http://localhost:1234/v1</code>）が立ち上がります。</p>
+
+          <figure class="article-figure">
+            <img src="image/LMStudio.jpg" alt="Windows版LM StudioでGemma 4 12Bをロードしローカルサーバーを起動している画面" loading="lazy">
+            <figcaption>Windows版LM Studioのローカルサーバー画面。GUI操作だけでGemma 4 12B（7.54GB）をロードし、サーバーを起動できる</figcaption>
+          </figure>
+
+          <h3>実際に作成・配置するファイルと場所</h3>
+          <p>Windows環境でAntigravityと連携させる場合、実際に用意・編集するファイルは以下の3つです。</p>
+
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>役割</th>
+                <th>ファイル名・配置場所の例（Windows）</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>① MCPサーバー本体</strong></td>
+                <td>任意のフォルダ（例：<code>D:\mcp-servers\lms-code-searcher\server.py</code>）</td>
+                <td>Antigravityからの指示を受け取り、対象ファイルや <code>git diff</code> を読み込んでLM StudioのローカルAPIへ投げるPythonスクリプト。</td>
+              </tr>
+              <tr>
+                <td><strong>② MCP設定ファイル</strong></td>
+                <td><code>C:\Users\&lt;ユーザー名&gt;\.gemini\antigravity\mcp_config.json</code></td>
+                <td>Antigravityが起動時に読み込む設定ファイル。①のスクリプトをどのコマンドで起動するかを登録します。</td>
+              </tr>
+              <tr>
+                <td><strong>③ グローバルルール</strong></td>
+                <td><code>C:\Users\&lt;ユーザー名&gt;\.gemini\GEMINI.md</code></td>
+                <td>「ファイル確認やログ解析時は、まず最初にこのMCPツールを使うこと」とAntigravityに指示するルールファイル。</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>① <code>server.py</code> の具体的なコード例</strong>（事前に <code>pip install mcp openai</code> を実行しておきます）：</p>
+          <details class="code-details">
+            <summary>server.py のサンプルコードを表示（クリックで展開）</summary>
+            <pre class="code-block"><code>import os
+import subprocess
+from mcp.server.fastmcp import FastMCP
+from openai import OpenAI
+
+mcp = FastMCP("lms-code-searcher")
+client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
+MODEL_NAME = "gemma-4-12b-it-ud"  # LM StudioでロードしたモデルID
+
+@mcp.tool()
+def gemma_code_search(filePath: str, instruction: str) -&gt; str:
+    """ローカルLLM(LM Studio)でコード抽出・ログ解析・Git差分要約を実行します。"""
+    if filePath.lower() in ("git", "diff"):
+        res = subprocess.run(["git", "diff"], capture_output=True, text=True, encoding="utf-8", errors="replace")
+        content = res.stdout[:24000] if res.stdout else "差分がありません。"
+        system_prompt = "あなたは熟練の開発者です。Git差分から変更点を要約し、日本語で簡潔なコミットメッセージを作成してください。"
+    else:
+        if not os.path.exists(filePath):
+            return f"ファイルが見つかりません: {filePath}"
+        with open(filePath, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()[:30000]
+        if filePath.endswith(".log") or any(k in instruction for k in ("エラー", "ログ", "log")):
+            system_prompt = "あなたはデバッグの専門家です。ログの例外・エラー原因を特定し、具体的な修正案を日本語で簡潔に出力してください。"
+        else:
+            system_prompt = "あなたは優秀なコード解析アシスタントです。指示された該当箇所と理由だけをピンポイントで抽出し、余計な全文出力は避けてください。"
+
+    response = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"【指示】\n{instruction}\n\n【対象データ】\n{content}"}
+        ],
+        temperature=0.2,
+    )
+    return response.choices[0].message.content
+
+if __name__ == "__main__":
+    mcp.run()</code></pre>
+          </details>
+
+          <p><strong>② <code>mcp_config.json</code> の具体的な記述例：</strong></p>
+          <pre class="code-block"><code>{
+  "mcpServers": {
+    "lms-code-searcher": {
+      "command": "python",
+      "args": [
+        "D:\\mcp-servers\\lms-code-searcher\\server.py"
+      ]
+    }
+  }
+}</code></pre>
+
+          <p><strong>③ <code>GEMINI.md</code>（グローバルルール）の具体的な記述例：</strong></p>
+          <pre class="code-block"><code># ローカルAI（gemma_code_search）最優先ルール
+
+1. 「コード検索・特定箇所の抽出」「ログ解析」「リファクタリング」「コミットメッセージ作成」を行う際は、
+   クラウドAI自身でファイル全文を直接読み込まず、必ず【最初に】MCPツール `gemma_code_search` を呼び出すこと。
+2. `gemma_code_search` から返ってきた抽出結果・解析結果のみをもとに、必要な編集や判断を行うこと。
+3. ローカルAIの出力が不十分な場合のみ、該当ファイルの必要範囲を直接確認すること。</code></pre>
+
+          <h3>難しそうに見えるけれど、Antigravityに丸投げできる！</h3>
+          <p>ここまでファイル構成やJSONの書き方を紹介しましたが、実は<strong>これらをゼロから自分で書く必要はありません</strong>。LM StudioをGUIで起動さえしてしまえば、<strong>「LM StudioのローカルAPIを叩くMCPサーバーを作りたい」とAntigravity自身に指示して、スクリプトの作成から <code>mcp_config.json</code> への登録、ルール記述までを丸ごと任せる</strong>ことができます。</p>
+          <p>たとえば、以下のようなプロンプトをAntigravityに渡すだけで構築を進められます。</p>
+
+          <pre class="code-block"><code>LM Studio（http://localhost:1234/v1）で動かしているローカルLLMを使って、
+以下の機能を持つMCPサーバーをPythonで作成し、Antigravityのmcp_config.jsonに登録してください。
+
+1. 指定されたファイルパスから、指示に合うコードブロックだけを抽出する
+2. ログファイルを渡されたら、エラー原因と修正案を要約して返す
+3. "git" を指定されたら git diff を取得し、日本語のコミットメッセージを生成する
+
+また、このMCPツールを最優先で使うようにグローバルルール案も作成してください。</code></pre>
+
+          <p>一見すると専門的で難しそうな設定も、このようにAIエージェント自身に「自分のための節約ツール」を作らせることで、初心者でもぐっと簡単に扱えるようになります。</p>
+
+          <div class="bonus-section" id="bonus-gemma4">
+            <span class="bonus-badge">おまけ 1</span>
+            <h2>Gemma 4 12Bを選んで使っている理由</h2>
+            <p>ローカルで動かすモデルにはさまざまな選択肢がありますが、私は常駐用のサポートモデルとして <strong>Gemma 4 12B</strong> を選んで運用しています。その理由は以下の4点です。</p>
+            <ul>
+              <li><strong>コーディング特化ではないが「日本語の指示遂行力」が高い：</strong>一般的には純粋なコーディング特化モデルではありません。しかし、日本語で「このログの原因を抜き出して」「この処理だけ抽出して」と要求した際に、指示を履き違えたり出力が破綻したりせず、<strong>問題を起こさずに仕事をこなす割合（安定性）が非常に高い</strong>のが強みです。</li>
+              <li><strong>常駐アシスタントとしての相性の良さ：</strong>検索、要約、ログ解析、コミットメッセージ作成など、いろいろな雑務を広くサポートさせるために常駐させておく用途において、非常に素直で扱いやすいモデルです。</li>
+              <li><strong>環境にちょうど良いサイズ感：</strong>12Bクラスは自分のGPU環境（VRAM容量）に最もフィットし、実用的な速度と賢さのバランスが取れています。</li>
+              <li><strong>VRAMに余裕がない環境向けの選択肢もある：</strong>もし手元のGPUで12Bが重い場合でも、Gemma 4シリーズにはより軽量な <strong>E4B</strong> や <strong>E2B</strong> といったモデルも用意されているため、環境のスペックに合わせて無理なく導入できます。</li>
+            </ul>
+          </div>
+
+          <div class="bonus-section" id="bonus-aimeeting">
+            <span class="bonus-badge">おまけ 2（コラム）</span>
+            <h2>AIミーティングのMCPサーバー機能</h2>
+            <p>ローカルAIをMCPサーバー化する応用として、<strong>「AIミーティング（複数のAIペルソナによる自動議論）」</strong>をMCPツールとして組み込むことも可能です。</p>
+            <p>たとえば「新しい機能の設計案」や「複雑なバグの切り分け方針」について、ローカルLLM上で複数の視点（設計担当・セキュリティ担当・ユーザー視点など）に議論を戦わせ、その結論だけをAntigravityに返す仕組みです。必須の機能ではありませんが、ローカルの計算資源を活かした面白い活用法のひとつとして検討してみる価値があります。</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">開発・運営：amachi | 無料AI・配信支援・便利ツール公式サイト</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

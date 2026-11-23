@@ -149,4 +149,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://amachi-tools.win/disclaimer-en.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://amachi-tools.win/disclaimer.html" />
   </url>
+
+  <!-- Tech Articles -->
+  <url>
+    <loc>https://amachi-tools.win/article-antigravity-local-ai-mcp.html</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
 </urlset>
