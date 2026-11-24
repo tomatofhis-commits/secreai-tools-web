@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人利用のために作ったミニツール3選（AI Meeting / TVList / YouTube多言語字幕） | SecreAI &amp; Tools</title>
+  <meta name="description" content="公開アプリとは別に、個人的な興味や日常のちょっとした不便を解消するために開発した3つのミニツール（AI Meeting・TVList Manager・YouTube多言語字幕ジェネレーター）を紹介します。">
+  <link rel="canonical" href="https://amachi-tools.win/article-personal-mini-tools.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .article-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .toc-box {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 24px 0 32px;
+    }
+    .toc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+    .toc-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .toc-list a:hover {
+      text-decoration: underline;
+    }
+    .callout-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 20px 0;
+    }
+    .callout-box.amber {
+      border-left-color: var(--accent-amber);
+      background: var(--accent-amber-light);
+    }
+    .callout-box.purple {
+      border-left-color: var(--accent-purple);
+      background: var(--accent-purple-light);
+    }
+    .callout-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .article-figure {
+      margin: 22px 0 28px;
+      padding: 16px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .article-figure img {
+      max-width: min(100%, 640px);
+      height: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .article-figure figcaption {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+    .tool-summary-card {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 18px 0 24px;
+    }
+    .tool-summary-card ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページ</a>
+        <a href="index.html#tools">公開ツール一覧</a>
+        <a href="index.html#articles" class="nav-active">記事・コラム</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-breadcrumb">
+    <div class="container">
+      <a href="index.html">トップページ</a> &gt; <a href="index.html#articles">記事・コラム</a> &gt; 個人利用のために作ったミニツール3選
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>個人利用のために作ったミニツール3選（AI Meeting / TVList / YouTube多言語字幕）</h1>
+      <p>公開アプリとは別に、個人的な興味や日常のちょっとした不便を解消するためにサクッと作った3つのツールを紹介します。</p>
+      <div class="article-meta">
+        <span class="article-tag">個人開発</span>
+        <span class="article-tag">ローカルAI</span>
+        <span class="article-tag">Chrome拡張機能</span>
+        <span class="article-tag">Python</span>
+        <span>公開日：2026-11-24</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal-card">
+        <div class="legal-content">
+
+          <p>このサイトでは、一般公開を前提に整備したデスクトップアプリやChrome拡張機能を中心に紹介していますが、普段の開発では<strong>「完全に自分用」「ちょっとした実験や日常の不便を解消するため」</strong>に作った小さなツールもいくつかあります。</p>
+          <p>今回はその中から、<strong>「AI Meeting」「TVList Manager」「YouTube多言語字幕ジェネレーター」</strong>の3つをまとめて紹介します。どれも個人利用前提のためラフな部分もありますが、開発のきっかけや工夫したポイント、つまずいた点などをコラムとしてまとめました。</p>
+
+          <div class="toc-box">
+            <div class="toc-title">目次</div>
+            <ol class="toc-list">
+              <li><a href="#ai-meeting">1. AI Meeting：ローカルAI同士で自動ディスカッション＆MCPサーバー化</a></li>
+              <li><a href="#tvlist">2. TVList Manager：番組編成期の録画重複チェック＆番組表管理</a></li>
+              <li><a href="#youtube-subtitles">3. Creating_YouTube_subtitles：高精度・二言語併記のYouTube字幕生成</a></li>
+              <li><a href="#summary">まとめ：自分専用の小さなツールを作る楽しさ</a></li>
+            </ol>
+          </div>
+
+          <!-- 1. AI Meeting -->
+          <h2 id="ai-meeting">1. AI Meeting：ローカルAI同士で自動ディスカッション＆MCPサーバー化</h2>
+          <p>最初はお遊びとして、<strong>「LM Studio や Ollama で動かしているローカルAIモデル同士に会議をさせてみたら面白いのでは？」</strong>という思いつきで作ったデスクトップツールです。</p>
+
+          <figure class="article-figure">
+            <img src="image/AI_MeetingSS.jpg" alt="AI Meetingのメイン画面スクリーンショット" loading="lazy">
+            <figcaption>AI Meeting：複数のAIペルソナを設定して、議題に沿ったターン制ディスカッションを自動実行</figcaption>
+          </figure>
+
+          <div class="tool-summary-card">
+            <strong>主な機能・仕組み</strong>
+            <ul>
+              <li><strong>複数ペルソナでのターン制会議：</strong>「ファシリテーター（議長）」「斬新アイデア担当」「ビジョナリー」「実用アイデアマン」「ギャル視点」など、役割の異なるAI参加者を設定し、指定ターン数で自動討論させます。</li>
+              <li><strong>文脈維持とコンテキスト圧縮：</strong>会話の履歴を引き継ぎつつ、長くなりすぎた場合は圧縮やリセットを行えます。</li>
+              <li><strong>Web検索・サマリー出力：</strong>必要に応じて Tavily Web検索を併用でき、会議終了後には「議長サマリー生成」や Markdown 形式でのログ保存が可能です。</li>
+            </ul>
+          </div>
+
+          <h3>お遊びから Antigravity の MCP サーバーへ</h3>
+          <p>単体で眺めているだけでも面白かったのですが、使っているうちに<strong>「これ、Antigravity の MCP サーバーとして組み込んでみても面白いかも」</strong>と気づき、おまけ的な形で開発中のアイデア出しや設計レビューの補助として活用するようになりました。</p>
+          <p>MCPサーバー版では、最初の発言に引きずられる同調バイアスを防ぐために<strong>「独立意見出し → 議長による論点設定 → 本会議討論 → 専用結論エージェントによる最終レポート生成」</strong>という4ステップ構成にしています。実用レベルで必須かと言われると正直なところ不明ですが、手元のローカルGPU資源を活かした実験としてはかなり面白い仕組みになっています。</p>
+
+          <div class="callout-box">
+            <strong>関連コラム：</strong>
+            ローカルLLMをMCPサーバーとしてAntigravityに組み込む具体的な方法やメリットについては、<a href="article-antigravity-local-ai-mcp.html">「Antigravity × ローカルAI（MCPサーバー）でコストダウンする方法」</a>でも詳しく紹介しています。
+          </div>
+
+          <!-- 2. TVList Manager -->
+          <h2 id="tvlist">2. TVList Manager：番組編成期の録画重複チェック＆番組表管理</h2>
+          <p>春や秋の番組編成期になると、新番組や特番が一気に増えて「どの番組をどの録画機器に割り振れば、時間帯が被らずに録画できるか」を整理するのが大変になります。それを<strong>手元でサッとメモして重複チェックするため</strong>に作ったのが、Chrome拡張機能（Manifest V3）の <strong>TVList Manager</strong> です。</p>
+
+          <figure class="article-figure">
+            <img src="image/TV_List_ManagerSS.jpg" alt="TVList ManagerのEPG番組表と自動追跡画面" loading="lazy">
+            <figcaption>TVList Manager：地デジ・BS・CSの番組表表示と、自動検索ルールによる追っかけ番組管理</figcaption>
+          </figure>
+
+          <div class="tool-summary-card">
+            <strong>主な機能・仕組み</strong>
+            <ul>
+              <li><strong>1週目と2週目以降のズレもまとめて確認：</strong>改編期特有の「初回だけ時間が違う」「2週目から放送時間がずれる」といったパターンも含めて、録画予定を一覧で確認できます。</li>
+              <li><strong>自動検索＆追っかけ番組：</strong>「ジャンル：アニメ」やキーワードを登録しておくと、番組表から該当番組を自動マッチングしてリストアップします。</li>
+              <li><strong>放送波フィルター＆バッティング検出：</strong>地デジ・BS・CSの切り替えや、録画予定の重複（バッティング）検出に対応しています。</li>
+            </ul>
+          </div>
+
+          <div class="callout-box amber">
+            <strong>一番手間取ったポイント：番組表データの確保</strong>
+            このツールを作るうえで最も苦労したのが、<strong>「公式のEPG番組表などをそのまま利用できない環境で、どうやって番組表データを確保するか」</strong>という点でした。最終的に、有志のXMLTVファイルのドラッグ＆ドロップやAPIフェッチ、Gガイド週間番組表からの自動取得を組み合わせることで、なんとか実用できる形に落ち着きました。
+          </div>
+
+          <!-- 3. Creating_YouTube_subtitles -->
+          <h2 id="youtube-subtitles">3. Creating_YouTube_subtitles：高精度・二言語併記のYouTube字幕生成</h2>
+          <p>YouTube用の字幕を作る際、YouTube標準の自動生成字幕よりも精度の高い文字起こしを行い、さらに<strong>「元言語（日本語）」と「翻訳言語（英語など）」の2種類を同時に表示できる字幕</strong>を手軽に作りたくて開発した Python（CustomTkinter）製のデスクトップツールです。</p>
+
+          <figure class="article-figure">
+            <img src="image/Creating_YouTube_subtitlesSS.jpg" alt="YouTube多言語字幕ジェネレーターのGUI画面" loading="lazy">
+            <figcaption>Creating_YouTube_subtitles：動画やSBVファイルをドロップして、文字起こしから翻訳・VTT/SRT出力までを一括実行</figcaption>
+          </figure>
+
+          <div class="tool-summary-card">
+            <strong>主な機能・仕組み</strong>
+            <ul>
+              <li><strong>GPU高速文字起こし＋無音除去：</strong><code>faster-whisper</code>（CUDA / GPUアクセラレーション）と Silero VAD を組み合わせ、無音区間のハルシネーションを抑えつつ高精度に文字起こしします。</li>
+              <li><strong>ローカルLLMによる文脈翻訳：</strong>LM Studio（OpenAI互換API）と連携し、前後の文脈を踏まえた翻訳や AI による日本語の誤変換校正を実行できます。</li>
+              <li><strong>YouTube規格に最適化した出力：</strong>原言語・翻訳言語・二言語併記の3パターンを SRT / WebVTT（<code>.vtt</code>）で出力可能。WebVTT では YouTube のシークバーと被らない <code>line:70%</code> などの表示位置指定にも対応しています。</li>
+              <li><strong>YouTube Studio 微調整フローに対応：</strong>YouTube Studio で波形を見ながらタイミング調整した <code>.sbv</code> ファイルをドラッグ＆ドロップし、位置指定付きの <code>.vtt</code> に再出力する使い方もできます。</li>
+            </ul>
+          </div>
+
+          <div class="callout-box purple">
+            <strong>注意点（テスト範囲について）</strong>
+            このツールはもともと<strong>ショート動画や切り抜き動画向け</strong>に作成したため、長尺の動画（数十分〜数時間など）でどのくらい安定して処理できるかはまだテストしていません。短い動画であれば、GPUを使ってかなり快適に字幕生成から翻訳まで完結します。
+          </div>
+
+          <!-- まとめ -->
+          <h2 id="summary">まとめ：自分専用の小さなツールを作る楽しさ</h2>
+          <p>今回紹介した3つのツールは、いずれも一般公開のような汎用性や完璧なエラー処理までは作り込んでいない、いわば「自分専用の道具」です。</p>
+          <p>ただ、自分のPC環境（ローカルLLMやGPU）や普段の作業フローに合わせてピンポイントで機能を作れるのは、個人開発ならではの大きな強みだと感じています。今後も「ちょっと面倒だな」と思ったことがあれば、こうしたミニツールを気軽に増やしていくつもりです。</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">開発・運営：amachi | 無料AI・配信支援・便利ツール公式サイト</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
