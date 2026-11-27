@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amachi-tools.win/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
 
   <!-- SubtitLocar -->
@@ -158,5 +158,9 @@
   <url>
     <loc>https://amachi-tools.win/article-personal-mini-tools.html</loc>
     <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://amachi-tools.win/article-ets2-to-google-map.html</loc>
+    <lastmod>2026-11-25</lastmod>
   </url>
 </urlset>

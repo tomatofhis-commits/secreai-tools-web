@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETS2 / ATS の走行位置をリアルタイムで Google マップに表示する「ETS2toGoogleMAP」開発記録 | SecreAI &amp; Tools</title>
+  <meta name="description" content="ETS2・ATSのゲーム内走行位置を現実のGoogleマップにリアルタイム表示する「ETS2toGoogleMAP」の開発記録。Geminiへの最初の質問から3プロセス設計、アイスランドDLCでの試作、縮尺変動の壁、今後の全マップ対応展望までをまとめます。">
+  <link rel="canonical" href="https://amachi-tools.win/article-ets2-to-google-map.html">
+  <link rel="icon" href="image/SecreAIicon1.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7695104877965082" crossorigin="anonymous"></script>
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .article-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .toc-box {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 24px 0 32px;
+    }
+    .toc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+    .toc-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .toc-list a:hover {
+      text-decoration: underline;
+    }
+    .callout-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 20px 0;
+    }
+    .callout-box.amber {
+      border-left-color: var(--accent-amber);
+      background: var(--accent-amber-light);
+    }
+    .callout-box.purple {
+      border-left-color: var(--accent-purple);
+      background: var(--accent-purple-light);
+    }
+    .callout-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .article-figure {
+      margin: 22px 0 28px;
+      padding: 16px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .article-figure img {
+      max-width: min(100%, 760px);
+      height: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .article-figure figcaption {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .tool-summary-card {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin: 18px 0 24px;
+    }
+    .tool-summary-card ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="image/SecreAIicon1.png" alt="SecreAI Icon" class="nav-logo-img">
+        <span><span class="logo-accent">SecreAI</span> &amp; Tools</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html">トップページ</a>
+        <a href="index.html#tools">公開ツール一覧</a>
+        <a href="index.html#articles" class="nav-active">記事・コラム</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-breadcrumb">
+    <div class="container">
+      <a href="index.html">トップページ</a> &gt; <a href="index.html#articles">記事・コラム</a> &gt; ETS2toGoogleMAP 開発記録
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>ETS2 / ATS の走行位置をリアルタイムで Google マップに表示する「ETS2toGoogleMAP」開発記録</h1>
+      <p>作り込みのしっかりしたドライビングシムだからこそ、「リアルだと今どのあたりを走っているのか」を Google マップにリアルタイム表示したくなった——そんな思いつきから始まった開発の記録です。</p>
+      <div class="article-meta">
+        <span class="article-tag">個人開発</span>
+        <span class="article-tag">ETS2・ATS</span>
+        <span class="article-tag">ローカルAI</span>
+        <span class="article-tag">開発記録</span>
+        <span>公開日：2026-11-25</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal-card">
+        <div class="legal-content">
+
+          <p><strong>Euro Truck Simulator 2（ETS2）</strong> や <strong>American Truck Simulator（ATS）</strong> は、街並みや道路標識、ランドマークまで非常に丁寧に作り込まれているドライビングシミュレーターです。</p>
+          <p>ゲーム内の道路を走りながら、ふと<strong>「これだけ作り込みがしっかりしたゲームなら、リアル（現実世界）だと今どのあたりを走っているのかをリアルタイムで Google マップに表示できたら面白いのでは？」</strong>と思い立ったのが、この <strong>「ETS2toGoogleMAP」</strong> プロジェクトの始まりでした。</p>
+
+          <figure class="article-figure">
+            <img src="image/ETS2toGoogleMAP_SS1.jpg" alt="アイスランド・アークレイリ周辺のGoogleマップ上に表示された自車マーカーとアンカーピン" loading="lazy">
+            <figcaption>動作イメージ（アイスランド・アークレイリ周辺）：信頼度別のアンカーピン（青・緑）と走行軌跡、黄色い自車マーカーをリアルタイムに地図へ反映</figcaption>
+          </figure>
+
+          <div class="toc-box">
+            <div class="toc-title">目次</div>
+            <ol class="toc-list">
+              <li><a href="#origin">1. スタート地点：Gemini への最初の質問</a></li>
+              <li><a href="#architecture">2. 設計方針：3つのプロセスへの分離と配布目標</a></li>
+              <li><a href="#prototype">3. 試作ターゲット：アイスランド DLC での開発開始</a></li>
+              <li><a href="#challenge">4. 最大の難所：場所によって変動する縮尺の壁</a></li>
+              <li><a href="#capture-tech">5. キャプチャの技術：3つのトリガー基準と空間リングバッファ</a></li>
+              <li><a href="#analysis-tech">6. 画像解析とアンカーポイントの技術：0秒フィルタ・Gemma 4・OSM突合</a></li>
+              <li><a href="#display-tech">7. 表示を支える技術：テレメトリ取得と多段階ハイブリッド座標変換</a></li>
+              <li><a href="#progress">8. トライ＆エラーと現在の進捗（アイスランド約8割にアンカー）</a></li>
+              <li><a href="#roadmap">9. 今後の展望：表示系の洗練と全マップ対応に向けて</a></li>
+            </ol>
+          </div>
+
+          <!-- 1. スタート地点 -->
+          <h2 id="origin">1. スタート地点：Gemini への最初の質問</h2>
+          <p>最初はまず「そもそも技術的に可能なのか？」を確かめるため、Gemini に次のような質問を投げかけたところからスタートしました。</p>
+
+          <div class="callout-box">
+            <strong>Gemini への最初の質問</strong>
+            <p style="margin: 0;">「ETS2 ATS のゲーム画面をキャプチャして看板などを読み、それをgemma4などで解析しどの当たりかを大まかな位置を推測、現実の地図ならだいたいこの辺という緯度経度をgoogleMAPに渡しピンを立てる<br>これは現実でもGPSがないときに利用出来るかもしれない技術かと思いますが、可能でしょうか？」</p>
+          </div>
+
+          <p>この問いかけをきっかけに、現実の地図とゲーム内座標をどう結びつけるか、必要なデータや処理の流れをどう組むべきか、Gemini と何度も対話を重ねながら構想を具体化していきました。</p>
+
+          <!-- 2. 設計方針 -->
+          <h2 id="architecture">2. 設計方針：3つのプロセスへの分離と配布目標</h2>
+          <p>対話を繰り返す中で、すべての処理を1つのプログラムに詰め込むのではなく、役割ごとに<strong>3つのプロセス</strong>へ明確に分離する設計に落ち着きました。</p>
+
+          <div class="tool-summary-card">
+            <strong>3つのプロセス構成</strong>
+            <ul>
+              <li><strong>① データのキャプチャ：</strong>ゲーム画面や座標データなど、位置特定に必要な情報を収集するプロセス。</li>
+              <li><strong>② キャプチャしたデータの解析とデータベース作成：</strong>収集したデータを解析し、ゲーム内座標と現実の緯度・経度を対応づけるデータベース（アンカー情報など）を構築するプロセス。</li>
+              <li><strong>③ データベースから計算して表示：</strong>構築したデータベースをもとに現在位置を計算し、Google マップ上にリアルタイムでピンを表示するプロセス。</li>
+            </ul>
+          </div>
+
+          <p>解析やデータベース構築は開発側・データ作成側で行い、最終的には<strong>「③ 表示プロセス」を一般ユーザー向けに配布できる形にする</strong>ことを目標に据えました。</p>
+
+          <!-- 3. 試作ターゲット -->
+          <h2 id="prototype">3. 試作ターゲット：アイスランド DLC での開発開始</h2>
+          <p>いきなり広大な ETS2・ATS の全マップを対象にするのではなく、まずは小規模でまとまりのあるエリアで試作（プロトタイプ）を作ることにしました。</p>
+          <p>そこで試作ターゲットとして選んだのが、最新の <strong>アイスランド DLC</strong> です。島国で境界がはっきりしており、検証用マップとして最適だと判断し、3つのプロセスそれぞれのコードを <strong>Antigravity</strong> を使って書き始めました。</p>
+
+          <!-- 4. 最大の難所 -->
+          <h2 id="challenge">4. 最大の難所：場所によって変動する縮尺の壁</h2>
+          <p>開発を進めていく中で、最も難易度が高い壁として立ちはだかったのが<strong>「ゲーム内マップの縮尺が一定ではない」</strong>という点です。</p>
+
+          <div class="callout-box amber">
+            <strong>なぜ単純な座標変換では合わないのか</strong>
+            ETS2 や ATS のマップは、都市部と郊外・幹線道路など、場所によって縮尺が大きく変動します。そのため、マップ全体に対して一律の計算式（線形変換）を当てはめるだけでは、現実の Google マップ上の位置と大きくズレてしまいます。
+          </div>
+
+          <p>この縮尺変動をどう吸収し、どの地点を走っていても現実の道路や位置に違和感なくマッピングできるかが、本プロジェクトにおける最大の技術的チャレンジとなっています。</p>
+
+          <!-- 5. キャプチャの技術 -->
+          <h2 id="capture-tech">5. キャプチャの技術：3つのトリガー基準と空間リングバッファ</h2>
+          <p>第1プロセスの「データキャプチャ」では、走行中の画面を無闇に連写してストレージや解析コストを圧迫しないよう、走行状況に応じた<strong>3つの実行トリガー</strong>と<strong>空間リングバッファ</strong>を組み合わせた収集エンジンを実装しています。</p>
+
+          <div class="tool-summary-card">
+            <strong>1. 3つのキャプチャ実行トリガー</strong>
+            <ul>
+              <li><strong>ターゲット接近トリガー（マルチショット）：</strong>データベースの <code>capture_targets</code> に登録された地点に対し、前方距離と横ズレ（最大 45m）を計算。遠方（55〜90m）・中距離（28〜55m）・近距離（8〜28m）の3段階で自動撮影し、看板の視認性を確保します。</li>
+              <li><strong>視覚検知トリガー：</strong><code>SignDetector</code> が画面内の看板を検知し、スコアが閾値を超えた場合に撮影します。連続撮影を防ぐため、街中 20m / 郊外 50m のクールダウン制御を備えています。</li>
+              <li><strong>定期走行トリガー：</strong>通常は 1,500m ごと、制限速度 60km/h 以下の「街中モード」では 250m ごとに間隔を動的に短縮して撮影を行います。</li>
+            </ul>
+          </div>
+
+          <div class="tool-summary-card">
+            <strong>2. 空間リングバッファと重複・異常排除</strong>
+            <ul>
+              <li><strong><code>SpatialRingBuffer</code> による遅延補完：</strong>直近 550m の走行フレームを 15m 刻みで保持しており、撮影タイミングとフレーム取得がわずかにズレた場合でも直近フレームから取りこぼしなく補完します。</li>
+              <li><strong>重複排除とファストトラベル検知：</strong>同一接近セッション内での重複撮影を防ぎつつ、200m 以上離脱すると履歴をリセットします。また、1ステップで 3,000m を超える瞬間移動を検知した場合はバッファと履歴を強制クリアします。</li>
+              <li><strong>キューへの永続化：</strong>撮影した画像は JPEG として保存し、ゲーム内座標・進行方向・速度制限・スコアなどと共に SQLite の <code>capture_queue</code> へ登録します。</li>
+            </ul>
+          </div>
+
+          <!-- 6. 画像解析とアンカーポイントの技術 -->
+          <h2 id="analysis-tech">6. 画像解析とアンカーポイントの技術：0秒フィルタ・Gemma 4・OSM突合</h2>
+          <p>第2プロセスの「解析・データベース作成」では、ローカル環境で完結する高速かつ低コストなパイプラインにより、キャプチャ画像から精度の高いアンカーポイント（ゲーム内座標と現実の緯度・経度の対応点）を構築しています。</p>
+
+          <div class="tool-summary-card">
+            <strong>1. 連写イベント束化（Event Bundling）と 0秒事前フィルタ</strong>
+            <ul>
+              <li><strong>地点束への統合：</strong>近接する複数フレームをゲーム座標の近似値（街中 28m / 郊外 55m）で1つの「地点束（<code>EventBundle</code>）」に統合し、重複解析を防ぎます。</li>
+              <li><strong>0秒事前フィルタ：</strong>すでに高信頼なアンカーが存在する近傍（街中 30m / 郊外 120m）を解析前にスキップすることで、不要な OCR / LLM 呼び出しを削減しています。</li>
+            </ul>
+          </div>
+
+          <div class="tool-summary-card">
+            <strong>2. PaddleOCR ＋ Gemma 4（LM Studio）による看板構造化</strong>
+            <ul>
+              <li>看板領域から <code>PaddleOCR</code> で抽出した文字列を、LM Studio 上のローカル LLM（<strong>Gemma 4</strong>）へ渡します。</li>
+              <li>アイスランド語特有の文字誤認識を既知の地名リストなどで補正したうえで、路線番号・地名・都市境界情報を扱いやすい JSON 形式へと構造化します。</li>
+            </ul>
+          </div>
+
+          <div class="tool-summary-card">
+            <strong>3. OpenStreetMap（OSM）突合とアンカー信頼度管理</strong>
+            <ul>
+              <li><strong>現実座標の特定：</strong>抽出された複数路線の「現実交差点」の解決を最優先とし、次点で都市境界（<code>city_limit</code>）や OSM 空間データと照合して現実の緯度・経度を特定します。</li>
+              <li><strong>信頼度（<code>confidence</code>）と重なり回避：</strong>DB 登録時は既存アンカーとの距離や信頼度を比較し、手動登録や高信頼アンカーを保護しつつ、より高精度な結果が得られた場合のみ「昇格更新」を行います。また、近接時の座標重なりを回避する微調整（デコンフリクト）を施して登録します。</li>
+            </ul>
+          </div>
+
+          <!-- 7. 表示を支える技術 -->
+          <h2 id="display-tech">7. 表示を支える技術：テレメトリ取得と多段階ハイブリッド座標変換</h2>
+          <p>最終的な配布対象となる「表示プロセス」では、ゲーム内の現在位置を低遅延で取得し、前述の縮尺変動を吸収して現実の緯度・経度へ変換するための仕組みを組み込んでいます。</p>
+
+          <figure class="article-figure">
+            <img src="image/ETS2toGoogleMAP_SS2.jpg" alt="ETS2 Real-World Navi のメイン画面（テレメトリ表示・キャリブレーション操作パネルとGoogleマップ航空写真）" loading="lazy">
+            <figcaption>表示アプリ「ETS2 Real-World Navi」：テレメトリ・補間座標の確認や、Googleマップ（航空＋道路）切替、OSM道路区間・ドロネー三角形メッシュの可視化に対応</figcaption>
+          </figure>
+
+          <div class="tool-summary-card">
+            <strong>1. 共有メモリ経由のリアルタイム・テレメトリ取得</strong>
+            <ul>
+              <li>ETS2 / ATS のテレメトリプラグイン（SCS Telemetry SDK 連携）を通じて、共有メモリからゲーム内の現在座標（<code>game_x</code>, <code>game_z</code>）や進行方向（heading）を低負荷でリアルタイム取得します。</li>
+            </ul>
+          </div>
+
+          <div class="tool-summary-card">
+            <strong>2. 縮尺変動を攻略する「多段階ハイブリッド座標変換」</strong>
+            <p style="margin: 6px 0 8px;">SQLite データベースに格納した「アンカー点群」「アンカー間道路区間（ゲーム内道路 <code>.scs</code> と現実の OpenStreetMap 道路を突合して構築）」「都市エリア境界」を参照し、現在地の状況に応じて以下の優先順位で現実の緯度・経度を算出します。</p>
+            <ul>
+              <li><strong>優先1：道路ポリライン 1D 線形参照（道なり距離比補間）</strong><br>走行中の道路区間にスナップし、前後2つのアンカー間の「道なり距離の比率」を現実の道路ポリラインに当てはめます。これにより、カーブや局所的な縮尺変化があっても道路からズレにくくなります。</li>
+              <li><strong>優先2：都市エリア専用ローカル補間（City Area 補正）</strong><br>郊外（約 1:19）と縮尺が大きく異なる都市部では、郊外アンカーを混ぜずに都市専用のローカル補間へ切り替えます。</li>
+              <li><strong>優先3：幹線離脱時の連続相対移動</strong><br>幹線道路から一時的に外れた直後は、直前の道路基準点からの相対移動量で滑らかに追従します。</li>
+              <li><strong>優先4：ドロネー三角形分割（Delaunay）＆局所アフィン変換（フォールバック）</strong><br>道路区間外では周囲のアンカーからドロネー三角形メッシュを組んで厳密な 2D アフィン変換を行い、メッシュ外では重み付き局所アフィン変換、アンカーが極端に少ない領域では 1:19 オフセット補間へ安全にフォールバックします。</li>
+            </ul>
+          </div>
+
+          <div class="callout-box">
+            <strong>地図ビューアへのリアルタイム反映</strong>
+            算出された緯度・経度と進行方向を地図側へリアルタイムに渡し、走行中の現在地ピンを滑らかに追従表示します。
+          </div>
+
+          <!-- 8. トライ＆エラーと現在の進捗 -->
+          <h2 id="progress">8. トライ＆エラーと現在の進捗（アイスランド約8割にアンカー）</h2>
+          <p>理想通りに一発で動くわけではなく、実際のゲーム内データと現実の地図データを突き合わせながら、何度も改修とトライ＆エラーを繰り返してきました。</p>
+          <p>その積み重ねの結果、現在では<strong>アイスランドのマップの約8割程度にアンカーを打つところまで進み</strong>、リアルタイム表示の基盤が形になってきています。</p>
+
+          <!-- 9. 今後の展望 -->
+          <h2 id="roadmap">9. 今後の展望：表示系の洗練と全マップ対応に向けて</h2>
+          <p>ここからは、まず<strong>表示系の精度や使い勝手をさらに洗練させ、アイスランドマップでの完成を確認する</strong>ことを最優先に進めていきます。</p>
+          <p>そしてアイスランドでの完成が見え次第、次のステップとして <strong>ETS2・ATS の全マップへの対応</strong> を目指します。全マップ規模になると個人の手作業だけではカバーしきれないため、<strong>協力者の募集</strong> や <strong>大量のデータ解析をどのように効率化して進めるかのプランニング</strong> へ移行していく予定です。</p>
+
+          <div class="callout-box purple">
+            <strong>今後のアップデートについて</strong>
+            アイスランド版プロトタイプの完成や、表示ツールの公開・全マップ対応に向けた協力募集の動きがあれば、本サイトでも随時お知らせしていく予定です。
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <p class="footer-title">SecreAI &amp; Tools</p>
+        <p class="footer-sub">開発・運営：amachi | 無料AI・配信支援・便利ツール公式サイト</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">トップページ</a>
+        <a href="about.html">運営者情報</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 amachi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
